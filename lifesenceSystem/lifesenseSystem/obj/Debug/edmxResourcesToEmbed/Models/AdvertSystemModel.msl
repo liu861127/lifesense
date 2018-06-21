@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="qqguanggaoModelStoreContainer" CdmEntityContainer="AdvertSystemEntities">
+    <EntitySetMapping Name="t_qqad">
+      <EntityTypeMapping TypeName="qqguanggaoModel.t_qqad">
+        <MappingFragment StoreEntitySet="t_qqad">
+          <ScalarProperty Name="ADName" ColumnName="ADName" />
+          <ScalarProperty Name="ADDate" ColumnName="ADDate" />
+          <ScalarProperty Name="ChargesMethod" ColumnName="ChargesMethod" />
+          <ScalarProperty Name="FLink" ColumnName="FLink" />
+          <ScalarProperty Name="FID" ColumnName="FID" />
+          <ScalarProperty Name="ADCreateDate" ColumnName="ADCreateDate" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="QQTxt" ColumnName="QQTxt" />
+          <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="t_qqadp">
+      <EntityTypeMapping TypeName="qqguanggaoModel.t_qqadp">
+        <MappingFragment StoreEntitySet="t_qqadp">
+          <ScalarProperty Name="FID" ColumnName="FID" />
+          <ScalarProperty Name="ADFID" ColumnName="ADFID" />
+          <ScalarProperty Name="ADSize" ColumnName="ADSize" />
+          <ScalarProperty Name="ADTitle" ColumnName="ADTitle" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="t_qqimage">
+      <EntityTypeMapping TypeName="qqguanggaoModel.t_qqimage">
+        <MappingFragment StoreEntitySet="t_qqimage">
+          <ScalarProperty Name="FID" ColumnName="FID" />
+          <ScalarProperty Name="ADPFID" ColumnName="ADPFID" />
+          <ScalarProperty Name="PictureFile" ColumnName="PictureFile" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="t_user">
+      <EntityTypeMapping TypeName="qqguanggaoModel.t_user">
+        <MappingFragment StoreEntitySet="t_user">
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="UserPwd" ColumnName="UserPwd" />
+          <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+          <ScalarProperty Name="ATTEN" ColumnName="ATTEN" />
+          <ScalarProperty Name="Tel" ColumnName="Tel" />
+          <ScalarProperty Name="QQ" ColumnName="QQ" />
+          <ScalarProperty Name="Emaill" ColumnName="Emaill" />
+          <ScalarProperty Name="RegisterTime" ColumnName="RegisterTime" />
+          <ScalarProperty Name="UserNo" ColumnName="UserNo" />
+          <ScalarProperty Name="FID" ColumnName="FID" />
+          <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+          <ScalarProperty Name="BusinessLicense" ColumnName="BusinessLicense" />
+          <ScalarProperty Name="IQD" ColumnName="IQD" />
+          <ScalarProperty Name="Flink" ColumnName="Flink" />
+          <ScalarProperty Name="ContactAddress" ColumnName="ContactAddress" />
+          <ScalarProperty Name="AccountBalance" ColumnName="AccountBalance" />
+          <ScalarProperty Name="RechargeDate" ColumnName="RechargeDate" />
+          <ScalarProperty Name="UserType" ColumnName="UserType" />
+          <ScalarProperty Name="UserNS" ColumnName="UserNS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

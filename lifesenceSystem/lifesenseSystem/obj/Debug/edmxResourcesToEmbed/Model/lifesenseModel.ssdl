@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="lifesenseModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.7" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="t_admin">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LoginName" Type="varchar" MaxLength="50" />
+    <Property Name="LoginPwd" Type="varchar" MaxLength="50" />
+    <Property Name="IsUse" Type="bit" />
+  </EntityType>
+  <EntityType Name="t_configinfo">
+    <Key>
+      <PropertyRef Name="keyId" />
+    </Key>
+    <Property Name="keyId" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="KeyValue" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="t_heartrateinfo">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StartTime" Type="datetime" Precision="0" />
+    <Property Name="HeartRate" Type="varchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="t_sleepinfo">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SleepingTime" Type="datetime" Precision="0" />
+    <Property Name="WakingTime" Type="datetime" Precision="0" />
+    <Property Name="LongSleepNum" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="ShallowSleepNum" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="WakeUpLong" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="WakingNum" Type="int" />
+  </EntityType>
+  <EntityType Name="t_userinfo">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserID" Type="varchar" MaxLength="50" />
+    <Property Name="UserName" Type="varchar" MaxLength="50" />
+    <Property Name="UserPwd" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="t_walkinfo">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserID" Type="varchar" MaxLength="50" />
+    <Property Name="MeasureTime" Type="datetime" Precision="0" />
+    <Property Name="StepNum" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="Calorie" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Mileage" Type="decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityContainer Name="lifesenseModelStoreContainer">
+    <EntitySet Name="t_admin" EntityType="Self.t_admin" Schema="lifesense" store:Type="Tables" />
+    <EntitySet Name="t_configinfo" EntityType="Self.t_configinfo" Schema="lifesense" store:Type="Tables" />
+    <EntitySet Name="t_heartrateinfo" EntityType="Self.t_heartrateinfo" Schema="lifesense" store:Type="Tables" />
+    <EntitySet Name="t_sleepinfo" EntityType="Self.t_sleepinfo" Schema="lifesense" store:Type="Tables" />
+    <EntitySet Name="t_userinfo" EntityType="Self.t_userinfo" Schema="lifesense" store:Type="Tables" />
+    <EntitySet Name="t_walkinfo" EntityType="Self.t_walkinfo" Schema="lifesense" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,733 @@
+﻿@model AdvertSystem.Models.AD
+
+@{
+    ViewBag.Title = "新建QQ广告";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>
+        新建QQ广告
+        <small></small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="../Account/Index"><i class="fa fa-dashboard"></i>首页</a></li>
+        <li><a href="../Account/AddQQAD#">会员QQ推广</a></li>
+        <li class="active">新建QQ广告</li>
+    </ol>
+</section>
+<!-- form start -->
+<form id="form1" role="form" class="form-horizontal" onkeydown="if (event.keyCode == 13) { return false; }" method=" post">
+    <div id="AddADView_1" style="display:block">
+        <!-- Main content -->
+        <section class="content">
+            <div class="row">
+                <!-- left column -->
+                <div class="col-md-6">
+                    <div class="box box-success">
+                        <div class="box-header">
+                            <!--<h3 class="box-title">Data Table With Full Features</h3>-->
+                        </div><!-- /.box-header -->
+                        <div class="box-body">
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label" for="ADName">广告名称<span style="color:red">*</span></label>
+                                <div class="col-sm-8">
+                                    @Html.TextBoxFor(model => model.QQAD.ADName, new { @class = "form-control", placeholder = "录入广告名称", @id = "ADName" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label" for="ADDate">投放日期<span style="color:red">*</span></label>
+                                <div class="col-sm-8">
+                                    @Html.TextBoxFor(model => model.QQAD.ADDate, new { @class = "form-control", placeholder = "录入投放日期", @id = "ADDate", @readonly = "readonly" })
+                                    <label class="">
+                                        <input class="minimal" style="position: absolute; opacity: 0;" type="checkbox">日期范围
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">收费方式<span style="color:red">*</span></label>
+                                <div class="col-sm-8" id="selradio">
+                                    <label>
+                                        <input style="position: absolute; opacity: 0;" name="r1" class="minimal" type="radio" checked="checked" value="CPM">
+                                        CPM<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        (每千次曝光花费)
+                                    </label>
+                                    @*<label>
+                                            <div aria-disabled="false" aria-checked="false" style="position: relative;" class="iradio_minimal-blue"><input style="position: absolute; opacity: 0;" name="r1" class="minimal" type="radio" value="CPC"><ins style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;" class="iCheck-helper"></ins></div>
+                                            CPC<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            （单次点击花费）
+                                        </label>*@
+                                </div>
+                                @Html.HiddenFor(model => model.QQAD.ChargesMethod, new { @id = "ChargesMethod" })
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-9 control-label">您想通过广告推广什么？请选择广告的推广标的物</label>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label" for="FLink">网址链接<span style="color:red">*</span></label>
+                                <div class="col-sm-8">
+                                    @Html.TextBoxFor(model => model.QQAD.FLink, new { @class = "form-control", placeholder = "录入网址链接", @id = "FLink" })
+                                </div>
+                            </div>
+                        </div><!-- /.box-body -->
+                        <div class="box-footer">
+                            <button type="button" class="btn btn-primary" onclick="check_1()">下一步</button>
+                        </div>
+                    </div><!-- /.box -->
+                </div><!--/.col (left) -->
+            </div><!-- /.row -->
+        </section><!-- /.content -->
+    </div>
+    <div id="AddADView_2" style="display:none;">
+        <!-- Main content -->
+        <section class="content">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="box box-solid">
+                        <div class="box-header with-border">
+                            <div class="col-md-2"></div>
+                            <div class="col-md-5"><label class="box-title">广告尺寸</label></div>
+                            <div class="col-md-5"><label class="box-title">广告位置</label></div>
+                        </div><!-- /.box-header -->
+                        <div class="box-body">
+                            <div id="accordion" class="box-group">
+                                <div class="box">
+                                    <div class="box-header with-border">
+                                        <div class="col-md-2">
+                                        </div>
+                                        <div class="col-md-5">
+                                            <h6 class="box-title">
+                                                198px*40px图片
+                                            </h6>
+                                        </div>
+                                        <div class="col-md-5">
+                                            <h6 class="box-title">
+                                                QQ群、临时会话及讨论组Banner
+                                            </h6>
+                                        </div>
+                                        <div class="box-tools pull-right">
+                                            <button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="" data-original-title="折叠"><i class="fa fa-minus"></i></button>
+                                        </div>
+                                    </div>
+                                    <div id="collapse1" class="box-body" adsize="198px*40px图片" adtitle="QQ群、临时会话及讨论组Banner" picturefile="" picturetitle="" filepath="">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                            </div>
+                                        </div>
+                                        <div class="row"><div class="col-md-12"><button id="uploadbt_1" class="btn btn-primary" onclick="upload(1,undefined, 198,40)" type="button">上传</button></div></div>
+                                    </div><!-- /.box-body -->
+                                    <!-- <div class="box-footer" style="display: block;">
+                                        底部
+                                    </div>/.box-footer-->
+                                    @Html.HiddenFor(model => model.QQADPList[0].ADSize, new { @id = "ADSize_1" })
+                                    @Html.HiddenFor(model => model.QQADPList[0].ADTitle, new { @id = "ADTitle_1" })
+                                    @Html.HiddenFor(model => model.QQADPList[0].FID, new { @id = "FID_1" })
+                                </div>
+                                <div class="box" style=" display:none;">
+                                    <div class="box-header with-border">
+                                        <div class="col-md-2">
+                                        </div>
+                                        <div class="col-md-5">
+                                            <h6 class="box-title">
+                                                140px*40px图片
+                                            </h6>
+                                        </div>
+                                        <div class="col-md-5">
+                                            <h6 class="box-title">
+                                                个人聊天窗口或QQ音乐V9搜索结果页
+                                            </h6>
+                                        </div>
+                                        <div class="box-tools pull-right">
+                                            <button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="" data-original-title="折叠"><i class="fa fa-minus"></i></button>
+                                        </div>
+                                    </div>
+                                    <div id="collapse2" class="box-body" adsize="140px*40px图片" adtitle="个人聊天窗口或QQ音乐V9搜索结果页" picturefile="" picturetitle="" filepath="">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                            </div>
+                                        </div>
+                                        <div class="row"><div class="col-md-12"><button id="uploadbt_2" class="btn btn-primary" onclick="upload(2)" type="button">上传</button></div></div>
+                                    </div><!-- /.box-body -->
+                                    <div class="box-footer" style="display:none;">
+                                        底部
+                                    </div><!-- /.box-footer-->
+                                    @*@Html.HiddenFor(model => model.QQADPList[1].ADSize, new { @id = "ADSize_2" })
+                                        @Html.HiddenFor(model => model.QQADPList[1].ADTitle, new { @id = "ADTitle_2" })
+                                        @Html.HiddenFor(model => model.QQADPList[1].FID, new { @id = "FID_2" })*@
+                                </div>
+                                <div class="box" style="display: none;">
+                                    <div class="box-header with-border">
+                                        <div class="col-md-2">
+                                        </div>
+                                        <div class="col-md-5">
+                                            <h6 class="box-title">
+                                                198px*100px图片
+                                            </h6>
+                                        </div>
+                                        <div class="col-md-5">
+                                            <h6 class="box-title">
+                                                临时会话右边框
+                                            </h6>
+                                        </div>
+                                        <div class="box-tools pull-right">
+                                            <button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="" data-original-title="折叠"><i class="fa fa-minus"></i></button>
+                                        </div>
+                                    </div>
+                                    <div id="collapse3" class="box-body" adsize="198px*100px图片" adtitle="临时会话右边框" picturefile="" picturetitle="" filepath="">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                            </div>
+                                        </div>
+                                        <div class="row"><div class="col-md-12"><button id="uploadbt_3" class="btn btn-primary" onclick="upload(3)" type="button">上传</button></div></div>
+                                    </div><!-- /.box-body -->
+                                    <div class="box-footer" style="display: none;">
+                                        底部
+                                    </div><!-- /.box-footer-->
+                                    @*@Html.HiddenFor(model => model.QQADPList[2].ADSize, new { @id = "ADSize_3" })
+                                        @Html.HiddenFor(model => model.QQADPList[2].ADTitle, new { @id = "ADTitle_3" })
+                                        @Html.HiddenFor(model => model.QQADPList[2].FID, new { @id = "FID_3" })*@
+                                </div>
+                                <div class="box" style="display: none;">
+                                    <div class="box-header with-border">
+                                        <div class="col-md-2">
+                                        </div>
+                                        <div class="col-md-5">
+                                            <h6 class="box-title">
+                                                文字链
+                                            </h6>
+                                        </div>
+                                        <div class="col-md-5">
+                                            <h6 class="box-title">
+                                                聊天窗左下文字，QQ查找_文字链广告位
+                                            </h6>
+                                        </div>
+                                        <div class="box-tools pull-right">
+                                            <button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="" data-original-title="折叠"><i class="fa fa-minus"></i></button>
+                                        </div>
+                                    </div>
+                                    <div id="collapse4" class="box-body" adsize="文字链" adtitle="聊天窗左下文字，QQ查找_文字链广告位" picturefile="" picturetitle="" filepath="">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                            </div>
+                                        </div>
+                                        <div class="row"><div class="col-md-12"><button id="uploadbt_4" class="btn btn-primary" onclick="upload(4)" type="button">上传</button></div></div>
+                                    </div><!-- /.box-body -->
+                                    <div class="box-footer" style="display: none;">
+                                        底部
+                                    </div><!-- /.box-footer-->
+                                    @*@Html.HiddenFor(model => model.QQADPList[3].ADSize, new { @id = "ADSize_4" })
+                                        @Html.HiddenFor(model => model.QQADPList[3].ADTitle, new { @id = "ADTitle_4" })
+                                        @Html.HiddenFor(model => model.QQADPList[3].FID, new { @id = "FID_4" })*@
+                                </div>
+                                <div class="box">
+                                    <div class="box-header with-border">
+                                        <div class="col-md-2">
+                                        </div>
+                                        <div class="col-md-5">
+                                            <h6 class="box-title">
+                                                140px*425px图片
+                                            </h6>
+                                        </div>
+                                        <div class="col-md-5">
+                                            <h6 class="box-title">
+                                                QQ秀擎天柱广告位或QQ音乐_我的音乐右侧擎天柱
+                                            </h6>
+                                        </div>
+                                        <div class="box-tools pull-right">
+                                            <button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="" data-original-title="折叠"><i class="fa fa-minus"></i></button>
+                                        </div>
+                                    </div>
+                                    <div id="collapse5" class="box-body" adsize="140px*425px图片" adtitle="QQ秀擎天柱广告位或QQ音乐_我的音乐右侧擎天柱" picturefile="" picturetitle="" filepath="">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                            </div>
+                                        </div>
+                                        <div class="row"><div class="col-md-12"><button id="uploadbt_5" class="btn btn-primary" onclick="upload(5,undefined, 140,425)" type="button">上传</button></div></div>
+                                    </div><!-- /.box-body -->
+                                    <!--<div class="box-footer" style="display: block;">
+                                        底部
+                                    </div> /.box-footer-->
+                                    @Html.HiddenFor(model => model.QQADPList[1].ADSize, new { @id = "ADSize_5" })
+                                    @Html.HiddenFor(model => model.QQADPList[1].ADTitle, new { @id = "ADTitle_5" })
+                                    @Html.HiddenFor(model => model.QQADPList[1].FID, new { @id = "FID_5" })
+                                </div>
+                                <div class="box">
+                                    <div class="box-header with-border">
+                                        <div class="col-md-2">
+                                        </div>
+                                        <div class="col-md-5">
+                                            <h6 class="box-title">
+                                                200px*162px图片
+                                            </h6>
+                                        </div>
+                                        <div class="col-md-5">
+                                            <h6 class="box-title">
+                                                群公告
+                                            </h6>
+                                        </div>
+                                        <div class="box-tools pull-right">
+                                            <button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="" data-original-title="折叠"><i class="fa fa-minus"></i></button>
+                                        </div>
+                                    </div>
+                                    <div id="collapse6" class="box-body" adsize="200px*162px图片" adtitle="群公告" picturefile="" picturetitle="" filepath="">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                            </div>
+                                        </div>
+                                        <div class="row"><div class="col-md-12"><button id="uploadbt_6" class="btn btn-primary" onclick="upload(6,undefined, 200,162)" type="button">上传</button></div></div>
+                                    </div><!-- /.box-body -->
+                                    <!--<div class="box-footer" style="display: block;">
+                                        底部
+                                    </div> /.box-footer-->
+                                    @Html.HiddenFor(model => model.QQADPList[2].ADSize, new { @id = "ADSize_6" })
+                                    @Html.HiddenFor(model => model.QQADPList[2].ADTitle, new { @id = "ADTitle_6" })
+                                    @Html.HiddenFor(model => model.QQADPList[2].FID, new { @id = "FID_6" })
+                                </div>
+                                <div class="box">
+                                    <div class="box-header with-border">
+                                        <div class="col-md-2">
+                                        </div>
+                                        <div class="col-md-5">
+                                            <h6 class="box-title">
+                                                140px*40px+140px*425px大小图
+                                            </h6>
+                                        </div>
+                                        <div class="col-md-5">
+                                            <h6 class="box-title">
+                                                个人聊天窗口大小图模式
+                                            </h6>
+                                        </div>
+                                        <div class="box-tools pull-right">
+                                            <button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="" data-original-title="折叠"><i class="fa fa-minus"></i></button>
+                                        </div>
+                                    </div>
+                                    <div id="collapse7" class="box-body" adsize="140px*40px小图" adtitle="个人聊天窗口小图模式" picturefile="" picturetitle="" filepath="">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                            </div>
+                                        </div>
+                                        <div class="row"><div class="col-md-12"><button id="uploadbt_7" class="btn btn-primary" onclick="upload(7,undefined,140,40)" type="button">140px*40px上传</button></div></div>
+                                    </div>
+                                    <div id="collapse8" class="box-body" adsize="140px*425px大图" adtitle="个人聊天窗口大图模式" picturefile="" picturetitle="" filepath="">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                            </div>
+                                        </div>
+                                        <div class="row"><div class="col-md-12"><button id="uploadbt_7" class="btn btn-primary" onclick="upload(8,undefined,140,425)" type="button">140px*425px上传</button></div></div>
+                                    </div><!-- /.box-body -->
+                                    <!-- <div class="box-footer" style="display: block;">
+                                        底部
+                                    </div> /.box-footer-->
+                                    @Html.HiddenFor(model => model.QQADPList[3].ADSize, new { @id = "ADSize_7" })
+                                    @Html.HiddenFor(model => model.QQADPList[3].ADTitle, new { @id = "ADTitle_7" })
+                                    @Html.HiddenFor(model => model.QQADPList[3].FID, new { @id = "FID_7" })
+                                    @Html.HiddenFor(model => model.QQADPList[4].ADSize, new { @id = "ADSize_8" })
+                                    @Html.HiddenFor(model => model.QQADPList[4].ADTitle, new { @id = "ADTitle_8" })
+                                    @Html.HiddenFor(model => model.QQADPList[4].FID, new { @id = "FID_8" })
+                                </div>
+                            </div>
+                        </div><!-- /.box-body -->
+                        <div class="box-footer">
+                            <div class="pull-left"><button type="button" class="btn btn-primary" onclick="return_1()">上一步</button></div>
+                            <div class="pull-right"><button type="button" class="btn btn-primary" onclick="check_2()">下一步</button></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section><!-- /.content -->
+    </div>
+    <div id="AddADView_3" style="display:none;">
+        <!-- Main content -->
+        <section class="content">
+            <div class="row">
+                <!-- left column -->
+                <div class="col-md-6">
+                    <div class="box box-success">
+                        <div class="box-header">
+                            <!--<h3 class="box-title">Data Table With Full Features</h3>-->
+                        </div><!-- /.box-header -->
+                        <div class="box-body">
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label" for="QQTxt">选择QQ包<span style="color:red">*</span></label>
+                                <div class="col-sm-8">
+                                    <select id="QQTxt" class="form-control js-example-data-array-selected select2">
+                                        @foreach (var m in Model.QQPackList)
+                                        {
+                                            <option value="@m.FID">@m.QQPName</option>
+                                        }
+                                    </select>
+                                </div>
+                            </div>
+                        </div><!-- /.box-body -->
+                        <div class="box-footer">
+                            <div class="pull-left"><button type="button" class="btn btn-primary" onclick="return_2()">上一步</button></div>
+                            <div class="pull-right"><button type="submit" class="btn btn-primary">上传</button></div>
+                        </div>
+                    </div><!-- /.box -->
+                </div><!--/.col (left) -->
+            </div><!-- /.row -->
+        </section><!-- /.content -->
+    </div>
+</form>
+<script>
+    function check_1() {
+        $("#ChargesMethod").val($("#selradio input:radio:checked").val());
+        if ($("#ADName").val() == "") {
+            $("#ADName").focus();
+            var d = dialog({
+                content: '广告名称不能为空',
+                quickClose: true// 点击空白处快速关闭
+            });
+            d.show(document.getElementById('ADName'));
+            setTimeout(function () {
+                d.close().remove();
+            }, 3000);
+            return;
+        }
+        if ($("#ADDate").val() == "") {
+            $("#ADDate").focus();
+            var d = dialog({
+                content: '投放日期不能为空',
+                quickClose: true// 点击空白处快速关闭
+            });
+            d.show(document.getElementById('ADDate'));
+            setTimeout(function () {
+                d.close().remove();
+            }, 3000);
+            return;
+        }
+        if ($("#FLink").val() == "") {
+            $("#FLink").focus();
+            var d = dialog({
+                content: '网址链接不能为空',
+                quickClose: true// 点击空白处快速关闭
+            });
+            d.show(document.getElementById('FLink'));
+            setTimeout(function () {
+                d.close().remove();
+            }, 3000);
+            return;
+        }
+        regExp = "^[a-zA-z]+://(\\w+(-\\w+)*)(\\.(\\w+(-\\w+)*))*(\\?\\S*)?$"
+        if (!$("#FLink").val().match(regExp)) {
+            $("#FLink").focus();
+            var d = dialog({
+                content: '网址链接格式不对',
+                quickClose: true// 点击空白处快速关闭
+            });
+            d.show(document.getElementById('FLink'));
+            setTimeout(function () {
+                d.close().remove();
+            }, 3000);
+            return;
+        }
+        $("#AddADView_1").css('display', 'none');
+        $("#AddADView_2").css('display', 'block');
+        $("#AddADView_3").css('display', 'none');
+    }
+
+    function return_1() {
+        $("#AddADView_1").css('display', 'block');
+        $("#AddADView_2").css('display', 'none');
+        $("#AddADView_3").css('display', 'none');
+    }
+
+    function return_2() {
+        $("#AddADView_1").css('display', 'none');
+        $("#AddADView_2").css('display', 'block');
+        $("#AddADView_3").css('display', 'none');
+    }
+
+    function upload(adindex, imgindex, width, height) {
+        var imglist = $("#collapse" + adindex).find(".row:first").find(".col-md-12").find("img").length;
+        if (imglist >= 5) {
+            var d = dialog({
+                title: '提示',
+                content: '最多只能上传5张图片',
+                quickClose: true// 点击空白处快速关闭
+            });
+            d.show();
+            setTimeout(function () {
+                d.close().remove();
+            }, 3000);
+            return;
+        }
+        var a = dialog({
+            title: '图片素材上传',
+            content: '<div class="form-group" id="form-group">' +
+                   '<label for="exampleInputFile_' + adindex + '">图片上传</label>' +
+                   '<input id="exampleInputFile_' + adindex + '" name="exampleInputFile_' + adindex + '" type="file">' +
+                   '</div>'
+            //okValue: '确认',
+            //cancelValue: '取消',
+            //ok: function () {
+
+            //},
+            //cancel: function () { }
+        });
+        a.showModal();
+        var filename = $("#collapse" + adindex).attr("picturefile");
+        var filetitle = $("#collapse" + adindex).attr("picturetitle");
+        var arr = new Array();
+        arr = filename.split("|");
+        var arr2 = new Array();
+        arr2 = filetitle.split("|");
+        //初始化fileinput
+        var arrayObj = new Array(1, 0, 0, 0, 2, 3, 4, 4);
+        var uploadUrl = "../Account/ImportOrder?Index=" + adindex + "&filename=" + arr[imgindex - 1] + "&adpindex=" + arrayObj[adindex - 1];
+        var control = $('#exampleInputFile_' + adindex);
+        //初始化上传控件的样式
+        control.fileinput({
+            language: 'zh', //设置语言
+            uploadUrl: uploadUrl, //上传的地址
+            allowedFileExtensions: ['jpg', 'gif', 'png'],//接收的文件后缀
+            uploadAsync: true, //默认异步上传
+            showUpload: true, //是否显示上传按钮
+            showRemove: true, //显示移除按钮
+            showPreview: true, //是否显示预览
+            showCaption: false,//是否显示标题
+            browseClass: "btn btn-primary", //按钮样式
+            dropZoneEnabled: false,//是否显示拖拽区域
+            minImageWidth: width, //图片的最小宽度
+            minImageHeight: height,//图片的最小高度
+            maxImageWidth: width,//图片的最大宽度
+            maxImageHeight: height,//图片的最大高度
+            maxFileSize: 2048,//单位为kb，如果为0表示不限制文件大小
+            //minFileCount: 0,
+            //maxFileCount: 10, //表示允许同时上传的最大文件个数
+            enctype: 'multipart/form-data',
+            validateInitialCount: true,
+            previewFileIcon: "<i class='glyphicon glyphicon-king'></i>",
+            msgFilesTooMany: "选择上传的文件数量({n}) 超过允许的最大数值{m}！",
+        });
+        //导入文件上传完成之后的事件
+        $('#exampleInputFile_' + adindex).on("fileuploaded", function (event, data, previewId, index) {
+            if (data == undefined) {
+                var d = dialog({
+                    title: '提示',
+                    content: '文件格式类型不正确',
+                    quickClose: true// 点击空白处快速关闭
+                });
+                d.show();
+                setTimeout(function () {
+                    d.close().remove();
+                }, 3000);
+                return;
+            }
+            else {
+                if (data.response.result) {
+                    var picturefile = filename;
+                    var picturetitle = filetitle;
+                    if (imgindex == undefined) {
+                        picturefile += data.response.filename + "|";
+                        picturetitle += data.response.title + "|";
+                    }
+                    else {
+                        picturefile = "";
+                        picturetitle = "";
+                        for (var i = 0; i < arr.length; i++) {
+                            if (arr[i] != "") {
+                                var file = "";
+                                var title = "";
+                                if (i == (imgindex - 1)) {
+                                    file = data.response.filename;
+                                    title = data.response.title;
+                                }
+                                else {
+                                    file = arr[i];
+                                    title = arr2[i];
+                                }
+                                picturefile += file + "|";
+                                picturetitle += title + "|";
+                            }
+                        }
+                    }
+                    $("#collapse" + adindex).attr("picturefile", picturefile);
+                    $("#collapse" + adindex).attr("picturetitle", picturetitle);
+                    var d = dialog({
+                        title: '提示',
+                        content: data.response.message,
+                        quickClose: true// 点击空白处快速关闭
+                    });
+                    d.show();
+                    setTimeout(function () {
+                        d.close().remove();
+                    }, 3000);
+                    //上传完毕
+                    confirmok(adindex, imgindex, width, height);
+                    a.close().remove();
+                    //$("#uploadbt_" + adindex).css('display', 'none');
+                }
+                else {
+                    var d = dialog({
+                        title: '提示',
+                        content: data.response.message,
+                        quickClose: true// 点击空白处快速关闭
+                    });
+                    d.show();
+                    setTimeout(function () {
+                        d.close().remove();
+                    }, 3000);
+                }
+            }
+        });
+    }
+
+    function check_2() {
+        //if ($("#accordion input:radio:checked").val() == undefined) {
+        //    var d = dialog({
+        //        title: '提示',
+        //        content: '请选择一个广告位置再提交',
+        //    });
+        //    d.show();
+        //    setTimeout(function () {
+        //        d.close().remove();
+        //    }, 1000);
+        //    return false;
+        //}
+        //var i = $("#accordion input:radio:checked").val();
+        var arrayObj = new Array(1, 5, 6, 7, 8);
+        for (var i = 0; i < arrayObj.length; i++) {
+            if ($("#collapse" + arrayObj[i]).find("div[class='row']").find("div[class='col-md-12']").find("img").length < 1) {
+                $("#collapse" + arrayObj[i]).focus();
+                var d = dialog({
+                    content: '你所选择的广告位' + (i == 4 ? 4 : (i + 1)) + '还没上传图片创意',
+                    quickClose: true// 点击空白处快速关闭
+                });
+                d.show();
+                setTimeout(function () {
+                    d.close().remove();
+                }, 3000);
+                return;
+            }
+            $("#ADSize_" + arrayObj[i]).val($("#collapse" + arrayObj[i]).attr("adsize"));
+            $("#ADTitle_" + arrayObj[i]).val($("#collapse" + arrayObj[i]).attr("adtitle"));
+            $("#FID_" + arrayObj[i]).val($("#collapse" + arrayObj[i]).attr("picturetitle") + "#" + $("#collapse" + arrayObj[i]).attr("picturefile"));
+        }
+        $("#AddADView_1").css('display', 'none');
+        $("#AddADView_2").css('display', 'none');
+        $("#AddADView_3").css('display', 'block');
+    }
+
+    function confirmok(adindex, imgindex, width, height) {
+        //图片索引为空，则添加图片，否则修改图片
+        var year = new Date().getFullYear().toString();
+        var month = (new Date().getMonth() + 1).toString().length == 1 ? '0' + (new Date().getMonth() + 1).toString() : (new Date().getMonth() + 1).toString();
+        var day = new Date().getDate().toString().length == 1 ? '0' + new Date().getDate().toString() : new Date().getDate().toString();
+        var mydate = year + month + day;
+        var filename = $("#collapse" + adindex).attr("picturefile");
+        var filetitle = $("#collapse" + adindex).attr("picturetitle");
+        var arr = new Array();
+        arr = filename.split("|");
+        var arr2 = new Array();
+        arr2 = filetitle.split("|");
+        var username = "@ViewData["user"]";
+        if (filename != "") {
+            if (imgindex == undefined) {
+                var filepath = "../TempUploadFiles/" + username + "/" + year + "/" + mydate + "/" + arr[arr.length - 2];
+                $("#collapse" + adindex).find(".row:first").find(".col-md-12").append("<img src='" + filepath + "' width='100' height='100' style='margin-right:30px;'/>");
+                $("#collapse" + adindex).find(".row:last").before("<div class='row'><div class='col-md-12'><label>" + arr2[arr2.length - 2] + "</label><a href='javascript:void()' onclick='upload(" + adindex + "," + (arr.length - 1) + "," + width + "," + height + ")'><i class='fa fa-edit'></i></a></div></div>");
+            }
+            else {
+                var filepath = "../TempUploadFiles/" + username + "/" + year + "/" + mydate + "/" + arr[imgindex - 1];
+                $("#collapse" + adindex).find(".row:first").find(".col-md-12").find("img").eq(imgindex - 1).attr("src", filepath + "?t=" + Math.random());
+                $("#collapse" + adindex).find(".row").eq(imgindex).find(".col-md-12").find("label").html(arr2[imgindex - 1]);
+            }
+        }
+    }
+
+    function checkonclick() {
+        $("#ADDate").val("");
+        if ($(".icheckbox_minimal-blue input:checkbox:checked").val() == undefined) {
+            $('#ADDate').daterangepicker(
+            {
+                // startDate: moment().startOf('day'),
+                //endDate: moment(),
+                //minDate: '01/01/2012',	//最小时间
+                //maxDate: moment(), //最大时间
+                //dateLimit: {
+                //    days: 30
+                //}, //起止时间的最大间隔
+                showDropdowns: true,
+                showWeekNumbers: false, //是否显示第几周
+                timePicker: true, //是否显示小时和分钟
+                timePickerIncrement: 60, //时间的增量，单位为分钟
+                timePicker12Hour: false, //是否使用12小时制来显示时间
+                ranges: {
+                    //'最近1小时': [moment().subtract('hours',1), moment()],
+                    '今日': [moment().startOf('day'), moment()],
+                    '昨日': [moment().subtract('days', 1).startOf('day'), moment().subtract('days', 1).endOf('day')],
+                    '最近7日': [moment().subtract('days', 6), moment()],
+                    '最近30日': [moment().subtract('days', 29), moment()]
+                },
+                opens: 'right', //日期选择框的弹出位置
+                buttonClasses: ['btn btn-default'],
+                applyClass: 'btn-small btn-primary blue',
+                cancelClass: 'btn-small',
+                format: 'YYYY-MM-DD HH:mm:ss', //控件中from和to 显示的日期格式
+                separator: ' 至 ',
+                locale: {
+                    applyLabel: '确定',
+                    cancelLabel: '取消',
+                    fromLabel: '起始时间',
+                    toLabel: '结束时间',
+                    customRangeLabel: '自定义',
+                    daysOfWeek: ['日', '一', '二', '三', '四', '五', '六'],
+                    monthNames: ['一月', '二月', '三月', '四月', '五月', '六月',
+                            '七月', '八月', '九月', '十月', '十一月', '十二月'],
+                    firstDay: 1
+                },
+                singleDatePicker: false
+            }, function (start, end, label) {//格式化日期显示框
+
+                $('#ADDate span').html(start.format('YYYY-MM-DD HH:mm:ss') + ' 至 ' + end.format('YYYY-MM-DD HH:mm:ss'));
+            });
+        }
+        else {
+            $('#ADDate').daterangepicker(
+             {
+                 // startDate: moment().startOf('day'),
+                 //endDate: moment(),
+                 //minDate: '01/01/2012',	//最小时间
+                 //maxDate: moment(), //最大时间
+                 //dateLimit: {
+                 //    days: 30
+                 //}, //起止时间的最大间隔
+                 showDropdowns: true,
+                 showWeekNumbers: false, //是否显示第几周
+                 timePicker: true, //是否显示小时和分钟
+                 timePickerIncrement: 60, //时间的增量，单位为分钟
+                 timePicker12Hour: false, //是否使用12小时制来显示时间
+                 ranges: {
+                     //'最近1小时': [moment().subtract('hours',1), moment()],
+                     '今日': [moment().startOf('day'), moment()],
+                     '昨日': [moment().subtract('days', 1).startOf('day'), moment().subtract('days', 1).endOf('day')],
+                     '最近7日': [moment().subtract('days', 6), moment()],
+                     '最近30日': [moment().subtract('days', 29), moment()]
+                 },
+                 opens: 'right', //日期选择框的弹出位置
+                 buttonClasses: ['btn btn-default'],
+                 applyClass: 'btn-small btn-primary blue',
+                 cancelClass: 'btn-small',
+                 format: 'YYYY-MM-DD HH:mm:ss', //控件中from和to 显示的日期格式
+                 separator: ' 至 ',
+                 locale: {
+                     applyLabel: '确定',
+                     cancelLabel: '取消',
+                     fromLabel: '起始时间',
+                     toLabel: '结束时间',
+                     customRangeLabel: '自定义',
+                     daysOfWeek: ['日', '一', '二', '三', '四', '五', '六'],
+                     monthNames: ['一月', '二月', '三月', '四月', '五月', '六月',
+                             '七月', '八月', '九月', '十月', '十一月', '十二月'],
+                     firstDay: 1
+                 },
+                 singleDatePicker: true
+             }, function (start, end, label) {//格式化日期显示框
+
+                 $('#ADDate span').html(start.format('YYYY-MM-DD HH:mm:ss') + ' 至 ' + end.format('YYYY-MM-DD HH:mm:ss'));
+             });
+        }
+    }
+</script>
