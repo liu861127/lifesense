@@ -1,0 +1,11 @@
+D:\CodematicDemo\lifesense\Common\bin\Debug\lifesense.Common.dll
+D:\CodematicDemo\lifesense\Common\bin\Debug\lifesense.Common.pdb
+D:\CodematicDemo\lifesense\Common\bin\Debug\COM.Excel.dll
+D:\CodematicDemo\lifesense\Common\bin\Debug\Excel.dll
+D:\CodematicDemo\lifesense\Common\bin\Debug\OpenSmtp.dll
+D:\CodematicDemo\lifesense\Common\bin\Debug\OWC10Chart.dll
+D:\CodematicDemo\lifesense\Common\bin\Debug\office.dll
+D:\CodematicDemo\lifesense\Common\bin\Debug\Microsoft.Vbe.Interop.dll
+D:\CodematicDemo\lifesense\Common\obj\Debug\Common.csprojResolveAssemblyReference.cache
+D:\CodematicDemo\lifesense\Common\obj\Debug\lifesense.Common.dll
+D:\CodematicDemo\lifesense\Common\obj\Debug\lifesense.Common.pdb

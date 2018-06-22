@@ -1,0 +1,9 @@
+D:\CodematicDemo\lifesense\DBUtility\bin\Debug\lifesense.DBUtility.dll
+D:\CodematicDemo\lifesense\DBUtility\bin\Debug\lifesense.DBUtility.pdb
+D:\CodematicDemo\lifesense\DBUtility\bin\Debug\IBatisNet.Common.dll
+D:\CodematicDemo\lifesense\DBUtility\bin\Debug\IBatisNet.DataMapper.dll
+D:\CodematicDemo\lifesense\DBUtility\bin\Debug\MySql.Data.dll
+D:\CodematicDemo\lifesense\DBUtility\bin\Debug\System.Data.SQLite.DLL
+D:\CodematicDemo\lifesense\DBUtility\obj\Debug\DBUtility.csprojResolveAssemblyReference.cache
+D:\CodematicDemo\lifesense\DBUtility\obj\Debug\lifesense.DBUtility.dll
+D:\CodematicDemo\lifesense\DBUtility\obj\Debug\lifesense.DBUtility.pdb
