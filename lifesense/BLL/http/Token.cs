@@ -7,6 +7,16 @@ namespace lifesense.BLL.http
 {
    public class Token
     {
+       public Token()
+       {
+
+       }
+
+       public String getTempAuthorizeCode()
+       {
+           
+           return "";
+       }
 
     }
 }
