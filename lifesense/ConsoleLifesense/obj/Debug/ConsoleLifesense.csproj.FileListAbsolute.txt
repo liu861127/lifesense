@@ -1,0 +1,6 @@
+D:\lifesense\lifesense\ConsoleLifesense\obj\Debug\ConsoleLifesense.csprojResolveAssemblyReference.cache
+D:\lifesense\lifesense\ConsoleLifesense\bin\Debug\ConsoleLifesense.exe.config
+D:\lifesense\lifesense\ConsoleLifesense\bin\Debug\ConsoleLifesense.exe
+D:\lifesense\lifesense\ConsoleLifesense\bin\Debug\ConsoleLifesense.pdb
+D:\lifesense\lifesense\ConsoleLifesense\obj\Debug\ConsoleLifesense.exe
+D:\lifesense\lifesense\ConsoleLifesense\obj\Debug\ConsoleLifesense.pdb

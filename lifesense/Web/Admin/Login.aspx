@@ -112,8 +112,7 @@
                                     <tbody>
                                         <tr>
                                             <td width="245" height="80" align="center" valign="top">
-                                                <img height="67" src="images/member_t04.jpg" width="245">
-                                            </td>
+                                                &nbsp;</td>
                                             <td align="right" valign="top">
                                                 <br>
                                                 &nbsp;

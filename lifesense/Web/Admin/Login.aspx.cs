@@ -87,7 +87,7 @@ namespace Maticsoft.Web.Admin
             lifesense.BLL.t_Admin bll = new lifesense.BLL.t_Admin();
             string strWhere=string.Format("LoginName='{0}' and LoginPwd='{1}'",userName,Password);
             List<lifesense.Model.t_Admin> listmodel = bll.GetModelList(strWhere);
-            if (listmodel == null&&listmodel.Count!=1)//登录信息不对
+            if (listmodel == null||listmodel.Count!=1)//登录信息不对
             {
                 this.lblMsg.Text = "登陆失败： " + userName;
                 if ((Session["PassErrorCountAdmin"] != null) && (Session["PassErrorCountAdmin"].ToString() != ""))
@@ -133,7 +133,8 @@ namespace Maticsoft.Web.Admin
                 //}
                 //保存当前用户对象信息
                 FormsAuthentication.SetAuthCookie(userName, false);
-                //Session["UserInfo"] = currentUser;
+                Session["adminDomain"] = userName;
+                Session["AdminID"] = listmodel[0].ID;
                 //Session["Style"] = currentUser.Style;
                 if (Session["returnPage"] != null)
                 {
@@ -143,7 +144,7 @@ namespace Maticsoft.Web.Admin
                 }
                 else
                 {
-                    Response.Redirect("main.htm");
+                    Response.Redirect("admins.aspx");
                 }
             }
         }
