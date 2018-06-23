@@ -116,16 +116,19 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="http\consts\Consts.cs" />
+    <Compile Include="http\SyncDataManager.cs" />
+    <Compile Include="http\Token.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="SysManage.cs" />
-    <Compile Include="t_Admin.cs" />
-    <Compile Include="t_configinfo.cs" />
-    <Compile Include="t_heartrateinfo.cs" />
-    <Compile Include="t_sleepinfo.cs" />
-    <Compile Include="t_userinfo.cs" />
-    <Compile Include="t_walkinfo.cs" />
+    <Compile Include="db\t_Admin.cs" />
+    <Compile Include="db\t_configinfo.cs" />
+    <Compile Include="db\t_heartrateinfo.cs" />
+    <Compile Include="db\t_sleepinfo.cs" />
+    <Compile Include="db\t_userinfo.cs" />
+    <Compile Include="db\t_walkinfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Common\Common.csproj">
@@ -168,6 +171,7 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PreBuildEvent>
