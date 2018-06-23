@@ -51,6 +51,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BLL\BLL.csproj">
+      <Project>{38d7aa58-c95b-449b-86c6-a8073a56e11f}</Project>
+      <Name>BLL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DBUtility\DBUtility.csproj">
       <Project>{0988c62e-247f-471f-a183-db509c7a3839}</Project>
       <Name>DBUtility</Name>

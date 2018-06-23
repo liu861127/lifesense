@@ -92,8 +92,15 @@ namespace lifesense.Web.User
         protected void BtnShow_Click(object sender, EventArgs e)
         {
             //Maticsoft.Common.DataToExcel excel = new DataToExcel();
-            //AspNetPager1.
+           // Gdv_data.AllowPaging = false;
+           // Gdv_data.ShowFooter = false;
+            AspNetPager1.CurrentPageIndex = 1;
+            AspNetPager1.PageSize = AspNetPager1.RecordCount;
+            LoadData();
             ExportExcel.GetExportExcel(Gdv_data, "用户列表");
+            AspNetPager1.CurrentPageIndex = 1;
+            AspNetPager1.PageSize = 2;
+            LoadData();
         }
         /// <summary>
         /// 去掉"....必须放在具有 runat=server 的窗体标记内"异常

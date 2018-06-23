@@ -1,8 +1,3 @@
-D:\CodematicDemo\lifesense\Model\obj\Debug\Model.csprojResolveAssemblyReference.cache
-D:\CodematicDemo\lifesense\Model\bin\Debug\lifesense.Model.dll
-D:\CodematicDemo\lifesense\Model\bin\Debug\lifesense.Model.pdb
-D:\CodematicDemo\lifesense\Model\obj\Debug\lifesense.Model.dll
-D:\CodematicDemo\lifesense\Model\obj\Debug\lifesense.Model.pdb
 D:\lifesense\lifesense\Model\bin\Debug\lifesense.Model.dll
 D:\lifesense\lifesense\Model\bin\Debug\lifesense.Model.pdb
 D:\lifesense\lifesense\Model\obj\Debug\lifesense.Model.dll
