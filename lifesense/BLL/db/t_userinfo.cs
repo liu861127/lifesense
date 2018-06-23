@@ -3,6 +3,7 @@ using System.Data;
 using System.Collections.Generic;
 using Maticsoft.Common;
 using lifesense.Model;
+using System.Data.SqlClient;
 namespace lifesense.BLL
 {
 	/// <summary>
@@ -156,7 +157,23 @@ namespace lifesense.BLL
 
 		#endregion  BasicMethod
 		#region  ExtensionMethod
+        /// <summary>
+        /// 分页返回数据
+        /// </summary>
+        /// <param name="GetDataSql">查询语句</param>
+        /// <param name="OrderField">排序字段名 如[要排序的列 DESC] </param>
+        /// <param name="pageSize">每页要有多少行数据</param>
+        /// <param name="pageIndex">当前页</param>  
+        /// <returns></returns>
+        public DataSet ExecuteSqlPager(string GetDataSql, string OrderField, int pageIndex, int pageSize)
+        {
+            return dal.ExecuteSqlPager(GetDataSql, OrderField, pageIndex, pageSize);
+        }
 
+        public  DataSet ExecuteSqlPager(string GetDataSql, string OrderField, int pageIndex, int pageSize, params SqlParameter[] parameters)
+        {
+            return dal.ExecuteSqlPager(GetDataSql, OrderField, pageIndex, pageSize, parameters);
+        }
 		#endregion  ExtensionMethod
 	}
 }

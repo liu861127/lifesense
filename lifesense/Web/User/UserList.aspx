@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="UserList.aspx.cs" Inherits="lifesense.Web.User.UserList" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="UserList.aspx.cs" Inherits="lifesense.Web.User.UserList" EnableEventValidation = "false"  %>
 
 <!DOCTYPE html>
 
@@ -9,6 +9,7 @@
     <title>用户列表</title>
     <link href="../../css/Site.css" rel="stylesheet" type="text/css" />
     <link href="../../css/cssdata.css" rel="stylesheet" type="text/css" />
+    <script src="../js/CheckBox.js" type="text/javascript"></script>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -32,7 +33,7 @@
         </tr>
         <tr align="left" class="tdbg-dark2">
         <td>
-            <label style="color:Red; font-size:18px;" runat="server" id="lblmsge"></label>
+             <label runat="server" id="lblCheck" visible="false"></label>
         </td>
         </tr>
     </table>
@@ -67,7 +68,7 @@
         </asp:GridView>
         <webdiyer:AspNetPager ID="AspNetPager1" runat="server" OnPageChanging="AspNetPager1_PageChanging"
             AlwaysShow="true" NextPageText='下一页' PrevPageText='上一页' CurrentPageButtonClass="current"
-            PageSize="50" CssClass="AspNetPager" ShowDisabledButtons="true" HorizontalAlign="center"
+            PageSize="2" CssClass="AspNetPager" ShowDisabledButtons="true" HorizontalAlign="center"
             FirstPageText="第一页" LastPageText="最后一页" InputBoxClass="textbox" ShowBoxThreshold="10"
             SubmitButtonStyle="margin-left:5px;" ShowCustomInfoSection="Left" CustomInfoSectionWidth="15%"
             CustomInfoTextAlign="right" TextAfterInputBox=" 页" TextBeforeInputBox="转到 ">

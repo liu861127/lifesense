@@ -1,9 +1,3 @@
-D:\lifesense\lifesense\ConsoleLifesense\obj\Debug\ConsoleLifesense.csprojResolveAssemblyReference.cache
-D:\lifesense\lifesense\ConsoleLifesense\bin\Debug\ConsoleLifesense.exe.config
-D:\lifesense\lifesense\ConsoleLifesense\bin\Debug\ConsoleLifesense.exe
-D:\lifesense\lifesense\ConsoleLifesense\bin\Debug\ConsoleLifesense.pdb
-D:\lifesense\lifesense\ConsoleLifesense\obj\Debug\ConsoleLifesense.exe
-D:\lifesense\lifesense\ConsoleLifesense\obj\Debug\ConsoleLifesense.pdb
 C:\E\workspace\beida\lifesense\ConsoleLifesense\bin\Debug\ConsoleLifesense.exe.config
 C:\E\workspace\beida\lifesense\ConsoleLifesense\obj\Debug\ConsoleLifesense.exe
 C:\E\workspace\beida\lifesense\ConsoleLifesense\obj\Debug\ConsoleLifesense.pdb
@@ -16,3 +10,15 @@ C:\E\workspace\beida\lifesense\ConsoleLifesense\bin\Debug\System.Data.SQLite.dll
 C:\E\workspace\beida\lifesense\ConsoleLifesense\bin\Debug\MySql.Data.dll
 C:\E\workspace\beida\lifesense\ConsoleLifesense\bin\Debug\lifesense.DBUtility.pdb
 C:\E\workspace\beida\lifesense\ConsoleLifesense\obj\Debug\ConsoleLifesense.csprojResolveAssemblyReference.cache
+D:\lifesense\lifesense\ConsoleLifesense\bin\Debug\ConsoleLifesense.exe.config
+D:\lifesense\lifesense\ConsoleLifesense\bin\Debug\ConsoleLifesense.exe
+D:\lifesense\lifesense\ConsoleLifesense\bin\Debug\ConsoleLifesense.pdb
+D:\lifesense\lifesense\ConsoleLifesense\bin\Debug\lifesense.DBUtility.dll
+D:\lifesense\lifesense\ConsoleLifesense\bin\Debug\IBatisNet.DataMapper.dll
+D:\lifesense\lifesense\ConsoleLifesense\bin\Debug\IBatisNet.Common.dll
+D:\lifesense\lifesense\ConsoleLifesense\bin\Debug\System.Data.SQLite.dll
+D:\lifesense\lifesense\ConsoleLifesense\bin\Debug\MySql.Data.dll
+D:\lifesense\lifesense\ConsoleLifesense\bin\Debug\lifesense.DBUtility.pdb
+D:\lifesense\lifesense\ConsoleLifesense\obj\Debug\ConsoleLifesense.exe
+D:\lifesense\lifesense\ConsoleLifesense\obj\Debug\ConsoleLifesense.pdb
+D:\lifesense\lifesense\ConsoleLifesense\obj\Debug\ConsoleLifesense.csprojResolveAssemblyReference.cache
