@@ -74,6 +74,8 @@
     <Content Include="Admin\Images\top\bul_title.gif" />
     <Content Include="Admin\Images\top\e.gif" />
     <Content Include="Admin\Images\top\e2.gif" />
+    <Content Include="Admin\Images\top\menuBg.gif" />
+    <Content Include="Admin\Images\top\where.gif" />
     <Content Include="Admin\LeftMenu.aspx" />
     <Content Include="Admin\Main.aspx" />
     <Content Include="Admin\Site_Head.aspx" />
@@ -358,7 +360,9 @@
     <Content Include="Admin\Style.css" />
     <Content Include="ValidateCode.aspx" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="User\" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
