@@ -11,6 +11,8 @@ using System.Net.Cache;
 
 namespace Maticsoft.Common
 {
+
+
     /// <summary>    
     /// 上传数据参数    
     /// </summary>    
@@ -80,10 +82,12 @@ namespace Maticsoft.Common
         int bufferSize = 15240;
         public event EventHandler<UploadEventArgs> UploadProgressChanged;
         public event EventHandler<DownloadEventArgs> DownloadProgressChanged;
+        public static WebClient instance = new WebClient();
         static WebClient()
         {
             LoadCookiesFromDisk();
         }
+
         /// <summary>    
         /// 创建WebClient的实例    
         /// </summary>    

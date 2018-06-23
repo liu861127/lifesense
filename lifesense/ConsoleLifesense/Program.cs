@@ -15,7 +15,8 @@ namespace ConsoleLifesense
         static void Main(string[] args)
         {
             //FormsAuthentication.HashPasswordForStoringInConfigFile（""，"SHA1");
-            //Application.Run(new MainForm());
+            //Application.Run();
+            new SyncDataManager().start();
         }
 
     }
