@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Web.Security;
+using System.Windows.Forms;
 
 namespace ConsoleLifesense
 {
@@ -14,6 +15,7 @@ namespace ConsoleLifesense
         static void Main(string[] args)
         {
             //FormsAuthentication.HashPasswordForStoringInConfigFile（""，"SHA1");
+            //Application.Run(new MainForm());
         }
 
     }
