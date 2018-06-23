@@ -65,6 +65,9 @@ D:\lifesense\lifesense\Web\obj\Debug\Web.csproj.GenerateResource.Cache
 D:\lifesense\lifesense\Web\obj\Debug\lifesense.Web.dll
 D:\lifesense\lifesense\Web\obj\Debug\lifesense.Web.pdb
 D:\lifesense\lifesense\Web\obj\Debug\Web.csprojResolveAssemblyReference.cache
+<<<<<<< HEAD
+D:\lifesense\lifesense\Web\bin\AspNetPager.dll
+=======
 C:\E\workspace\beida\lifesense\Web\bin\lifesense.Web.dll.config
 C:\E\workspace\beida\lifesense\Web\bin\lifesense.Web.dll
 C:\E\workspace\beida\lifesense\Web\bin\lifesense.Web.pdb
@@ -94,3 +97,4 @@ C:\E\workspace\beida\lifesense\Web\obj\Debug\lifesense.Web.Global.resources
 C:\E\workspace\beida\lifesense\Web\obj\Debug\Web.csproj.GenerateResource.Cache
 C:\E\workspace\beida\lifesense\Web\obj\Debug\lifesense.Web.dll
 C:\E\workspace\beida\lifesense\Web\obj\Debug\lifesense.Web.pdb
+>>>>>>> f1c0637891ab8baf6dcd9d9bcc51925193a0b691

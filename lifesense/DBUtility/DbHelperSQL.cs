@@ -1008,7 +1008,45 @@ namespace Maticsoft.DBUtility
             return command;
         }
         #endregion
+        #region
+        /// <summary>
+        /// 分页返回数据
+        /// </summary>
+        /// <param name="GetDataSql">查询语句</param>
+        /// <param name="OrderField">排序字段名 如[要排序的列 DESC] </param>
+        /// <param name="pageSize">每页要有多少行数据</param>
+        /// <param name="pageIndex">当前页</param>  
+        /// <returns></returns>
+        public static DataSet ExecuteSqlPager(string GetDataSql, string OrderField, int pageIndex, int pageSize)
+        {
+            string sql = string.Format("select * from( select *,ROW_NUMBER() Over(order by {0} ) as rowId from ({1}) tt) t where rowid between  Convert(varchar(50),{2}) and  Convert(varchar(50),{3})", OrderField, GetDataSql, (pageIndex - 1) * pageSize + 1, (pageIndex) * pageSize);
+            SqlCommand cmd = new SqlCommand(sql, new SqlConnection(connectionString));
+            cmd.CommandTimeout = 60;
+            DataSet ds = new DataSet();
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            da.Fill(ds);
+            return ds;
+        }
 
+        public static DataSet ExecuteSqlPager(string GetDataSql, string OrderField, int pageIndex, int pageSize, params SqlParameter[] parameters)
+        {
+            string sql = string.Format("select * from( select *,ROW_NUMBER() Over(order by {0} ) as rowId from ({1}) tt) t where rowid between  Convert(varchar(50),{2}) and  Convert(varchar(50),{3})", OrderField, GetDataSql, (pageIndex - 1) * pageSize + 1, (pageIndex) * pageSize);
+            SqlCommand sqlcmd = new SqlCommand(sql, new SqlConnection(connectionString));
+            if (parameters != null)
+            {
+                for (int i = 0; i < parameters.Length; i++)
+                {
+                    if (parameters[i] != null)
+                        sqlcmd.Parameters.Add(parameters[i]);
+                }
+            }
+            DataSet ds = new DataSet();
+            SqlDataAdapter da = new SqlDataAdapter(sqlcmd);
+            da.Fill(ds);
+            sqlcmd.Parameters.Clear();
+            return ds;
+        }
+        #endregion
     }
 
 }
