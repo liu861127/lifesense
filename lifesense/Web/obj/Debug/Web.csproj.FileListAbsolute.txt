@@ -65,3 +65,4 @@ D:\lifesense\lifesense\Web\obj\Debug\Web.csproj.GenerateResource.Cache
 D:\lifesense\lifesense\Web\obj\Debug\lifesense.Web.dll
 D:\lifesense\lifesense\Web\obj\Debug\lifesense.Web.pdb
 D:\lifesense\lifesense\Web\obj\Debug\Web.csprojResolveAssemblyReference.cache
+D:\lifesense\lifesense\Web\bin\AspNetPager.dll

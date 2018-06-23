@@ -259,34 +259,50 @@ namespace lifesense.DAL
 			return DbHelperSQL.Query(strSql.ToString());
 		}
 
-		/*
-		/// <summary>
-		/// 分页获取数据列表
-		/// </summary>
-		public DataSet GetList(int PageSize,int PageIndex,string strWhere)
-		{
-			SqlParameter[] parameters = {
-					new SqlParameter("@tblName", SqlDbType.VarChar, 255),
-					new SqlParameter("@fldName", SqlDbType.VarChar, 255),
-					new SqlParameter("@PageSize", SqlDbType.Int),
-					new SqlParameter("@PageIndex", SqlDbType.Int),
-					new SqlParameter("@IsReCount", SqlDbType.Bit),
-					new SqlParameter("@OrderType", SqlDbType.Bit),
-					new SqlParameter("@strWhere", SqlDbType.VarChar,1000),
-					};
-			parameters[0].Value = "t_userinfo";
-			parameters[1].Value = "ID";
-			parameters[2].Value = PageSize;
-			parameters[3].Value = PageIndex;
-			parameters[4].Value = 0;
-			parameters[5].Value = 0;
-			parameters[6].Value = strWhere;	
-			return DbHelperSQL.RunProcedure("UP_GetRecordByPage",parameters,"ds");
-		}*/
+        
+         ///<summary>
+         ///分页获取数据列表
+         ///</summary>
+        public DataSet GetList(int PageSize,int PageIndex,string strWhere)
+        {
+            SqlParameter[] parameters = {
+                    new SqlParameter("@tblName", SqlDbType.VarChar, 255),
+                    new SqlParameter("@fldName", SqlDbType.VarChar, 255),
+                    new SqlParameter("@PageSize", SqlDbType.Int),
+                    new SqlParameter("@PageIndex", SqlDbType.Int),
+                    new SqlParameter("@IsReCount", SqlDbType.Bit),
+                    new SqlParameter("@OrderType", SqlDbType.Bit),
+                    new SqlParameter("@strWhere", SqlDbType.VarChar,1000),
+                    };
+            parameters[0].Value = "t_userinfo";
+            parameters[1].Value = "ID";
+            parameters[2].Value = PageSize;
+            parameters[3].Value = PageIndex;
+            parameters[4].Value = 0;
+            parameters[5].Value = 0;
+            parameters[6].Value = strWhere;	
+            return DbHelperSQL.RunProcedure("UP_GetRecordByPage",parameters,"ds");
+        }
 
 		#endregion  BasicMethod
 		#region  ExtensionMethod
-
+               /// <summary>
+        /// 分页返回数据
+        /// </summary>
+        /// <param name="GetDataSql">查询语句</param>
+        /// <param name="OrderField">排序字段名 如[要排序的列 DESC] </param>
+        /// <param name="pageSize">每页要有多少行数据</param>
+        /// <param name="pageIndex">当前页</param>  
+        /// <returns></returns>
+        public DataSet ExecuteSqlPager(string GetDataSql, string OrderField, int pageIndex, int pageSize)
+        {
+            return DbHelperSQL.ExecuteSqlPager(GetDataSql, OrderField, pageIndex, pageSize);
+        }
+        
+        public static DataSet ExecuteSqlPager(string GetDataSql, string OrderField, int pageIndex, int pageSize, params SqlParameter[] parameters)
+        {
+            return DbHelperSQL.ExecuteSqlPager(GetDataSql, OrderField, pageIndex, pageSize,parameters);
+        }
 		#endregion  ExtensionMethod
 	}
 }

@@ -191,8 +191,8 @@ a.menuItem3:hover {
     </div>
    <%-- <asp:Literal ID="litMenu" runat="server" ></asp:Literal>--%>
     <div  class='menuMain' >
-        <div class="menuItem" ><a class="menuItem2" href="#" >查看用户</a></div>
-        <div class="menuItem" ><a class="menuItem2" href="#" >用户统计</a></div>
+        <div class="menuItem" ><a class="menuItem2" href="../User/UserList.aspx" target="main">查看用户</a></div>
+        <div class="menuItem" ><a class="menuItem2" href="#" target="main">用户统计</a></div>
     </div>
 </div>
 </body>
