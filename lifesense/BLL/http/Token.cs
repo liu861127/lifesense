@@ -9,45 +9,40 @@ using System.Collections;
 
 namespace lifesense.BLL.http
 {
-   public class Token
+    public class Token
     {
-       public Token()
-       {
+        public Token()
+        {
 
-       }
+        }
 
-       public String getTempAuthorizeCode()
-       {
-           WebClient webClient = WebClient.instance;
-           return webClient.GetHtml(Consts.GET_USER_TOKEN_URL + getParams());
-          // return webClient.Post(Consts.GET_USER_TOKEN_URL + getParams(), "");
-       }
+        public String getTempAuthorizeCode()
+        {
+            WebClient webClient = WebClient.instance;
+            return webClient.Post(Consts.GET_USER_TOKEN_URL + getParams(), "");
+        }
 
-       private String getParams()
-       {
-           StringBuilder sb = new StringBuilder();
-           String appId= AppConfig.getAPPid();
-           sb.Append("?app_id=" + appId);
-           sb.Append("&scope=");
-           sb.Append("&state=");
-           String responseType = "code";
-           sb.Append("&response_typ=" + responseType);
-           String time = ConvertDateTimeInt(DateTime.Now).ToString();
-           sb.Append("&timestamp="+time);
+        private String getParams()
+        {
+            StringBuilder sb = new StringBuilder();
+            String appId = AppConfig.getAPPid();
+            sb.Append("?app_id=" + appId);
+            sb.Append("&scope=");
+            sb.Append("&state=");
+            String responseType = "code";
+            sb.Append("&response_typ=" + responseType);
+            String time = new DateTime().ToLongTimeString();
+            sb.Append("&timestamp=" + time);
 
-           ArrayList array = new ArrayList();
-           array.Add(appId);
-           array.Add(responseType);
-           array.Add(time);
-           sb.Append("&checksum=" + SHAUtils.getSHACode(array));
+            ArrayList array = new ArrayList();
+            array.Add(appId);
+            array.Add(responseType);
+            array.Add(time);
+            sb.Append("&checksun=" + SHAUtils.getSHACode(array));
 
-           return sb.ToString();
-       }
-       public static int ConvertDateTimeInt(System.DateTime time)
-       {
-           System.DateTime startTime = TimeZone.CurrentTimeZone.ToLocalTime(new System.DateTime(1970, 1, 1));
-           return (int)(time - startTime).TotalSeconds;
-       } 
+            return sb.ToString();
+        }
+
 
 
 
