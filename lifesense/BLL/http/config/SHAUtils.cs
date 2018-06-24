@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 
 namespace lifesense.BLL.http.config
@@ -8,39 +9,58 @@ namespace lifesense.BLL.http.config
  public   class SHAUtils
     {
 
-     public static String getSHACode(System.Collections.ArrayList array)
+     public static String getSHACode(String[] list)
      {
-         if (array == null)
+         if (list != null && list.Length > 0)
          {
-             return "";
+             Array.Sort(list, (a, b) => string.CompareOrdinal(a, b));
+             StringBuilder sb = new StringBuilder();
+             for (int i = 0; i < list.Length;i++ )
+             {
+                 sb.Append(list[i]);
+             }
+             return SHA1(sb.ToString()).ToLower();
          }
          else
          {
-             array.Sort();
+             return "";
          }
-         String content = array.ToString();
-         return HashCode(content);
+
          
      }
 
-     public static String HashCode(string str)
+     /// <summary>  
+     /// SHA1 加密，返回大写字符串  
+     /// </summary>  
+     /// <param name="content">需要加密字符串</param>  
+     /// <returns>返回40位UTF8 大写</returns>  
+     public static string SHA1(string content)
      {
-         string rethash = "";
+         return SHA1(content, Encoding.UTF8);
+     }
+     /// <summary>  
+     /// SHA1 加密，返回大写字符串  
+     /// </summary>  
+     /// <param name="content">需要加密字符串</param>  
+     /// <param name="encode">指定加密编码</param>  
+     /// <returns>返回40位大写字符串</returns>  
+     public static string SHA1(string content, Encoding encode)
+     {
          try
          {
-
-             System.Security.Cryptography.SHA1 hash = System.Security.Cryptography.SHA1.Create();
-             System.Text.ASCIIEncoding encoder = new System.Text.ASCIIEncoding();
-             byte[] combined = encoder.GetBytes(str);
-             hash.ComputeHash(combined);
-             rethash = Convert.ToBase64String(hash.Hash);
+             SHA1 sha1 = new SHA1CryptoServiceProvider();
+             byte[] bytes_in = encode.GetBytes(content);
+             byte[] bytes_out = sha1.ComputeHash(bytes_in);
+             //sha1.Dispose();
+             string result = BitConverter.ToString(bytes_out);
+             result = result.Replace("-", "");
+             return result;
          }
          catch (Exception ex)
          {
-             string strerr = "Error in HashCode : " + ex.Message;
+             throw new Exception("SHA1加密出错：" + ex.Message);
          }
-         return rethash;
-     }
+     }  
 
 
     }
