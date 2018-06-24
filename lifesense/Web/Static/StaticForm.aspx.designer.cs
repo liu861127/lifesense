@@ -67,33 +67,6 @@ namespace lifesense.Web.Static {
         protected global::System.Web.UI.WebControls.TextBox txtstartime;
         
         /// <summary>
-        /// dlsHours 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList dlsHours;
-        
-        /// <summary>
-        /// dlsMinute 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList dlsMinute;
-        
-        /// <summary>
-        /// dlsSencod 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList dlsSencod;
-        
-        /// <summary>
         /// txtenddate 控件。
         /// </summary>
         /// <remarks>
@@ -103,139 +76,13 @@ namespace lifesense.Web.Static {
         protected global::System.Web.UI.WebControls.TextBox txtenddate;
         
         /// <summary>
-        /// dleHours 控件。
+        /// txtUserID 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList dleHours;
-        
-        /// <summary>
-        /// dleMinute 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList dleMinute;
-        
-        /// <summary>
-        /// dleSecond 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList dleSecond;
-        
-        /// <summary>
-        /// ddlTypeGroup 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlTypeGroup;
-        
-        /// <summary>
-        /// ddlType 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlType;
-        
-        /// <summary>
-        /// ddlstuats 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlstuats;
-        
-        /// <summary>
-        /// NoType 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList NoType;
-        
-        /// <summary>
-        /// txtmsgID 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtmsgID;
-        
-        /// <summary>
-        /// ddllistpalitype 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddllistpalitype;
-        
-        /// <summary>
-        /// chenkbos 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox chenkbos;
-        
-        /// <summary>
-        /// txtstatrIssue 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtstatrIssue;
-        
-        /// <summary>
-        /// txtEndIssue 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtEndIssue;
-        
-        /// <summary>
-        /// ddpPrize 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddpPrize;
-        
-        /// <summary>
-        /// lblProvinceId 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblProvinceId;
-        
-        /// <summary>
-        /// ddlProvinceId 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlProvinceId;
+        protected global::System.Web.UI.WebControls.TextBox txtUserID;
         
         /// <summary>
         /// btnsubmit 控件。
@@ -247,6 +94,15 @@ namespace lifesense.Web.Static {
         protected global::System.Web.UI.WebControls.Button btnsubmit;
         
         /// <summary>
+        /// btnSynchronization 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnSynchronization;
+        
+        /// <summary>
         /// lblmsge 控件。
         /// </summary>
         /// <remarks>
@@ -256,13 +112,13 @@ namespace lifesense.Web.Static {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblmsge;
         
         /// <summary>
-        /// Gdv_data 控件。
+        /// gvStatic 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView Gdv_data;
+        protected global::System.Web.UI.WebControls.GridView gvStatic;
         
         /// <summary>
         /// AspNetPager1 控件。

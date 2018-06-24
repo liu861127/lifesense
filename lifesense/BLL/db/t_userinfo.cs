@@ -174,6 +174,13 @@ namespace lifesense.BLL
         {
             return dal.ExecuteSqlPager(GetDataSql, OrderField, pageIndex, pageSize, parameters);
         }
+        /// <summary>
+        /// 获得数据列表
+        /// </summary>
+        public DataSet GetSqlList(string strSql)
+        {
+            return dal.GetSqlList(strSql);
+        }
 		#endregion  ExtensionMethod
 	}
 }
