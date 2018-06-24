@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="StaticForm.aspx.cs" Inherits="lifesense.Web.Static.StaticForm" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="StaticForm.aspx.cs" Inherits="lifesense.Web.Static.StaticForm" EnableEventValidation = "false" %>
 
 <!DOCTYPE html>
 
@@ -43,12 +43,12 @@
         </tr>
     </table>
     <div>
-        <asp:GridView ID="gvStatic" runat="server" AutoGenerateColumns="False" DataKeyNames="ID"  ShowFooter="true"
-            CellPadding="4" Width="100%">
+        <asp:GridView ID="gvStatic" runat="server" AutoGenerateColumns="False"  ShowFooter="true"
+            CellPadding="4" Width="100%" OnRowDataBound="gvStatic_RowDataBound">
             <HeaderStyle CssClass="tdbg-tree" Height="22px" HorizontalAlign="Center" />
             <RowStyle CssClass="tdbg-dark" Height="22px" HorizontalAlign="Center" />
             <Columns>
-                <asp:BoundField HeaderText="用户ID" DataField="用户ID" ItemStyle-CssClass="dmessage" />
+                <asp:BoundField HeaderText="用户ID" DataField="用户ID" ItemStyle-CssClass="dmessage" ItemStyle-Width="50" />
                 <asp:BoundField HeaderText="测量时间" DataField="测量时间" />
                 <asp:BoundField HeaderText="步数" DataField="步数" />
                 <asp:BoundField HeaderText="卡里路" DataField="卡里路" ItemStyle-CssClass="dpassmode" />

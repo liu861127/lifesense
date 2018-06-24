@@ -38,7 +38,7 @@ namespace lifesense.Web.Static
             StringBuilder sb=new StringBuilder();
             if (!string.IsNullOrEmpty(ddltimType.Text.Trim()))
             {
-                sb.AppendFormat("and cast ({0} as date) between '{1}' and '{2}'", ddltimType.SelectedValue.ToString(), Convert.ToDateTime(txtstartime.Text).ToString("yyyy-MM-dd"), Convert.ToDateTime(txtenddate.Text).ToString("yyyy-MM-dd"));
+                //sb.AppendFormat("and cast ({0} as date) between '{1}' and '{2}'", ddltimType.SelectedValue.ToString(), Convert.ToDateTime(txtstartime.Text).ToString("yyyy-MM-dd"), Convert.ToDateTime(txtenddate.Text).ToString("yyyy-MM-dd"));
             }
              if (!string.IsNullOrEmpty(txtUserID.Text.Trim()))
              {
@@ -49,8 +49,33 @@ namespace lifesense.Web.Static
                                          left join t_heartrateinfo as h on u.UserID=h.UserID  where 1=1 {0}", sb.ToString());
             DataSet ds2 = userbll.GetSqlList(sql);
             DataSet ds = userbll.ExecuteSqlPager(sql, "用户ID", AspNetPager1.CurrentPageIndex, AspNetPager1.PageSize);
+            DataColumn dc;
+            for (int i = 1; i <= 288; i++)
+            {
+                dc = new DataColumn("心率"+i.ToString(),typeof(Int32));
+                ds.Tables[0].Columns.Add(dc);
+            }
+            foreach(DataRow dr in ds.Tables[0].Rows)
+            {
+                if(dr["心率"]!=null&&dr["心率"].ToString()!="")
+                {
+                     for (int i = 1; i <= 288; i++)
+                     {
+                         dr["心率" + i.ToString()] =Convert.ToInt32 (dr["心率"].ToString().Substring((i - 1) * 2, 2));
+                     }
+                }
+            }
+            ds.Tables[0].AcceptChanges();
             gvStatic.DataSource = ds.Tables[0];
-            gvStatic.DataBind();
+            for (int i = 1; i <= 288;i++)
+            {
+                BoundField column = new BoundField();
+                column.HeaderText = "心率"+i.ToString();
+                column.DataField = "心率" + i.ToString();//数据字段名称（类的属性） 
+                column.ItemStyle.Width = 50;
+                gvStatic.Columns.Add(column);
+            }
+                gvStatic.DataBind();
             int RecordCount = ds2.Tables[0].Rows.Count;
             AspNetPager1.RecordCount = RecordCount;
         }
@@ -83,6 +108,24 @@ namespace lifesense.Web.Static
         {
             this.AspNetPager1.CurrentPageIndex = e.NewPageIndex;
             LoadData();
+        }
+        /// <summary>
+        /// 去掉"....必须放在具有 runat=server 的窗体标记内"异常
+        /// </summary>
+        /// <param name="control"></param>
+        public override void VerifyRenderingInServerForm(System.Web.UI.Control control)
+        {
+        }
+        protected void gvStatic_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                //鼠标经过时，行背景色变   
+                e.Row.Attributes.Add("onmouseover", "c=this.style.backgroundColor;this.style.backgroundColor='#66CCFF'");
+                //鼠标移出时，行背景色变   
+                e.Row.Attributes.Add("onmouseout", "this.style.backgroundColor=c");
+                //e.Row.Attributes.Add("ItemStyle-Width", "50");
+            }  
         }
     }
 }
