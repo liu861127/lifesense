@@ -299,7 +299,7 @@ namespace lifesense.DAL
             return DbHelperSQL.ExecuteSqlPager(GetDataSql, OrderField, pageIndex, pageSize);
         }
         
-        public static DataSet ExecuteSqlPager(string GetDataSql, string OrderField, int pageIndex, int pageSize, params SqlParameter[] parameters)
+        public  DataSet ExecuteSqlPager(string GetDataSql, string OrderField, int pageIndex, int pageSize, params SqlParameter[] parameters)
         {
             return DbHelperSQL.ExecuteSqlPager(GetDataSql, OrderField, pageIndex, pageSize,parameters);
         }
