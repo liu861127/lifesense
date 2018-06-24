@@ -8,3 +8,4 @@ D:\lifesense\lifesense\Common\bin\Debug\office.dll
 D:\lifesense\lifesense\Common\bin\Debug\Microsoft.Vbe.Interop.dll
 D:\lifesense\lifesense\Common\obj\Debug\lifesense.Common.dll
 D:\lifesense\lifesense\Common\obj\Debug\lifesense.Common.pdb
+D:\lifesense\lifesense\Common\obj\Debug\Common.csprojResolveAssemblyReference.cache

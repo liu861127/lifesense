@@ -70,6 +70,8 @@ namespace lifesense.Web.Admin
         /// <param name="e"></param>
         protected void Button2_Click(object sender, EventArgs e)
         {
+            //Maticsoft.Common.MessageBox.Show(this,"退出成功!");
+            //Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "error", "<script>alert('你输入的原来密码有误，请重输！');</script>",false);
             this.newPwd.Text = "";
             this.surePwd.Text = "";
         }
