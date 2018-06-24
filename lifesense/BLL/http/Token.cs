@@ -6,6 +6,7 @@ using Maticsoft.Common;
 using lifesense.BLL.http.consts;
 using lifesense.BLL.http.config;
 using System.Collections;
+using Maticsoft.Common;
 
 namespace lifesense.BLL.http
 {
@@ -19,7 +20,8 @@ namespace lifesense.BLL.http
        public String getTempAuthorizeCode()
        {
            WebClient webClient = WebClient.instance;
-           return webClient.Post(Consts.GET_USER_TOKEN_URL + getParams(), "");
+
+           return webClient.GetHtml(Consts.GET_USER_TOKEN_URL + getParams());
        }
 
        private String getParams()
@@ -31,14 +33,14 @@ namespace lifesense.BLL.http
            sb.Append("&state=");
            String responseType = "code";
            sb.Append("&response_typ=" + responseType);
-           String time = new DateTime().ToLongTimeString();
+           String time = TimeParser.GetTimeStamp(DateTime.Now);
            sb.Append("&timestamp="+time);
 
            ArrayList array = new ArrayList();
            array.Add(appId);
            array.Add(responseType);
            array.Add(time);
-           sb.Append("&checksun=" + SHAUtils.getSHACode(array));
+           sb.Append("&checksum=" + SHAUtils.getSHACode(array));
 
            return sb.ToString();
        }
