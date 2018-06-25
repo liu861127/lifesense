@@ -21,7 +21,7 @@ namespace lifesense.BLL.http
           try
           {
               String param = Consts.CHECK_USER + getParams();
-              String userInfo = webClient.GetHtml(param);
+              String userInfo = webClient.Post(param,"");
               return userInfo;
           }
           catch (Exception ex)
