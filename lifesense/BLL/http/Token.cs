@@ -134,7 +134,7 @@ namespace lifesense.BLL.http
 
 
            List<System.String> array = new List<System.String>();
-           string APPsecret = AppConfig.getAPPsecret();// "ef1a5ab65c0c26747d85fc0832a9d5548e1c9cb7";
+           string APPsecret = AppConfig.getAPPsecret();
            array.Add(APPsecret);
            array.Add(appId);
            array.Add(responseType);

@@ -11,9 +11,10 @@ namespace lifesense.BLL.http
 {
  public   class CheckUser
     {
-      public CheckUser()
+     private String mToken;
+     public CheckUser(String token)
        {
-
+           this.mToken = token;
        }
 
       public String getTempAuthorizeCode()
@@ -39,7 +40,9 @@ namespace lifesense.BLL.http
           {
               String value = jsonObj["redirect"].ToString();
               int start = value.IndexOf("authorize_code=") + "authorize_code".Length;
-              String authorizeCode = value.Substring(start,41);
+              int end = value.IndexOf("&state=");
+              int len = end - start-1;
+              String authorizeCode = value.Substring(start+1,len);
               return authorizeCode;
           }
           return "";
@@ -50,7 +53,7 @@ namespace lifesense.BLL.http
           StringBuilder sb = new StringBuilder();
           sb.Append("?username=13560721536");
           sb.Append("&password=861127");
-          sb.Append("&tempAuthorizeCode=" + SyncDataManager.token);
+          sb.Append("&tempAuthorizeCode=" + mToken);
           return sb.ToString();
       }
 

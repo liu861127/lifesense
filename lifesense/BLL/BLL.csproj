@@ -128,6 +128,7 @@
     <Compile Include="http\consts\Consts.cs" />
     <Compile Include="http\SyncDataManager.cs" />
     <Compile Include="http\Token.cs" />
+    <Compile Include="http\UserInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

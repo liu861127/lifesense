@@ -8,7 +8,7 @@ namespace ConsoleLifesense
 {
     public  class SyncDataManager
     {
-        public static String token;
+        public  String token;
         public void start()
         {
             getToken();
@@ -17,7 +17,8 @@ namespace ConsoleLifesense
         private void getToken()
         {
            token = new Token().getTempAuthorizeCode();
-           String authorizeCode = new CheckUser().getTempAuthorizeCode();
+           String authorizeCode = new CheckUser(token).getTempAuthorizeCode();
+           String userInfo = new UserInfo(authorizeCode).getUserInfo();
         }
     }
 }
