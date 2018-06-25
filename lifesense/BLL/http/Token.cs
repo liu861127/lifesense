@@ -37,7 +37,7 @@ namespace lifesense.BLL.http
            StringBuilder sb = new StringBuilder();
            String appId= AppConfig.getAPPid();
            sb.Append("?app_id=" + appId);
-           String scope = "sport";
+           String scope = "";
            sb.Append("&scope=" + scope);
            String state = "12345678";
            sb.Append("&state=" + state);
