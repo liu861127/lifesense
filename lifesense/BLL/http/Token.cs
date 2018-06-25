@@ -23,8 +23,8 @@ namespace lifesense.BLL.http
            try
            {
                String param = Consts.GET_USER_TOKEN_URL + getParams();
-               String data = webClient.GetHtml(param);
-               return data;
+               System.Net.HttpWebResponse httpWebResponse = webClient.getHttpWebResponse(param);
+               return httpWebResponse.GetResponseHeader("Location");
            }catch(Exception ex){
                String msg = ex.ToString();
                return msg;

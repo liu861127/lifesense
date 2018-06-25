@@ -161,6 +161,14 @@ namespace Maticsoft.Common
             respHtml = encoding.GetString(GetData(request));
             return respHtml;
         }
+
+        public HttpWebResponse getHttpWebResponse(string url)
+        {
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
+            request.Method = "HEAD";
+            request.AllowAutoRedirect = false;
+            return (HttpWebResponse)request.GetResponse();
+        }
         /// <summary>    
         /// 下载文件    
         /// </summary>    
