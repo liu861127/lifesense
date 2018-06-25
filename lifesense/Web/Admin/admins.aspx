@@ -6,7 +6,7 @@
 <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <meta http-equiv="content-language" content="zh-cn" />    
-<title>『彩票出票查询系统』后台管理中心</title>
+<title>『乐心数据分析系统』后台管理中心</title>
 </head>
 <frameset rows="*" cols="181,*" framespacing="0" frameborder="1" border="false" id="frame" scrolling="yes">
   <frame name="left" target="main" src="LeftMenu.aspx" scrolling="auto" noresize>

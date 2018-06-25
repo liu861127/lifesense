@@ -99,7 +99,7 @@ namespace lifesense.Web.User
             LoadData();
             ExportExcel.GetExportExcel(Gdv_data, "用户列表");
             AspNetPager1.CurrentPageIndex = 1;
-            AspNetPager1.PageSize = 2;
+            AspNetPager1.PageSize = 10;
             LoadData();
         }
         /// <summary>

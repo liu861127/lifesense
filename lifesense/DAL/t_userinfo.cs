@@ -303,6 +303,13 @@ namespace lifesense.DAL
         {
             return DbHelperSQL.ExecuteSqlPager(GetDataSql, OrderField, pageIndex, pageSize,parameters);
         }
+        /// <summary>
+        /// 获得数据列表
+        /// </summary>
+        public DataSet GetSqlList(string strSql)
+        {
+            return DbHelperSQL.Query(strSql.ToString());
+        }
 		#endregion  ExtensionMethod
 	}
 }

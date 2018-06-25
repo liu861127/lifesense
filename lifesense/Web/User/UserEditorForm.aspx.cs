@@ -53,13 +53,16 @@ namespace lifesense.Web.User
             }
             if(bolResult)
             {
-                Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "success", "<script language=javascript>alert('保存成功!');window.location='/UserList.aspx;</script>");
+               
+                Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "success", "<script language=javascript>alert('保存成功!');window.location='UserList.aspx';</script>");
+                //Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "error", "<script>alert('你输入的原来密码有误，请重输！');</script>");
                 //Response.Redirect("UserListForm.aspx");
             }
         }
 
         protected void btnCancle_Click(object sender, EventArgs e)
         {
+            Maticsoft.Common.MessageBox.Show(this, "退出成功!");
             Response.Redirect("UserList.aspx");
         }
     }
