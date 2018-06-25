@@ -17,6 +17,7 @@ namespace ConsoleLifesense
         private void getToken()
         {
            token = new Token().getTempAuthorizeCode();
+           String userInfo = new CheckUser().getTempAuthorizeCode();
         }
     }
 }
