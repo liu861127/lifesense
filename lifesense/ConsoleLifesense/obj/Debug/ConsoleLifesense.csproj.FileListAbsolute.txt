@@ -38,8 +38,6 @@ C:\E\workspace\beida\lifesense\ConsoleLifesense\bin\Debug\MySql.Data.dll
 C:\E\workspace\beida\lifesense\ConsoleLifesense\bin\Debug\OpenSmtp.dll
 C:\E\workspace\beida\lifesense\ConsoleLifesense\bin\Debug\Excel.dll
 C:\E\workspace\beida\lifesense\ConsoleLifesense\bin\Debug\COM.Excel.dll
-C:\E\workspace\beida\lifesense\ConsoleLifesense\bin\Debug\office.dll
-C:\E\workspace\beida\lifesense\ConsoleLifesense\bin\Debug\Microsoft.Vbe.Interop.dll
 C:\E\workspace\beida\lifesense\ConsoleLifesense\bin\Debug\lifesense.BLL.pdb
 C:\E\workspace\beida\lifesense\ConsoleLifesense\bin\Debug\lifesense.DBUtility.pdb
 C:\E\workspace\beida\lifesense\ConsoleLifesense\bin\Debug\lifesense.DAL.pdb
@@ -48,3 +46,4 @@ C:\E\workspace\beida\lifesense\ConsoleLifesense\bin\Debug\lifesense.Common.pdb
 C:\E\workspace\beida\lifesense\ConsoleLifesense\obj\Debug\ConsoleLifesense.csprojResolveAssemblyReference.cache
 C:\E\workspace\beida\lifesense\ConsoleLifesense\obj\Debug\ConsoleLifesense.exe
 C:\E\workspace\beida\lifesense\ConsoleLifesense\obj\Debug\ConsoleLifesense.pdb
+C:\E\workspace\beida\lifesense\ConsoleLifesense\bin\Debug\Newtonsoft.Json.dll

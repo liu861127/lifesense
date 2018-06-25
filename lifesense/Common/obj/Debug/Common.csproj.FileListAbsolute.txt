@@ -15,8 +15,6 @@ C:\E\workspace\beida\lifesense\Common\bin\Debug\COM.Excel.dll
 C:\E\workspace\beida\lifesense\Common\bin\Debug\Excel.dll
 C:\E\workspace\beida\lifesense\Common\bin\Debug\OpenSmtp.dll
 C:\E\workspace\beida\lifesense\Common\bin\Debug\OWC10Chart.dll
-C:\E\workspace\beida\lifesense\Common\bin\Debug\office.dll
-C:\E\workspace\beida\lifesense\Common\bin\Debug\Microsoft.Vbe.Interop.dll
-C:\E\workspace\beida\lifesense\Common\obj\Debug\Common.csprojResolveAssemblyReference.cache
 C:\E\workspace\beida\lifesense\Common\obj\Debug\lifesense.Common.dll
 C:\E\workspace\beida\lifesense\Common\obj\Debug\lifesense.Common.pdb
+C:\E\workspace\beida\lifesense\Common\bin\Debug\Newtonsoft.Json.dll
