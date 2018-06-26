@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using Newtonsoft.Json;
 using lifesense.BLL.http.config;
+using Newtonsoft.Json.Linq;
+using lifesense.BLL.http.ResponseParam;
 
 namespace lifesense.BLL.http
 {
@@ -18,33 +20,35 @@ namespace lifesense.BLL.http
             this.mAuthorizeCode = authorizeCode;
         }
 
-       public String getUserInfo()
+       public acessTokenandOpendid getUserInfo()
        {
            WebClient webClient = WebClient.instance;
            try
            {
                String param = Consts.GET_ACCESS_TOKEN_AND_OPENID + getParams();
                String userInfo = webClient.Post(param, "");
-               return userInfo;
+
+               return getAcessToken(userInfo);
            }
            catch (Exception ex)
            {
-               return "";
+               return null;
 
            }
        }
 
-       private String getAuthorizeCode(String userInfo)
+       private acessTokenandOpendid getAcessToken(String userInfo)
        {
-           JavaScriptObject jsonObj = JavaScriptConvert.DeserializeObject<JavaScriptObject>(userInfo);
-           if (jsonObj.ContainsKey("redirect") && jsonObj["redirect"] != null)
+           acessTokenandOpendid model = new acessTokenandOpendid();
+           JObject jsonObj = (JObject)JsonConvert.DeserializeObject(userInfo);
+           //JavaScriptObject jsonObj = JavaScriptConvert.DeserializeObject<JavaScriptObject>(userInfo);
+           if (jsonObj["acessToken"] != null)
            {
-               String value = jsonObj["redirect"].ToString();
-               int start = value.IndexOf("authorize_code=") + "authorize_code".Length;
-               String authorizeCode = value.Substring(start, 41);
-               return authorizeCode;
+               model.acessToken = jsonObj["acessToken"].ToString();
+               model.opendid = jsonObj["openId"].ToString();
+          
            }
-           return "";
+           return model;
        }
 
        private String getParams()

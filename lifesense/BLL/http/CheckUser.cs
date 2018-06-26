@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
 
 namespace lifesense.BLL.http
@@ -35,10 +36,11 @@ namespace lifesense.BLL.http
 
       private String getAuthorizeCode(String userInfo)
       {
-          JavaScriptObject jsonObj = JavaScriptConvert.DeserializeObject<JavaScriptObject>(userInfo);
-          if (jsonObj.ContainsKey("redirect") && jsonObj["redirect"] != null)
+          JObject jo = (JObject)JsonConvert.DeserializeObject(userInfo);
+          //JavaScriptObject jsonObj = JavaScriptConvert.DeserializeObject<JavaScriptObject>(userInfo);
+          if (jo["redirect"] != null)
           {
-              String value = jsonObj["redirect"].ToString();
+              String value = jo["redirect"].ToString();
               int start = value.IndexOf("authorize_code=") + "authorize_code".Length;
               int end = value.IndexOf("&state=");
               int len = end - start-1;
@@ -51,8 +53,8 @@ namespace lifesense.BLL.http
       private String getParams()
       {
           StringBuilder sb = new StringBuilder();
-          sb.Append("?username=13560721536");
-          sb.Append("&password=861127");
+          sb.Append("?username=13560721536");//13560721536
+          sb.Append("&password=861127");//861127
           sb.Append("&tempAuthorizeCode=" + mToken);
           return sb.ToString();
       }

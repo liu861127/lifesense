@@ -104,7 +104,7 @@
   <ItemGroup>
     <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\Users\luxuan\Downloads\Newtonsoft.Json\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\Lib\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System">
       <Name>System</Name>
@@ -126,9 +126,12 @@
     <Compile Include="http\config\AppConfig.cs" />
     <Compile Include="http\config\SHAUtils.cs" />
     <Compile Include="http\consts\Consts.cs" />
+    <Compile Include="http\RequestParam\RequestParam.cs" />
+    <Compile Include="http\ResponseParam\acessTokenandOpendid.cs" />
     <Compile Include="http\SyncDataManager.cs" />
     <Compile Include="http\Token.cs" />
     <Compile Include="http\UserInfo.cs" />
+    <Compile Include="http\UserSleepData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

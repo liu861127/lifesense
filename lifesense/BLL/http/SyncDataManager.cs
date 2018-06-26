@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using lifesense.BLL.http;
+using lifesense.BLL.http.ResponseParam;
 
 namespace ConsoleLifesense
 {
@@ -18,7 +19,11 @@ namespace ConsoleLifesense
         {
            token = new Token().getTempAuthorizeCode();
            String authorizeCode = new CheckUser(token).getTempAuthorizeCode();
-           String userInfo = new UserInfo(authorizeCode).getUserInfo();
+           acessTokenandOpendid model = new UserInfo(authorizeCode).getUserInfo();
+           if (model != null)
+           {
+               bool bol = new UserData(model).GetUserData();
+           }
         }
     }
 }
