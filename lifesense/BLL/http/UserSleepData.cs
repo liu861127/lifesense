@@ -30,8 +30,16 @@ namespace lifesense.BLL.http
                requestModel.day = DateTime.Now.ToString("yyyy-MM-dd");
                string param = Consts.GET_SLEEP_DATA + getParams();
                string param2= JsonConvert.SerializeObject(requestModel);
-               String userInfo = webClient.Post(param, param2);
-            
+               String userInfo = webClient.Post(param, param2,"application/json");
+               Sleep sleepModel = JsonConvert.DeserializeObject<Sleep>(userInfo);
+
+               param = Consts.GET_SPORT_DATA + getParams();
+               userInfo = webClient.Post(param, param2, "application/json");
+               Sport sportModel = JsonConvert.DeserializeObject<Sport>(userInfo);
+
+               param = Consts.GET_HEART_DATA + getParams();
+               userInfo = webClient.Post(param, param2, "application/json");
+               Heartrate heartrateModel = JsonConvert.DeserializeObject<Heartrate>(userInfo);
            }
            catch (Exception ex)
            {

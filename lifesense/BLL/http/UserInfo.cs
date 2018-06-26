@@ -26,7 +26,7 @@ namespace lifesense.BLL.http
            try
            {
                String param = Consts.GET_ACCESS_TOKEN_AND_OPENID + getParams();
-               String userInfo = webClient.Post(param, "");
+               String userInfo = webClient.Post(param, "","");
 
                return getAcessToken(userInfo);
            }

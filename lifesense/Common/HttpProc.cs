@@ -205,10 +205,10 @@ namespace Maticsoft.Common
         /// <param name="url">网址</param>    
         /// <param name="postData">urlencode编码的文本数据</param>    
         /// <returns></returns>    
-        public string Post(string url, string postData)
+        public string Post(string url, string postData,string contentType)
         {
             byte[] data = encoding.GetBytes(postData);
-            return Post(url, data);
+            return Post(url, data, contentType);
         }
         /// <summary>    
         /// 向指定URL发送字节数据    
@@ -216,10 +216,17 @@ namespace Maticsoft.Common
         /// <param name="url">网址</param>    
         /// <param name="postData">发送的字节数组</param>    
         /// <returns></returns>    
-        public string Post(string url, byte[] postData)
+        public string Post(string url, byte[] postData,string contentType)
         {
             HttpWebRequest request = CreateRequest(url, "POST");
-            request.ContentType = "application/x-www-form-urlencoded";
+            if (string.IsNullOrEmpty(contentType))
+            {
+                request.ContentType = "application/x-www-form-urlencoded";
+            }
+            else
+            {
+                request.ContentType = contentType;
+            }
             request.ContentLength = postData.Length;
             request.KeepAlive = true;
             PostData(request, postData);

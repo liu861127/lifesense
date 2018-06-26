@@ -128,6 +128,9 @@
     <Compile Include="http\consts\Consts.cs" />
     <Compile Include="http\RequestParam\RequestParam.cs" />
     <Compile Include="http\ResponseParam\AcessTokenandOpendid.cs" />
+    <Compile Include="http\ResponseParam\Heartrate.cs" />
+    <Compile Include="http\ResponseParam\Sleep.cs" />
+    <Compile Include="http\ResponseParam\Sport.cs" />
     <Compile Include="http\SyncDataManager.cs" />
     <Compile Include="http\Token.cs" />
     <Compile Include="http\UserInfo.cs" />
