@@ -7,7 +7,7 @@ namespace lifesense.BLL.http.RequestParam
 {
    public class RequestParam
     {
-        public string opendId { get; set; }
+        public string openid { get; set; }
         public string day { get; set; }
     }
 }

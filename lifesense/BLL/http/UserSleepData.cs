@@ -13,11 +13,11 @@ namespace lifesense.BLL.http
    public class UserData
     {
        private string accessToken = string.Empty;
-       private string opendid = string.Empty;
-       public UserData(acessTokenandOpendid model)
+       private string openid = string.Empty;
+       public UserData(AcessTokenandOpendid model)
        {
            this.accessToken = model.acessToken;
-           this.opendid = model.opendid;
+           this.openid = model.opendid;
        }
        public bool GetUserData()
        {
@@ -26,10 +26,11 @@ namespace lifesense.BLL.http
            try
            {
                lifesense.BLL.http.RequestParam.RequestParam requestModel = new RequestParam.RequestParam();
-               requestModel.opendId = opendid;
+               requestModel.openid = openid;
                requestModel.day = DateTime.Now.ToString("yyyy-MM-dd");
                string param = Consts.GET_SLEEP_DATA + getParams();
-               String userInfo = webClient.Post(param, JsonConvert.SerializeObject(requestModel));
+               string param2= JsonConvert.SerializeObject(requestModel);
+               String userInfo = webClient.Post(param, param2);
             
            }
            catch (Exception ex)

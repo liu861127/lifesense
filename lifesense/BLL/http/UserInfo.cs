@@ -20,7 +20,7 @@ namespace lifesense.BLL.http
             this.mAuthorizeCode = authorizeCode;
         }
 
-       public acessTokenandOpendid getUserInfo()
+       public AcessTokenandOpendid getUserInfo()
        {
            WebClient webClient = WebClient.instance;
            try
@@ -37,9 +37,9 @@ namespace lifesense.BLL.http
            }
        }
 
-       private acessTokenandOpendid getAcessToken(String userInfo)
+       private AcessTokenandOpendid getAcessToken(String userInfo)
        {
-           acessTokenandOpendid model = new acessTokenandOpendid();
+           AcessTokenandOpendid model = new AcessTokenandOpendid();
            JObject jsonObj = (JObject)JsonConvert.DeserializeObject(userInfo);
            //JavaScriptObject jsonObj = JavaScriptConvert.DeserializeObject<JavaScriptObject>(userInfo);
            if (jsonObj["acessToken"] != null)

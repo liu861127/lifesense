@@ -19,7 +19,7 @@ namespace ConsoleLifesense
         {
            token = new Token().getTempAuthorizeCode();
            String authorizeCode = new CheckUser(token).getTempAuthorizeCode();
-           acessTokenandOpendid model = new UserInfo(authorizeCode).getUserInfo();
+           AcessTokenandOpendid model = new UserInfo(authorizeCode).getUserInfo();
            if (model != null)
            {
                bool bol = new UserData(model).GetUserData();
