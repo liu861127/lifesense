@@ -13,25 +13,31 @@ namespace lifesense.BLL.http
  public   class CheckUser
     {
      private String mToken;
-     public CheckUser(String token)
+     private lifesense.Model.t_userinfo mModel;
+     public CheckUser(String token, lifesense.Model.t_userinfo model)
        {
            this.mToken = token;
+           this.mModel = model;
        }
 
       public String getTempAuthorizeCode()
       {
+          string returnMsg = string.Empty;
           WebClient webClient = WebClient.instance;
           try
           {
-              String param = Consts.CHECK_USER + getParams();
-              String userInfo = webClient.Post(param,"","");
-              return getAuthorizeCode(userInfo);
+              if (mModel != null)
+              {
+                  String param = Consts.CHECK_USER + getParams(mModel);
+                  String userInfo = webClient.Post(param, "", "");
+                  returnMsg= getAuthorizeCode(userInfo);
+              }
           }
           catch (Exception ex)
           {
-              return "";
-
+              returnMsg = string.Empty;
           }
+          return returnMsg;
       }
 
       private String getAuthorizeCode(String userInfo)
@@ -50,11 +56,11 @@ namespace lifesense.BLL.http
           return "";
       }
 
-      private String getParams()
+      private String getParams(lifesense.Model.t_userinfo model)
       {
           StringBuilder sb = new StringBuilder();
-          sb.Append("?username=13560721536");//13560721536
-          sb.Append("&password=861127");//861127
+          sb.AppendFormat("?username={0}",model.UserName);//13560721536
+          sb.AppendFormat("&password={0}",model.UserPwd);//861127
           sb.Append("&tempAuthorizeCode=" + mToken);
           return sb.ToString();
       }

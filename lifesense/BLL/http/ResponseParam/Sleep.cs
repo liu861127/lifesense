@@ -5,13 +5,17 @@ using System.Text;
 
 namespace lifesense.BLL.http.ResponseParam
 {
-   public class Sleep
+    public class Sleep
     {
-        int totalTime {get;set;}
-        int depthTime {get;set;}
-        int shallowTime {get;set;}
-        int consciousTime {get;set;}
-       long startTime {get;set;}
-       //{"sleep":{"totalTime":0,"depthTime":0,"shallowTime":0,"consciousTime":0,"startTime":0}}
+        public int totalTime { get; set; }
+        public int depthTime { get; set; }
+        public int shallowTime { get; set; }
+        public int consciousTime { get; set; }
+        public long startTime { get; set; }
     }
+
+    public class SleepData
+    {
+        public Sleep sleep { get; set; }
+    }  
 }

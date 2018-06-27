@@ -5,6 +5,10 @@ using System.Text;
 
 namespace lifesense.BLL.http.ResponseParam
 {
+    public class HeartrateData
+    {
+        public Heartrate heartrate { get; set; }
+    }
    public class Heartrate
     {
        public string heartrate { get; set; }

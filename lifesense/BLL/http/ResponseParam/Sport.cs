@@ -5,10 +5,15 @@ using System.Text;
 
 namespace lifesense.BLL.http.ResponseParam
 {
-  public  class Sport
+    public class Sport
     {
-      public int stepCount { get; set; }
-      public int calorie { get; set; }
-      public int distance { get; set; }
+        public int stepCount { get; set; }
+        public double calorie { get; set; }
+        public double distance { get; set; }
     }
+
+    public class SportData
+    {
+        public Sport sport { get; set; }
+    } 
 }
