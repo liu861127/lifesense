@@ -4,7 +4,6 @@ D:\lifesense\lifesense\DBUtility\bin\Debug\IBatisNet.Common.dll
 D:\lifesense\lifesense\DBUtility\bin\Debug\IBatisNet.DataMapper.dll
 D:\lifesense\lifesense\DBUtility\bin\Debug\MySql.Data.dll
 D:\lifesense\lifesense\DBUtility\bin\Debug\System.Data.SQLite.DLL
-D:\lifesense\lifesense\DBUtility\obj\Debug\DBUtility.csprojResolveAssemblyReference.cache
 D:\lifesense\lifesense\DBUtility\obj\Debug\lifesense.DBUtility.dll
 D:\lifesense\lifesense\DBUtility\obj\Debug\lifesense.DBUtility.pdb
 C:\E\workspace\beida\lifesense\DBUtility\bin\Debug\lifesense.DBUtility.dll

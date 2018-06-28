@@ -145,6 +145,7 @@
     <Compile Include="db\t_sleepinfo.cs" />
     <Compile Include="db\t_userinfo.cs" />
     <Compile Include="db\t_walkinfo.cs" />
+    <Compile Include="t_failrequestInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Common\Common.csproj">
