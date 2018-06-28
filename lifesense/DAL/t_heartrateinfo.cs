@@ -45,7 +45,7 @@ namespace lifesense.DAL
             SqlParameter[] parameters = {
 					new SqlParameter("@UserID", SqlDbType.VarChar,100),
 					new SqlParameter("@StartTime", SqlDbType.DateTime),
-					new SqlParameter("@HeartRate", SqlDbType.VarChar,500)};
+					new SqlParameter("@HeartRate", SqlDbType.VarChar,600)};
             parameters[0].Value = model.UserID;
             parameters[1].Value = model.StartTime;
             parameters[2].Value = model.HeartRate;

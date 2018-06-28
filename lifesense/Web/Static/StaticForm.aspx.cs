@@ -44,9 +44,23 @@ namespace lifesense.Web.Static
              {
                  sb.AppendFormat("and UserID like '%{0}%' ", txtUserID.Text.Trim());
              }
-            string sql = string.Format(@"select u.UserID as 用户ID,w.MeasureTime as 测量时间,w.StepNum as 步数,w.Calorie as 卡里路, w.Mileage as 里程,s.SleepingTime as 入睡时间,s.WakingTime as 醒来时间,s.LongSleepNum as '深睡时长(分钟)',s.ShallowSleepNum as '浅睡时长(分钟)',s.WakeUpLong as '醒来时长（分钟)',s.WakingNum as 醒来次数,h.StartTime as '心率测量开始时间',h.HeartRate as '心率' from t_userinfo as u left join t_walkinfo as w 
-                                         on u.UserID=w.UserID left join t_sleepinfo as s  on u.UserID=s.UserID
-                                         left join t_heartrateinfo as h on u.UserID=h.UserID  where 1=1 {0}", sb.ToString());
+             string sql = string.Format(@"SELECT u.UserID AS 用户ID,
+                                           w.MeasureTime AS 测量时间,
+                                           w.StepNum AS 步数,
+                                           w.Calorie AS 卡里路,
+                                           w.Mileage AS 里程,
+                                           s.SleepingTime AS 入睡时间,
+                                           s.WakingTime AS 醒来时间,
+                                           s.LongSleepNum AS '深睡时长(分钟)',
+                                           s.ShallowSleepNum AS '浅睡时长(分钟)',
+                                           s.WakeUpLong AS '醒来时长（分钟)',
+                                           s.WakingNum AS 醒来次数,
+                                           h.StartTime AS '心率测量开始时间',
+                                           h.HeartRate AS '心率'
+                                    FROM t_userinfo AS u
+                                         LEFT JOIN t_walkinfo AS w ON u.UserID = w.UserID 
+                                         LEFT JOIN t_sleepinfo AS s ON u.UserID = s.UserID and cast(w.MeasureTime as date)=cast(s.SleepingTime as date)
+                                         LEFT JOIN t_heartrateinfo AS h ON u.UserID = h.UserID and cast(s.SleepingTime as date)=  cast(h.StartTime as date)  where 1=1 {0}", sb.ToString());
             DataSet ds2 = userbll.GetSqlList(sql);
             DataSet ds = userbll.ExecuteSqlPager(sql, "用户ID", AspNetPager1.CurrentPageIndex, AspNetPager1.PageSize);
             DataColumn dc;
@@ -55,26 +69,28 @@ namespace lifesense.Web.Static
                 dc = new DataColumn("心率"+i.ToString(),typeof(Int32));
                 ds.Tables[0].Columns.Add(dc);
             }
-            foreach(DataRow dr in ds.Tables[0].Rows)
+            for (int j = 0; j < ds.Tables[0].Rows.Count;j++)
             {
-                if(dr["心率"]!=null&&dr["心率"].ToString()!="")
+                if (ds.Tables[0].Rows[j]["心率"] != null && ds.Tables[0].Rows[j]["心率"].ToString() != "")
                 {
-                     for (int i = 1; i <= 288; i++)
-                     {
-                         dr["心率" + i.ToString()] =Convert.ToInt32 (dr["心率"].ToString().Substring((i - 1) * 2, 2));
-                     }
+                   
+                    for (int i = 1; i <= 288; i++)
+                    {
+                        ds.Tables[0].Rows[j]["心率" + i.ToString()] = Convert.ToInt32(ds.Tables[0].Rows[j]["心率"].ToString().Substring((i - 1) * 2, 2), 16);
+                    }
                 }
             }
             ds.Tables[0].AcceptChanges();
-            gvStatic.DataSource = ds.Tables[0];
-            for (int i = 1; i <= 288;i++)
+            for (int i = 1; i <= 288; i++)
             {
                 BoundField column = new BoundField();
-                column.HeaderText = "心率"+i.ToString();
+                column.HeaderText = "心率" + i.ToString();
                 column.DataField = "心率" + i.ToString();//数据字段名称（类的属性） 
                 column.ItemStyle.Width = 50;
                 gvStatic.Columns.Add(column);
             }
+            gvStatic.DataSource = ds.Tables[0];
+          
                 gvStatic.DataBind();
             int RecordCount = ds2.Tables[0].Rows.Count;
             AspNetPager1.RecordCount = RecordCount;

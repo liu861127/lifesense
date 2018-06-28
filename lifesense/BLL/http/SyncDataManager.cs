@@ -39,7 +39,7 @@ namespace ConsoleLifesense
                        AcessTokenandOpendid model = new UserInfo(authorizeCode).getUserInfo();
                        if (model != null)
                        {
-                           bool bol = new UserData(model).GetUserData();
+                           bool bol = new UserData(model,userModel.UserID).GetUserData();
                        }
                    }
                }

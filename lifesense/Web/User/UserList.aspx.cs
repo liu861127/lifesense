@@ -26,9 +26,9 @@ namespace lifesense.Web.User
             string strWhere = string.Empty;
             if (!string.IsNullOrEmpty(txtUserName.Text))
             {
-                strWhere = string.Format("UserName like '%{0}%'", txtUserName.Text.Trim());
+                strWhere = string.Format(" UserName like '%{0}%'", txtUserName.Text.Trim());
             }
-           string sql = string.Format("select * from t_userinfo  {0} ", strWhere);
+           string sql = string.Format("select * from t_userinfo   {0} ", strWhere!=""?"where "+strWhere:"");
            DataSet ds2=  userbll.GetList(strWhere);
            DataSet ds = userbll.ExecuteSqlPager(sql, "ID", AspNetPager1.CurrentPageIndex, AspNetPager1.PageSize);
            Gdv_data.DataSource = ds.Tables[0];

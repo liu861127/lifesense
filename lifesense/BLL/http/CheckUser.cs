@@ -59,7 +59,7 @@ namespace lifesense.BLL.http
       private String getParams(lifesense.Model.t_userinfo model)
       {
           StringBuilder sb = new StringBuilder();
-          sb.AppendFormat("?username={0}",model.UserName);//13560721536
+          sb.AppendFormat("?username={0}",model.UserID);//13560721536
           sb.AppendFormat("&password={0}",model.UserPwd);//861127
           sb.Append("&tempAuthorizeCode=" + mToken);
           return sb.ToString();
