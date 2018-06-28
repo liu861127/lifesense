@@ -134,7 +134,7 @@
     <Compile Include="http\SyncDataManager.cs" />
     <Compile Include="http\Token.cs" />
     <Compile Include="http\UserInfo.cs" />
-    <Compile Include="http\UserSleepData.cs" />
+    <Compile Include="http\UserData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
