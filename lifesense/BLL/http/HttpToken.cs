@@ -12,9 +12,9 @@ using System.Web;
 
 namespace lifesense.BLL.http
 {
-    public class Token
+    public class HttpToken
     {
-       public Token()
+       public HttpToken()
        {
 
        }

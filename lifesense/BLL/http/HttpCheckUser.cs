@@ -10,11 +10,11 @@ using Newtonsoft.Json;
 
 namespace lifesense.BLL.http
 {
- public   class CheckUser
+ public   class HttpCheckUser
     {
      private String mToken;
      private lifesense.Model.t_userinfo mModel;
-     public CheckUser(String token, lifesense.Model.t_userinfo model)
+     public HttpCheckUser(String token, lifesense.Model.t_userinfo model)
        {
            this.mToken = token;
            this.mModel = model;

@@ -122,19 +122,22 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="http\CheckUser.cs" />
+    <Compile Include="http\HttpBaseData.cs" />
+    <Compile Include="http\HttpCheckUser.cs" />
     <Compile Include="http\config\AppConfig.cs" />
     <Compile Include="http\config\SHAUtils.cs" />
     <Compile Include="http\consts\Consts.cs" />
+    <Compile Include="http\HttpHeartData.cs" />
     <Compile Include="http\RequestParam\RequestParam.cs" />
     <Compile Include="http\ResponseParam\AcessTokenandOpendid.cs" />
     <Compile Include="http\ResponseParam\Heartrate.cs" />
     <Compile Include="http\ResponseParam\Sleep.cs" />
     <Compile Include="http\ResponseParam\Sport.cs" />
+    <Compile Include="http\HttpSleepData.cs" />
+    <Compile Include="http\HttpSportData.cs" />
     <Compile Include="http\SyncDataManager.cs" />
-    <Compile Include="http\Token.cs" />
+    <Compile Include="http\HttpToken.cs" />
     <Compile Include="http\UserInfo.cs" />
-    <Compile Include="http\UserData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
