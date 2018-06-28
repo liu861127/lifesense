@@ -125,6 +125,7 @@
     <Compile Include="SysNode.cs" />
     <Compile Include="t_Admin.cs" />
     <Compile Include="t_configinfo.cs" />
+    <Compile Include="t_failrequestInfo.cs" />
     <Compile Include="t_heartrateinfo.cs" />
     <Compile Include="t_sleepinfo.cs" />
     <Compile Include="t_userinfo.cs" />

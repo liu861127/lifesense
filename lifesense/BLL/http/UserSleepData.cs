@@ -25,31 +25,38 @@ namespace lifesense.BLL.http
            WebClient webClient = WebClient.instance;
            try
            {
-               for (int i = 0; i < 2; i++)
-               {
-                   lifesense.BLL.http.RequestParam.RequestParam requestModel = new RequestParam.RequestParam();
-                   requestModel.openid = openid;
-                   requestModel.day = DateTime.Now.AddDays(-1).ToString("yyyy-MM-dd");
-                   string param = Consts.GET_SLEEP_DATA + getParams();
-                   string param2 = JsonConvert.SerializeObject(requestModel);
-                   String userInfo = webClient.Post(param, param2, "application/json");
-                   SleepData sleepModel = JsonConvert.DeserializeObject<SleepData>(userInfo);
+               lifesense.BLL.http.RequestParam.RequestParam requestModel = new RequestParam.RequestParam();
+               requestModel.openid = openid;
+               requestModel.day = DateTime.Now.AddDays(-1).ToString("yyyy-MM-dd");
+               string param = Consts.GET_SLEEP_DATA + getParams();
+               string param2 = JsonConvert.SerializeObject(requestModel);
+               String userInfo = webClient.Post(param, param2, "application/json");
+               SleepData sleepModel = null;
+               sleepModel = JsonConvert.DeserializeObject<SleepData>(userInfo);
 
-                   param = Consts.GET_SPORT_DATA + getParams();
-                   userInfo = webClient.Post(param, param2, "application/json");
-                   SportData sportModel = JsonConvert.DeserializeObject<SportData>(userInfo);
+               param = Consts.GET_SPORT_DATA + getParams();
+               userInfo = webClient.Post(param, param2, "application/json");
+               SportData sportModel = null;
+               sportModel = JsonConvert.DeserializeObject<SportData>(userInfo);
 
-                   param = Consts.GET_HEART_DATA + getParams();
-                   userInfo = webClient.Post(param, param2, "application/json");
-                   HeartrateData heartrateModel = JsonConvert.DeserializeObject<HeartrateData>(userInfo);
-               }
+               param = Consts.GET_HEART_DATA + getParams();
+               userInfo = webClient.Post(param, param2, "application/json");
+               HeartrateData heartrateModel = null;
+               heartrateModel = JsonConvert.DeserializeObject<HeartrateData>(userInfo);
+
            }
            catch (Exception ex)
            {
-               
+
 
            }
            return bolResult;
+       }
+       private DateTime getStartTimeByMinute()
+       {
+           DateTime startTime = DateTime.MinValue;
+
+           return startTime;
        }
        private string getParams()
        {
