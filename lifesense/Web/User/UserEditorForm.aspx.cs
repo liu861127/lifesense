@@ -39,17 +39,35 @@ namespace lifesense.Web.User
             model.UserID = txtUserID.Text.Trim();
             model.UserName = txtUserName.Text.Trim();
             model.UserPwd = txtUserPwd.Text.Trim();
+      
             if (!string.IsNullOrEmpty(lblID.Text))
             {
                 model.ID =Convert.ToInt32 (lblID.Text);
-                bolResult=userbll.Update(model);
+                if (userbll.GetModel(model.ID).UserID == model.UserID)
+                {
+                    bolResult = userbll.Update(model);
+                }
+                else
+                {
+                    Maticsoft.Common.MessageBox.Show(this, "已经存在相同的用户ID，请重新输入过!");
+                    txtUserID.Focus();
+                }
             }
             else
             {
-               if (userbll.Add(model)>0)
-               {
-                   bolResult = true;
-               }
+                if (userbll.GetRecordCount(string.Format("UserID='{0}'", model.UserID)) > 0)
+                {
+                    Maticsoft.Common.MessageBox.Show(this, "已经存在相同的用户ID，请重新输入过!");
+                    txtUserID.Focus();
+                }
+                else
+                {
+                    if (userbll.Add(model) > 0)
+                    {
+                        bolResult = true;
+                    }
+
+                }
             }
             if(bolResult)
             {

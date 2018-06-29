@@ -38,11 +38,11 @@ namespace lifesense.Web.Static
             StringBuilder sb=new StringBuilder();
             if (!string.IsNullOrEmpty(ddltimType.Text.Trim()))
             {
-                //sb.AppendFormat("and cast ({0} as date) between '{1}' and '{2}'", ddltimType.SelectedValue.ToString(), Convert.ToDateTime(txtstartime.Text).ToString("yyyy-MM-dd"), Convert.ToDateTime(txtenddate.Text).ToString("yyyy-MM-dd"));
+                sb.AppendFormat("and cast ({0} as date) between '{1}' and '{2}'", ddltimType.SelectedValue.ToString(), Convert.ToDateTime(txtstartime.Text).ToString("yyyy-MM-dd"), Convert.ToDateTime(txtenddate.Text).ToString("yyyy-MM-dd"));
             }
              if (!string.IsNullOrEmpty(txtUserID.Text.Trim()))
              {
-                 sb.AppendFormat("and UserID like '%{0}%' ", txtUserID.Text.Trim());
+                 sb.AppendFormat("and u.UserID like '%{0}%' ", txtUserID.Text.Trim());
              }
              string sql = string.Format(@"SELECT u.UserID AS 用户ID,
                                            w.MeasureTime AS 测量时间,
@@ -60,9 +60,9 @@ namespace lifesense.Web.Static
                                     FROM t_userinfo AS u
                                          LEFT JOIN t_walkinfo AS w ON u.UserID = w.UserID 
                                          LEFT JOIN t_sleepinfo AS s ON u.UserID = s.UserID and cast(w.MeasureTime as date)=cast(s.SleepingTime as date)
-                                         LEFT JOIN t_heartrateinfo AS h ON u.UserID = h.UserID and cast(s.SleepingTime as date)=  cast(h.StartTime as date)  where 1=1 {0}", sb.ToString());
+                                         LEFT JOIN t_heartrateinfo AS h ON u.UserID = h.UserID and cast(s.SleepingTime as date)=  cast(h.StartTime as date)  where 1=1 {0} ", sb.ToString());
             DataSet ds2 = userbll.GetSqlList(sql);
-            DataSet ds = userbll.ExecuteSqlPager(sql, "用户ID", AspNetPager1.CurrentPageIndex, AspNetPager1.PageSize);
+            DataSet ds = userbll.ExecuteSqlPager(sql, "测量时间,用户ID", AspNetPager1.CurrentPageIndex, AspNetPager1.PageSize);
             DataColumn dc;
             for (int i = 1; i <= 288; i++)
             {
@@ -102,7 +102,8 @@ namespace lifesense.Web.Static
         /// <param name="e"></param>
         protected void btnSynchronization_Click(object sender, EventArgs e)
         {
-
+            ConsoleLifesense.SyncDataManager sycdataBll = new ConsoleLifesense.SyncDataManager();
+            
         }
         /// <summary>
         /// 导出excel
@@ -113,10 +114,15 @@ namespace lifesense.Web.Static
         {
             AspNetPager1.CurrentPageIndex = 1;
             AspNetPager1.PageSize = AspNetPager1.RecordCount;
+            if (AspNetPager1.RecordCount>6000)
+            {
+                Maticsoft.Common.MessageBox.Show(this, "超过最大导出数，请先过滤条件后再导出!");
+                return;
+            }
             LoadData();
             ExportExcel.GetExportExcel(gvStatic, "用户测量数据列表");
             AspNetPager1.CurrentPageIndex = 1;
-            AspNetPager1.PageSize = 2;
+            AspNetPager1.PageSize = 50;
             LoadData();
         }
 

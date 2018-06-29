@@ -12,7 +12,7 @@ namespace ConsoleLifesense
     public  class SyncDataManager
     {
         public  String token;
-        private string syncDay = DateTime.Now.AddDays(-1).ToString("yyyy-MM-dd");
+        private string syncDay = DateTime.Now.AddDays(-15).ToString("yyyy-MM-dd");
         public void start()
         {
             getToken();
