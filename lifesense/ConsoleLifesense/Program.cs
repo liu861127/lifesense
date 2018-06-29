@@ -20,8 +20,6 @@ namespace ConsoleLifesense
             //String sha = getSHA();
             //sha = "";
         }
-
-
         private static String getSHA()
         {
             List<System.String> array = new List<System.String>();
@@ -33,5 +31,7 @@ namespace ConsoleLifesense
             String[] arr = array.ToArray();
             return SHAUtils.getSHACode(arr);
         }
+
     }
+
 }

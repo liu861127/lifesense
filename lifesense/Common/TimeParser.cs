@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -64,6 +64,19 @@ namespace Maticsoft.Common
         #endregion
 
         /// <summary>
+        /// 时间戳转为C#格式时间
+        /// </summary>
+        /// <param name="timeStamp">Unix时间戳格式</param>
+        /// <returns>C#格式时间</returns>
+        public static DateTime GetTime(string timeStamp)
+        {
+            DateTime dtStart = TimeZone.CurrentTimeZone.ToLocalTime(new DateTime(1970, 1, 1));
+
+            long lTime = long.Parse(timeStamp + "0000");
+            TimeSpan toNow = new TimeSpan(lTime);
+            return dtStart.Add(toNow);
+        }
+        /// <summary>
         /// 获取时间戳
         /// </summary>
         /// <returns></returns>
@@ -97,3 +110,4 @@ namespace Maticsoft.Common
         }
     }
 }
+
