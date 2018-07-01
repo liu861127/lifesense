@@ -27,6 +27,12 @@ namespace lifesense.BLL
         return failRequestInfo.Add(model);
 
      }
+
+     public bool deleteFromFialList(string UserID, DateTime WriteTime)
+     {
+         return failRequestInfo.Delete(UserID, WriteTime);
+     }
+
      private lifesense.Model.t_failrequestInfo getFailRequestInfoModel(string UserID, DateTime WriteTime, string Url, string Reason)
      {
          lifesense.Model.t_failrequestInfo model = new Model.t_failrequestInfo();

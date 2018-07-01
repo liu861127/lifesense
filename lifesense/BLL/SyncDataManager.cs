@@ -6,45 +6,73 @@ using lifesense.BLL.http;
 using lifesense.BLL.http.ResponseParam;
 using Maticsoft.Common;
 using System.Threading;
+using lifesense.BLL;
 
 namespace ConsoleLifesense
 {
     public  class SyncDataManager
     {
         public  String token;
-        private string syncDay = DateTime.Now.AddDays(-15).ToString("yyyy-MM-dd");
+        private string mSyncDay = DateTime.Now.AddDays(-15).ToString("yyyy-MM-dd");
         public void start()
         {
-            getToken();
+            syncData(mSyncDay);
         }
 
-        private void getToken()
+        //从失败列表中同步数据
+        public void syncDataFromFailList()
         {
-           lifesense.BLL.t_userinfo userBll = new lifesense.BLL.t_userinfo();
-           List<lifesense.Model.t_userinfo> listUser = userBll.GetModelList("");
-           listUser.ForEach(userModel => {
-               token = new HttpToken(userModel,syncDay).getTempAuthorizeCode();
-               if (!string.IsNullOrEmpty(token))
-               {
-                   string authorizeCode = new HttpCheckUser(syncDay,token, userModel).getTempAuthorizeCode();
-                   if (!string.IsNullOrEmpty(authorizeCode))
-                   {
-                       AcessTokenandOpendid model = new UserInfo(authorizeCode, userModel,syncDay).getUserInfo();
-                       if (model != null)
-                       {
-                           SleepData sleepData = new HttpSleepData(model, userModel, syncDay).getSleepData(syncDay);
-                           bool saveSleepSuccess = saveSleepData(sleepData, userModel);
+            lifesense.BLL.t_failrequestInfo failBll = new lifesense.BLL.t_failrequestInfo();
+            List<lifesense.Model.t_failrequestInfo> listUser = failBll.GetModelList("");
+            if (listUser == null)
+            {
+                return;
+            }
+            listUser.ForEach(failModel =>
+            {
+                lifesense.Model.t_userinfo userModel = new lifesense.Model.t_userinfo();
+                userModel.UserID = failModel.UserID;
+                syncData(userModel, failModel.WriteTime.ToString("yyyy-MM-dd"));
+            });
+        }
+        public void syncData(lifesense.Model.t_userinfo userModel, string syncDay)
+        {
+            token = new HttpToken(userModel, syncDay).getTempAuthorizeCode();
+            if (!string.IsNullOrEmpty(token))
+            {
+                string authorizeCode = new HttpCheckUser(syncDay, token, userModel).getTempAuthorizeCode();
+                if (!string.IsNullOrEmpty(authorizeCode))
+                {
+                    AcessTokenandOpendid model = new UserInfo(authorizeCode, userModel, syncDay).getUserInfo();
+                    if (model != null)
+                    {
+                        SleepData sleepData = new HttpSleepData(model, userModel, syncDay).getSleepData(syncDay);
+                        bool saveSleepSuccess = saveSleepData(sleepData, userModel);
 
-                           SportData sportData = new HttpSportData(model, userModel, syncDay).getSportData(syncDay);
-                           bool saveSportSuccess = saveSportData(sportData, userModel,syncDay);
+                        SportData sportData = new HttpSportData(model, userModel, syncDay).getSportData(syncDay);
+                        bool saveSportSuccess = saveSportData(sportData, userModel, syncDay);
 
-                           HeartrateData heartrateData = new HttpHeartData(model, userModel, syncDay).getHeartrateData(syncDay);
-                           bool saveHeartrateSuccess = saveHeartrateData(heartrateData, userModel, syncDay);
-                       }
-                   }
-                   //Thread.Sleep(1000*5);
-               }
-           });
+                        HeartrateData heartrateData = new HttpHeartData(model, userModel, syncDay).getHeartrateData(syncDay);
+                        bool saveHeartrateSuccess = saveHeartrateData(heartrateData, userModel, syncDay);
+                        // 数据都同步成功了，再重错误列表中移除掉
+                        if (saveSleepSuccess && saveSportSuccess && saveHeartrateSuccess)
+                        {                     
+                            FailRequestManager.mInstance.deleteFromFialList(userModel.UserID,TimeParser.GetTime(syncDay));
+                        }
+                    }
+                }
+                //Thread.Sleep(1000*5);
+            }
+        }
+
+        private void syncData(string syncDay)
+        {
+            lifesense.BLL.t_userinfo userBll = new lifesense.BLL.t_userinfo();
+            List<lifesense.Model.t_userinfo> listUser = userBll.GetModelList("");
+            listUser.ForEach(userModel =>
+            {
+                syncData(userModel, syncDay);
+            });
         }
 
 
