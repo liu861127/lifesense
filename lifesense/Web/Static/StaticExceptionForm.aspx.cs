@@ -17,6 +17,9 @@ namespace lifesense.Web.Static
         {
             if (!IsPostBack)
             {
+                DateTime cuttentTime = DateTime.Now;
+                txtstartime.Text = cuttentTime.AddDays(1 - cuttentTime.Day).ToString("yyyy-MM-dd");
+                txtenddate.Text = cuttentTime.ToString("yyyy-MM-dd");
                 LoadData();
             }
         }
