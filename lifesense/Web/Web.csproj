@@ -115,6 +115,7 @@
     <Content Include="js\My97DatePicker\skin\whyGreen\up.jpg" />
     <Content Include="js\My97DatePicker\skin\whyGreen\ymbg.jpg" />
     <Content Include="js\My97DatePicker\WdatePicker.js" />
+    <Content Include="Static\StaticExceptionForm.aspx" />
     <Content Include="Static\StaticForm.aspx" />
     <Content Include="User\UserEditorForm.aspx" />
     <Content Include="User\UserList.aspx" />
@@ -177,6 +178,13 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Static\StaticExceptionForm.aspx.cs">
+      <DependentUpon>StaticExceptionForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Static\StaticExceptionForm.aspx.designer.cs">
+      <DependentUpon>StaticExceptionForm.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Static\StaticForm.aspx.cs">
       <DependentUpon>StaticForm.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
