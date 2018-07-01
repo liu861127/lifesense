@@ -51,25 +51,25 @@ namespace lifesense.BLL
         /// <summary>
         /// 得到一个对象实体
         /// </summary>
-        public lifesense.Model.t_failrequestInfo GetModel(string UserID, DateTime WriteTime, string Url, string Reason)
+        public lifesense.Model.t_failrequestInfo GetModel(string UserID, DateTime WriteTime)
         {
 
-            return dal.GetModel(UserID, WriteTime, Url, Reason);
+            return dal.GetModel(UserID, WriteTime);
         }
 
         /// <summary>
         /// 得到一个对象实体，从缓存中
         /// </summary>
-        public lifesense.Model.t_failrequestInfo GetModelByCache(string UserID, DateTime WriteTime, string Url, string Reason)
+        public lifesense.Model.t_failrequestInfo GetModelByCache(string UserID, DateTime WriteTime)
         {
 
-            string CacheKey = "t_failrequestInfoModel-" + UserID + WriteTime + Url + Reason;
+            string CacheKey = "t_failrequestInfoModel-" + UserID + WriteTime;
             object objModel = Maticsoft.Common.DataCache.GetCache(CacheKey);
             if (objModel == null)
             {
                 try
                 {
-                    objModel = dal.GetModel(UserID, WriteTime, Url, Reason);
+                    objModel = dal.GetModel(UserID, WriteTime);
                     if (objModel != null)
                     {
                         int ModelCache = Maticsoft.Common.ConfigHelper.GetConfigInt("ModelCache");

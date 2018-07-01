@@ -9,6 +9,7 @@
     <title>用户列表</title>
     <link href="../../css/Site.css" rel="stylesheet" type="text/css" />
     <link href="../../css/cssdata.css" rel="stylesheet" type="text/css" />
+    <script src="../js/My97DatePicker/WdatePicker.js" type="text/javascript"></script>
     <script src="../js/CheckBox.js" type="text/javascript"></script>
     <style type="text/css">
         .auto-style1 {
@@ -29,8 +30,8 @@
             </td>
         </tr>
         <tr align="left" class="tdbg-dark2">
-            <td class="auto-style1">&nbsp;&nbsp;&nbsp;<hr />&nbsp;&nbsp;用户名：<asp:TextBox ID="txtUserName" runat="server" Width="257px"></asp:TextBox>&nbsp;&nbsp; &nbsp; 
-                <asp:CheckBox ID="chkIsAll" runat="server" OnCheckedChanged="chkIsAll_CheckedChanged" Text="是否权限" />
+            <td class="auto-style1">&nbsp;&nbsp;&nbsp;<hr />&nbsp;&nbsp;用户名：<asp:TextBox ID="txtUserName" runat="server" Width="257px"></asp:TextBox>&nbsp;起始日期：<asp:TextBox ID="txtstartime" runat="server"  Columns="10"  onfocus="WdatePicker()" Width="89px"></asp:TextBox>&nbsp;&nbsp;&nbsp;&nbsp;结束日期：<asp:TextBox ID="txtenddate" runat="server"  Columns="10"  onfocus="WdatePicker()" Width="108px"></asp:TextBox>&nbsp;&nbsp; &nbsp;
+                <asp:CheckBox ID="chkIsAll" runat="server" OnCheckedChanged="chkIsAll_CheckedChanged" Text="是否全选" autopostback="true"/>
                 &nbsp; &nbsp; &nbsp;
 &nbsp;<asp:Button ID="btnsubmit" runat="server" Text="查询" OnClick="btnsubmit_Click" />
             &nbsp;

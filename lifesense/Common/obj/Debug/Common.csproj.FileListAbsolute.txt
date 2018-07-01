@@ -20,3 +20,4 @@ C:\E\workspace\beida\lifesense\Common\bin\Debug\Microsoft.Vbe.Interop.dll
 C:\E\workspace\beida\lifesense\Common\obj\Debug\Common.csprojResolveAssemblyReference.cache
 C:\E\workspace\beida\lifesense\Common\obj\Debug\lifesense.Common.dll
 C:\E\workspace\beida\lifesense\Common\obj\Debug\lifesense.Common.pdb
+D:\lifesense\lifesense\Common\obj\Debug\Common.csprojResolveAssemblyReference.cache

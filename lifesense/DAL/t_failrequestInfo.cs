@@ -131,21 +131,17 @@ namespace lifesense.DAL
         /// <summary>
         /// 得到一个对象实体
         /// </summary>
-        public lifesense.Model.t_failrequestInfo GetModel(string UserID, DateTime WriteTime, string Url, string Reason)
+        public lifesense.Model.t_failrequestInfo GetModel(string UserID, DateTime WriteTime)
         {
 
             StringBuilder strSql = new StringBuilder();
             strSql.Append("select  top 1 UserID,WriteTime,Url,Reason from t_failrequestInfo ");
-            strSql.Append(" where UserID=@UserID and WriteTime=@WriteTime and Url=@Url and Reason=@Reason ");
+            strSql.Append(" where UserID=@UserID and WriteTime=@WriteTime ");
             SqlParameter[] parameters = {
 					new SqlParameter("@UserID", SqlDbType.NVarChar,50),
-					new SqlParameter("@WriteTime", SqlDbType.Date,8),
-					new SqlParameter("@Url", SqlDbType.NVarChar,50),
-					new SqlParameter("@Reason", SqlDbType.NVarChar,500)			};
+					new SqlParameter("@WriteTime", SqlDbType.Date,8)	};
             parameters[0].Value = UserID;
             parameters[1].Value = WriteTime;
-            parameters[2].Value = Url;
-            parameters[3].Value = Reason;
 
             lifesense.Model.t_failrequestInfo model = new lifesense.Model.t_failrequestInfo();
             DataSet ds = DbHelperSQL.Query(strSql.ToString(), parameters);
