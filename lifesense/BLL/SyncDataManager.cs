@@ -41,6 +41,7 @@ namespace ConsoleLifesense
             if (!string.IsNullOrEmpty(token))
             {
                 string authorizeCode = new HttpCheckUser(syncDay, token, userModel).getTempAuthorizeCode();
+                //Thread.Sleep(1000 * 5);
                 if (!string.IsNullOrEmpty(authorizeCode))
                 {
                     AcessTokenandOpendid model = new UserInfo(authorizeCode, userModel, syncDay).getUserInfo();
@@ -61,7 +62,7 @@ namespace ConsoleLifesense
                         }
                     }
                 }
-                //Thread.Sleep(1000*5);
+                Thread.Sleep(1000*30);
             }
         }
 
