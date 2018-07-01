@@ -15,4 +15,3 @@ C:\E\workspace\beida\lifesense\DBUtility\bin\Debug\System.Data.SQLite.DLL
 C:\E\workspace\beida\lifesense\DBUtility\obj\Debug\DBUtility.csprojResolveAssemblyReference.cache
 C:\E\workspace\beida\lifesense\DBUtility\obj\Debug\lifesense.DBUtility.dll
 C:\E\workspace\beida\lifesense\DBUtility\obj\Debug\lifesense.DBUtility.pdb
-D:\lifesense\lifesense\DBUtility\obj\Debug\DBUtility.csprojResolveAssemblyReference.cache

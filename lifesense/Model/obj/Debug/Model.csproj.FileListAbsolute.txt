@@ -7,3 +7,4 @@ C:\E\workspace\beida\lifesense\Model\bin\Debug\lifesense.Model.pdb
 C:\E\workspace\beida\lifesense\Model\obj\Debug\Model.csprojResolveAssemblyReference.cache
 C:\E\workspace\beida\lifesense\Model\obj\Debug\lifesense.Model.dll
 C:\E\workspace\beida\lifesense\Model\obj\Debug\lifesense.Model.pdb
+D:\lifesense\lifesense\Model\obj\Debug\Model.csprojResolveAssemblyReference.cache
