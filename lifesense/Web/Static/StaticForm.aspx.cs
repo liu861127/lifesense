@@ -109,7 +109,7 @@ namespace lifesense.Web.Static
             {
                 MaxTime = DateTime.Now.AddDays(-1);
             }
-            if (endTime < MaxTime)
+            if (endTime >= MaxTime)
             {
                 Maticsoft.Common.MessageBox.Show(this,string.Format("截止时间不能最大不能超过{0}", MaxTime.ToString("yyyy-MM-dd")));
                 txtenddate.Focus();
