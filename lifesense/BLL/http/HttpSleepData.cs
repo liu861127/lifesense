@@ -13,10 +13,14 @@ namespace lifesense.BLL.http
     public class HttpSleepData : HttpBaseData
     {
        private WebClient webClient;
-       public HttpSleepData(AcessTokenandOpendid model)
+       private lifesense.Model.t_userinfo mUserModel;
+       private string mSyncDay;
+       public HttpSleepData(AcessTokenandOpendid model, lifesense.Model.t_userinfo userModel, String syncDay)
        {
            base.mAcessTokenandOpendid = model;
            webClient = WebClient.instance;
+           this.mUserModel = userModel;
+           this.mSyncDay = syncDay;
        }
 
        public SleepData getSleepData(String day)
@@ -31,15 +35,24 @@ namespace lifesense.BLL.http
 
        private SleepData getSleepDataExt(string param2)
        {
+           string param = Consts.GET_SLEEP_DATA + getParams();
            try
            {
-               string param = Consts.GET_SLEEP_DATA + getParams();
                String sleepInfo = webClient.Post(param, param2, CONTENT_TYPE);
                return JsonConvert.DeserializeObject<SleepData>(sleepInfo);
            }
            catch (Exception ex)
            {
-               return null;
+               if (currentTryRunNum == TRY_AGAIN_MUN)
+               {
+                   FailRequestManager.mInstance.saveInFailList(mUserModel.UserID, TimeParser.GetTime(mSyncDay), param, (ex == null ? "" : ex.Message));
+                   return null;
+               }
+               else
+               {
+                   currentTryRunNum++;
+                   return getSleepDataExt(param2);
+               }
            }
        }
 

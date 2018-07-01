@@ -12,27 +12,39 @@ using lifesense.BLL.http.ResponseParam;
 
 namespace lifesense.BLL.http
 {
-    public  class UserInfo
+    public  class UserInfo:HttpBaseData
     {
        private  String mAuthorizeCode;
-       public UserInfo(String authorizeCode)
+       private string mSyncDay;
+       private lifesense.Model.t_userinfo mModel;
+       public UserInfo(String authorizeCode,lifesense.Model.t_userinfo model, String syncDay)
         {
             this.mAuthorizeCode = authorizeCode;
+            this.mSyncDay = syncDay;
+            this.mModel = model;
         }
 
        public AcessTokenandOpendid getUserInfo()
        {
            WebClient webClient = WebClient.instance;
+           String param = Consts.GET_ACCESS_TOKEN_AND_OPENID + getParams();
            try
            {
-               String param = Consts.GET_ACCESS_TOKEN_AND_OPENID + getParams();
                String userInfo = webClient.Post(param, "","");
-
                return getAcessToken(userInfo);
            }
            catch (Exception ex)
            {
-               return null;
+               if (currentTryRunNum == TRY_AGAIN_MUN)
+               {
+                   FailRequestManager.mInstance.saveInFailList(mModel.UserID, TimeParser.GetTime(mSyncDay), param, (ex == null ? "" : ex.Message));
+                   return null;
+               }
+               else
+               {
+                   currentTryRunNum++;
+                   return getUserInfo();
+               }
 
            }
        }

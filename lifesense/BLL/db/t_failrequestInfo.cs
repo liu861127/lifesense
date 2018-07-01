@@ -42,10 +42,10 @@ namespace lifesense.BLL
         /// <summary>
         /// 删除一条数据
         /// </summary>
-        public bool Delete(string UserID, DateTime WriteTime, string Url, string Reason)
+        public bool Delete(string UserID, DateTime WriteTime)
         {
 
-            return dal.Delete(UserID, WriteTime, Url, Reason);
+            return dal.Delete(UserID, WriteTime);
         }
 
         /// <summary>

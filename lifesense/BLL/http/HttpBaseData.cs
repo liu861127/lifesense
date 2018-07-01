@@ -10,6 +10,10 @@ namespace lifesense.BLL.http
 {
 public abstract    class HttpBaseData
     {
+    //重试的总次数
+    protected int TRY_AGAIN_MUN = 2;
+    //当前重试次数
+    protected int currentTryRunNum = 0;
     protected const string CONTENT_TYPE = "application/json";
     public AcessTokenandOpendid mAcessTokenandOpendid;
 

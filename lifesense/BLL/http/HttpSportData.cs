@@ -13,10 +13,14 @@ namespace lifesense.BLL.http
 public    class HttpSportData : HttpBaseData
     {
     private WebClient webClient;
-    public HttpSportData(AcessTokenandOpendid model)
+    private lifesense.Model.t_userinfo mUserModel;
+    private string mSyncDay;
+    public HttpSportData(AcessTokenandOpendid model, lifesense.Model.t_userinfo userModel, String syncDay)
        {
            base.mAcessTokenandOpendid = model;
            webClient = WebClient.instance;
+           this.mUserModel = userModel;
+           this.mSyncDay = syncDay;
        }
 
     public SportData getSportData(String day)
@@ -30,15 +34,24 @@ public    class HttpSportData : HttpBaseData
 
        private SportData getSportDataExt(string param2)
        {
+           string param = Consts.GET_SPORT_DATA + getParams();
            try
            {
-               string param = Consts.GET_SPORT_DATA + getParams();
                String sleepInfo = webClient.Post(param, param2, CONTENT_TYPE);
                return JsonConvert.DeserializeObject<SportData>(sleepInfo);
            }
            catch (Exception ex)
            {
-               return null;
+               if (currentTryRunNum == TRY_AGAIN_MUN)
+               {
+                   FailRequestManager.mInstance.saveInFailList(mUserModel.UserID, TimeParser.GetTime(mSyncDay), param, (ex == null ? "" : ex.Message));
+                   return null;
+               }
+               else
+               {
+                   currentTryRunNum++;
+                   return getSportDataExt(param2);
+               }
            }
        }
 

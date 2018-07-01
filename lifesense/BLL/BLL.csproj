@@ -122,6 +122,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FailRequestManager.cs" />
     <Compile Include="http\HttpBaseData.cs" />
     <Compile Include="http\HttpCheckUser.cs" />
     <Compile Include="http\config\AppConfig.cs" />
@@ -135,7 +136,7 @@
     <Compile Include="http\ResponseParam\Sport.cs" />
     <Compile Include="http\HttpSleepData.cs" />
     <Compile Include="http\HttpSportData.cs" />
-    <Compile Include="http\SyncDataManager.cs" />
+    <Compile Include="SyncDataManager.cs" />
     <Compile Include="http\HttpToken.cs" />
     <Compile Include="http\UserInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">

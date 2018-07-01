@@ -12,19 +12,22 @@ using System.Web;
 
 namespace lifesense.BLL.http
 {
-    public class HttpToken
+    public class HttpToken : HttpBaseData
     {
-       public HttpToken()
+        private string mSyncDay;
+        private lifesense.Model.t_userinfo mModel;
+        public HttpToken(lifesense.Model.t_userinfo model, String syncDay)
        {
-
+           this.mSyncDay = syncDay;
+           this.mModel = model;
        }
 
        public String getTempAuthorizeCode()
        {
            WebClient webClient = WebClient.instance;
+           String param = Consts.GET_USER_TOKEN_URL + getParams();
            try
            {
-               String param = Consts.GET_USER_TOKEN_URL + getParams();
                System.Net.HttpWebResponse httpWebResponse = webClient.getHttpWebResponse(param);
                String tempUrl =httpWebResponse.GetResponseHeader("Location");
                Uri uri = new Uri(tempUrl);  
@@ -32,8 +35,16 @@ namespace lifesense.BLL.http
                 NameValueCollection col = GetQueryString(queryString);
                 return col["tempAuthorizeCode"].ToString();
            }catch(Exception ex){
-               String msg = ex.ToString();
-               return msg;
+               if (currentTryRunNum == TRY_AGAIN_MUN)
+               {
+                   FailRequestManager.mInstance.saveInFailList(mModel.UserID, TimeParser.GetTime(mSyncDay), param, (ex == null ? "" : ex.Message));
+                   return null;
+               }
+               else
+               {
+                   currentTryRunNum++;
+                   return getTempAuthorizeCode();
+               }
            }
 
        }
