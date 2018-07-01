@@ -102,8 +102,27 @@ namespace lifesense.Web.Static
         /// <param name="e"></param>
         protected void btnSynchronization_Click(object sender, EventArgs e)
         {
+            DateTime beginTime = Convert.ToDateTime(txtstartime.Text);
+            DateTime endTime = Convert.ToDateTime(txtenddate.Text);
+            DateTime MaxTime = DateTime.Now.AddDays(-2);
+            if(DateTime.Now.Hour>13)
+            {
+                MaxTime = DateTime.Now.AddDays(-1);
+            }
+            if (endTime < MaxTime)
+            {
+                Maticsoft.Common.MessageBox.Show(this,string.Format("截止时间不能最大不能超过{0}", MaxTime.ToString("yyyy-MM-dd")));
+                txtenddate.Focus();
+                return;
+            }
+            if(endTime<=beginTime)
+            {
+                Maticsoft.Common.MessageBox.Show(this, string.Format("截止时间{0}不能小于开始时间{1}", endTime.ToString("yyyy-MM-dd"), beginTime.ToString("yyyy-MM-dd")));
+                txtenddate.Focus();
+                return;
+            }
             ConsoleLifesense.SyncDataManager sycdataBll = new ConsoleLifesense.SyncDataManager();
-            
+            sycdataBll.syncDateSegmentData(beginTime, endTime);
         }
         /// <summary>
         /// 导出excel

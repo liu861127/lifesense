@@ -159,8 +159,54 @@ namespace ConsoleLifesense
             heartrateModel.HeartRate = heartrateData.heartrate.heartrate;
             return heartrateModel;
         }
+        /// <summary>
+        /// 手动同步异常的数据
+        /// </summary>
+        /// <param name="syncDay"></param>
+        /// <param name="msg"></param>
+        /// <returns></returns>
+        public void syncExceptionData(List<lifesense.Model.t_failrequestInfo> listModel,out string msg)
+        {
+            msg = string.Empty;
+            string temp = string.Empty;
+            if(listModel.Count>0)
+            {
+                listModel.ForEach(failModel =>
+                {
 
+                    lifesense.Model.t_userinfo userModel = new lifesense.Model.t_userinfo();
+                    lifesense.BLL.t_userinfo userinfoBll = new lifesense.BLL.t_userinfo();
+                    List<lifesense.Model.t_userinfo> listUser = userinfoBll.GetModelList(string.Format("UserID={0}", failModel.UserID));
+                    if (listUser != null && listUser.Count == 1)
+                    {
+                        userModel = listUser[0];
+                        syncData(userModel, failModel.WriteTime.ToString("yyyy-MM-dd"));
+                    }
+                    else
+                    {
+                        temp += string.Format("不存在用户:{0}",failModel.UserID);
+                    }
+                });
+                if(!string.IsNullOrEmpty(temp))
+                {
+                    msg=temp;
+                }
+            }
 
-
+        }
+        /// <summary>
+        /// 手动同步日期的数据
+        /// </summary>
+        /// <param name="syncDay"></param>
+        /// <param name="msg"></param>
+        /// <returns></returns>
+        public void syncDateSegmentData(DateTime beginTime, DateTime endtime)
+        {
+            int dayCount = (endtime - beginTime).Days;
+            for (int i = 0; i < dayCount;i++)
+            {
+                syncData(beginTime.AddDays(i).ToString("yyyy-MM-dd"));
+            }
+        }
     }
 }
