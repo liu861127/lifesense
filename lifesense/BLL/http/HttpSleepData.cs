@@ -39,7 +39,15 @@ namespace lifesense.BLL.http
            }
            catch (Exception ex)
            {
-               return null;
+               if (currentTryRunNum == TRY_AGAIN_MUN)
+               {
+                   return null;
+               }
+               else
+               {
+                   currentTryRunNum++;
+                   return getSleepDataExt(param2);
+               }
            }
        }
 

@@ -10,7 +10,7 @@ using Newtonsoft.Json;
 
 namespace lifesense.BLL.http
 {
- public   class HttpCheckUser
+ public   class HttpCheckUser:HttpBaseData
     {
      private String mToken;
      private lifesense.Model.t_userinfo mModel;
@@ -30,14 +30,22 @@ namespace lifesense.BLL.http
               {
                   String param = Consts.CHECK_USER + getParams(mModel);
                   String userInfo = webClient.Post(param, "", "");
-                  returnMsg= getAuthorizeCode(userInfo);
+                  return getAuthorizeCode(userInfo);
               }
+              return null;
           }
           catch (Exception ex)
           {
-              returnMsg = string.Empty;
+              if (currentTryRunNum == TRY_AGAIN_MUN)
+              {
+                  return null;
+              }
+              else
+              {
+                  currentTryRunNum++;
+                  return getTempAuthorizeCode();
+              }
           }
-          return returnMsg;
       }
 
       private String getAuthorizeCode(String userInfo)

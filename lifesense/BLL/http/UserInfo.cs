@@ -12,7 +12,7 @@ using lifesense.BLL.http.ResponseParam;
 
 namespace lifesense.BLL.http
 {
-    public  class UserInfo
+    public  class UserInfo:HttpBaseData
     {
        private  String mAuthorizeCode;
        public UserInfo(String authorizeCode)
@@ -32,7 +32,15 @@ namespace lifesense.BLL.http
            }
            catch (Exception ex)
            {
-               return null;
+               if (currentTryRunNum == TRY_AGAIN_MUN)
+               {
+                   return null;
+               }
+               else
+               {
+                   currentTryRunNum++;
+                   return getUserInfo();
+               }
 
            }
        }

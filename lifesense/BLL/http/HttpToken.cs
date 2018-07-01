@@ -12,8 +12,9 @@ using System.Web;
 
 namespace lifesense.BLL.http
 {
-    public class HttpToken
+    public class HttpToken : HttpBaseData
     {
+
        public HttpToken()
        {
 
@@ -32,8 +33,15 @@ namespace lifesense.BLL.http
                 NameValueCollection col = GetQueryString(queryString);
                 return col["tempAuthorizeCode"].ToString();
            }catch(Exception ex){
-               String msg = ex.ToString();
-               return msg;
+               if (currentTryRunNum == TRY_AGAIN_MUN)
+               {
+                   return null;
+               }
+               else
+               {
+                   currentTryRunNum++;
+                   return getTempAuthorizeCode();
+               }
            }
 
        }
