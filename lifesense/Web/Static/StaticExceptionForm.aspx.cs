@@ -61,13 +61,26 @@ namespace lifesense.Web.Static
             List<string> listKey = strIDlist.Split(',').ToList();
             foreach(string item in listKey)
             {
+                if(!string.IsNullOrEmpty(item))
                 listmodel.Add(failBll.GetModel(item.Split('|')[0], Convert.ToDateTime(item.Split('|')[1])));
             }
             string msg=string.Empty;
-            sycdataBll.syncExceptionData(listmodel, out msg);
-            if(!string.IsNullOrEmpty(msg))
+            if (listmodel.Count > 0)
             {
-                Maticsoft.Common.MessageBox.Show(this, msg);
+                sycdataBll.syncExceptionData(listmodel, out msg);
+                if (!string.IsNullOrEmpty(msg))
+                {
+                    Maticsoft.Common.MessageBox.Show(this, msg);
+                }
+                else
+                {
+                    Maticsoft.Common.MessageBox.Show(this, "同步所选成功!");
+                    LoadData();
+                }
+            }
+            else
+            {
+                Maticsoft.Common.MessageBox.Show(this, "不存在需要同步数据，请重新选择需要同步的数据！");
             }
         }
         private string GetSelIDlist()

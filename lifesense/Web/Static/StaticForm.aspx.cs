@@ -123,6 +123,8 @@ namespace lifesense.Web.Static
             }
             ConsoleLifesense.SyncDataManager sycdataBll = new ConsoleLifesense.SyncDataManager();
             sycdataBll.syncDateSegmentData(beginTime, endTime);
+            Maticsoft.Common.MessageBox.Show(this, "同步完成!");
+            LoadData();
         }
         /// <summary>
         /// 导出excel

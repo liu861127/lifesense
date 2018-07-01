@@ -17,6 +17,7 @@ namespace ConsoleLifesense
         static void Main(string[] args)
         {
             new SyncDataManager().start();
+     
             //String sha = getSHA();
             //sha = "";
         }

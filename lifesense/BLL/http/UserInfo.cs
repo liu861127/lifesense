@@ -37,7 +37,7 @@ namespace lifesense.BLL.http
            {
                if (currentTryRunNum == TRY_AGAIN_MUN)
                {
-                   FailRequestManager.mInstance.saveInFailList(mModel.UserID, TimeParser.GetTime(mSyncDay), param, (ex == null ? "" : ex.Message));
+                   FailRequestManager.mInstance.saveInFailList(mModel.UserID, Convert.ToDateTime(mSyncDay), param, (ex == null ? "" : ex.Message));
                    return null;
                }
                else

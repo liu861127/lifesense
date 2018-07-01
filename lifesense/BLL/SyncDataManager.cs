@@ -41,6 +41,7 @@ namespace ConsoleLifesense
             if (!string.IsNullOrEmpty(token))
             {
                 string authorizeCode = new HttpCheckUser(syncDay, token, userModel).getTempAuthorizeCode();
+                //Thread.Sleep(1000 * 5);
                 if (!string.IsNullOrEmpty(authorizeCode))
                 {
                     AcessTokenandOpendid model = new UserInfo(authorizeCode, userModel, syncDay).getUserInfo();
@@ -56,12 +57,12 @@ namespace ConsoleLifesense
                         bool saveHeartrateSuccess = saveHeartrateData(heartrateData, userModel, syncDay);
                         // 数据都同步成功了，再重错误列表中移除掉
                         if (saveSleepSuccess && saveSportSuccess && saveHeartrateSuccess)
-                        {                     
-                            FailRequestManager.mInstance.deleteFromFialList(userModel.UserID,TimeParser.GetTime(syncDay));
+                        {
+                            FailRequestManager.mInstance.deleteFromFialList(userModel.UserID, Convert.ToDateTime(syncDay));
                         }
                     }
                 }
-                //Thread.Sleep(1000*5);
+                Thread.Sleep(1000*30);
             }
         }
 
