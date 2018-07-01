@@ -13,9 +13,11 @@ namespace lifesense.BLL.http
  public   class HttpCheckUser:HttpBaseData
     {
      private String mToken;
+     private string mSyncDay;
      private lifesense.Model.t_userinfo mModel;
-     public HttpCheckUser(String token, lifesense.Model.t_userinfo model)
+     public HttpCheckUser(String syncDay,String token, lifesense.Model.t_userinfo model)
        {
+           this.mSyncDay = syncDay;
            this.mToken = token;
            this.mModel = model;
        }
@@ -24,11 +26,11 @@ namespace lifesense.BLL.http
       {
           string returnMsg = string.Empty;
           WebClient webClient = WebClient.instance;
+          String param = Consts.CHECK_USER + getParams(mModel);
           try
           {
               if (mModel != null)
               {
-                  String param = Consts.CHECK_USER + getParams(mModel);
                   String userInfo = webClient.Post(param, "", "");
                   return getAuthorizeCode(userInfo);
               }
@@ -38,6 +40,7 @@ namespace lifesense.BLL.http
           {
               if (currentTryRunNum == TRY_AGAIN_MUN)
               {
+                  FailRequestManager.mInstance.saveInFailList(mModel.UserID, TimeParser.GetTime(mSyncDay), param,(ex==null? "" : ex.Message));
                   return null;
               }
               else

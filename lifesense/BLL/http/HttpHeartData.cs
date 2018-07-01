@@ -13,10 +13,14 @@ namespace lifesense.BLL.http
  public   class HttpHeartData : HttpBaseData
     {
      private WebClient webClient;
-     public HttpHeartData(AcessTokenandOpendid model)
+     private lifesense.Model.t_userinfo mUserModel;
+     private string mSyncDay;
+     public HttpHeartData(AcessTokenandOpendid model, lifesense.Model.t_userinfo userModel, String syncDay)
        {
            base.mAcessTokenandOpendid = model;
            webClient = WebClient.instance;
+           this.mUserModel = userModel;
+           this.mSyncDay = syncDay;
        }
 
      public HeartrateData getHeartrateData(string day)
@@ -31,9 +35,9 @@ namespace lifesense.BLL.http
 
      private HeartrateData getHeartrateDataExt(string param2)
        {
+           string param = Consts.GET_HEART_DATA + getParams();
            try
            {
-               string param = Consts.GET_HEART_DATA + getParams();
                String sleepInfo = webClient.Post(param, param2, CONTENT_TYPE);
                return JsonConvert.DeserializeObject<HeartrateData>(sleepInfo);
            }
@@ -41,6 +45,7 @@ namespace lifesense.BLL.http
            {
                if (currentTryRunNum == TRY_AGAIN_MUN)
                {
+                   FailRequestManager.mInstance.saveInFailList(mUserModel.UserID, TimeParser.GetTime(mSyncDay), param, (ex == null ? "" : ex.Message));
                    return null;
                }
                else

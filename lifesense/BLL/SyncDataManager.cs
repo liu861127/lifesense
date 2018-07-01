@@ -23,22 +23,22 @@ namespace ConsoleLifesense
            lifesense.BLL.t_userinfo userBll = new lifesense.BLL.t_userinfo();
            List<lifesense.Model.t_userinfo> listUser = userBll.GetModelList("");
            listUser.ForEach(userModel => {
-               token = new HttpToken().getTempAuthorizeCode();
+               token = new HttpToken(userModel,syncDay).getTempAuthorizeCode();
                if (!string.IsNullOrEmpty(token))
                {
-                   string authorizeCode = new HttpCheckUser(token, userModel).getTempAuthorizeCode();
+                   string authorizeCode = new HttpCheckUser(syncDay,token, userModel).getTempAuthorizeCode();
                    if (!string.IsNullOrEmpty(authorizeCode))
                    {
-                       AcessTokenandOpendid model = new UserInfo(authorizeCode).getUserInfo();
+                       AcessTokenandOpendid model = new UserInfo(authorizeCode, userModel,syncDay).getUserInfo();
                        if (model != null)
                        {
-                           SleepData sleepData = new HttpSleepData(model).getSleepData(syncDay);
+                           SleepData sleepData = new HttpSleepData(model, userModel, syncDay).getSleepData(syncDay);
                            bool saveSleepSuccess = saveSleepData(sleepData, userModel);
 
-                           SportData sportData = new HttpSportData(model).getSportData(syncDay);
+                           SportData sportData = new HttpSportData(model, userModel, syncDay).getSportData(syncDay);
                            bool saveSportSuccess = saveSportData(sportData, userModel,syncDay);
 
-                           HeartrateData heartrateData = new HttpHeartData(model).getHeartrateData(syncDay);
+                           HeartrateData heartrateData = new HttpHeartData(model, userModel, syncDay).getHeartrateData(syncDay);
                            bool saveHeartrateSuccess = saveHeartrateData(heartrateData, userModel, syncDay);
                        }
                    }
