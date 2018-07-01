@@ -56,8 +56,8 @@ namespace ConsoleLifesense
                         bool saveHeartrateSuccess = saveHeartrateData(heartrateData, userModel, syncDay);
                         // 数据都同步成功了，再重错误列表中移除掉
                         if (saveSleepSuccess && saveSportSuccess && saveHeartrateSuccess)
-                        {                     
-                            FailRequestManager.mInstance.deleteFromFialList(userModel.UserID,TimeParser.GetTime(syncDay));
+                        {
+                            FailRequestManager.mInstance.deleteFromFialList(userModel.UserID, Convert.ToDateTime(syncDay));
                         }
                     }
                 }
