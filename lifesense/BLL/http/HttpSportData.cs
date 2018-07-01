@@ -38,7 +38,14 @@ public    class HttpSportData : HttpBaseData
            try
            {
                String sleepInfo = webClient.Post(param, param2, CONTENT_TYPE);
-               return JsonConvert.DeserializeObject<SportData>(sleepInfo);
+               SportData sportData=JsonConvert.DeserializeObject<SportData>(sleepInfo);
+               if (sportData == null || sportData.sport==null)
+               {
+                   sportData = new SportData();
+                   Sport sport = new Sport();
+                   sportData.sport = sport;
+               }
+               return sportData;
            }
            catch (Exception ex)
            {
