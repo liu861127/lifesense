@@ -39,7 +39,13 @@ namespace lifesense.BLL.http
            try
            {
                String sleepInfo = webClient.Post(param, param2, CONTENT_TYPE);
-               return JsonConvert.DeserializeObject<SleepData>(sleepInfo);
+               SleepData data = JsonConvert.DeserializeObject<SleepData>(sleepInfo);
+               if(data == null || data.sleep==null){
+                   data = new SleepData();
+                   Sleep sleep = new Sleep();
+                   data.sleep = sleep;
+               }
+               return data;
            }
            catch (Exception ex)
            {
