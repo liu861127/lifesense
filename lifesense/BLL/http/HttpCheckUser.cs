@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
+using Maticsoft.Common.DEncrypt;
 
 namespace lifesense.BLL.http
 {
@@ -71,7 +72,7 @@ namespace lifesense.BLL.http
       {
           StringBuilder sb = new StringBuilder();
           sb.AppendFormat("?username={0}",model.UserID);//13560721536
-          sb.AppendFormat("&password={0}",model.UserPwd);//861127
+          sb.AppendFormat("&password={0}", DESEncrypt.Decrypt(model.UserPwd));//861127
           sb.Append("&tempAuthorizeCode=" + mToken);
           return sb.ToString();
       }
