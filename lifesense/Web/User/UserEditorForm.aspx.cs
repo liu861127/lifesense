@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Maticsoft.Common.DEncrypt;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -25,8 +26,8 @@ namespace lifesense.Web.User
         {
             lifesense.BLL.t_userinfo userbll = new BLL.t_userinfo();
             lifesense.Model.t_userinfo model = userbll.GetModel(ID);
-            txtUserID.Text = model.UserID;
-            txtUserName.Text = model.UserName;
+            txtFUserID.Text = model.UserID;
+            txtFUserName.Text = model.UserName;
             txtUserPwd.Text = model.UserPwd;
             lblID.Text = model.ID.ToString();
         }
@@ -36,10 +37,9 @@ namespace lifesense.Web.User
             bool bolResult = false;
             lifesense.BLL.t_userinfo userbll = new BLL.t_userinfo();
             lifesense.Model.t_userinfo model = new Model.t_userinfo();
-            model.UserID = txtUserID.Text.Trim();
-            model.UserName = txtUserName.Text.Trim();
-            model.UserPwd = txtUserPwd.Text.Trim();
-      
+            model.UserID = txtFUserID.Text.Trim();
+            model.UserName = txtFUserName.Text.Trim();
+            model.UserPwd =DESEncrypt.Encrypt(txtUserPwd.Text.Trim());
             if (!string.IsNullOrEmpty(lblID.Text))
             {
                 model.ID =Convert.ToInt32 (lblID.Text);
@@ -50,7 +50,7 @@ namespace lifesense.Web.User
                 else
                 {
                     Maticsoft.Common.MessageBox.Show(this, "已经存在相同的用户ID，请重新输入过!");
-                    txtUserID.Focus();
+                    txtFUserID.Focus();
                 }
             }
             else
@@ -58,7 +58,7 @@ namespace lifesense.Web.User
                 if (userbll.GetRecordCount(string.Format("UserID='{0}'", model.UserID)) > 0)
                 {
                     Maticsoft.Common.MessageBox.Show(this, "已经存在相同的用户ID，请重新输入过!");
-                    txtUserID.Focus();
+                    txtFUserID.Focus();
                 }
                 else
                 {

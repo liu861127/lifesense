@@ -22,7 +22,7 @@ namespace Maticsoft.Common.DEncrypt
         /// <returns></returns>
 		public static string Encrypt(string Text) 
 		{
-			return Encrypt(Text,"MATICSOFT");
+			return Encrypt(Text,"LIFESENCE");
 		}
 		/// <summary> 
 		/// 加密数据 

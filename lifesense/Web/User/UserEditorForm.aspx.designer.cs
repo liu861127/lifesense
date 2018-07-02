@@ -31,22 +31,22 @@ namespace lifesense.Web.User {
         protected global::System.Web.UI.WebControls.Label lblID;
         
         /// <summary>
-        /// txtUserID 控件。
+        /// txtFUserID 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtUserID;
+        protected global::System.Web.UI.WebControls.TextBox txtFUserID;
         
         /// <summary>
-        /// txtUserName 控件。
+        /// txtFUserName 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtUserName;
+        protected global::System.Web.UI.WebControls.TextBox txtFUserName;
         
         /// <summary>
         /// txtUserPwd 控件。

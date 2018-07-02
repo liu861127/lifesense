@@ -54,7 +54,7 @@
                     </ItemTemplate>
                 </asp:TemplateField>
                 <asp:BoundField HeaderText="用户名称" DataField="UserName" ItemStyle-CssClass="dmessage" />
-                <asp:BoundField HeaderText="密码" DataField="UserPwd" />
+           <%--     <asp:BoundField HeaderText="密码" DataField="UserPwd" />--%>
                             <asp:HyperLinkField HeaderText="编辑" ControlStyle-Width="50" DataNavigateUrlFields="ID" DataNavigateUrlFormatString="UserEditorForm.aspx?id={0}"
                                 Text="编辑"  />
                             <asp:TemplateField ControlStyle-Width="50" HeaderText="删除"   Visible="false"  >

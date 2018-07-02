@@ -23,19 +23,19 @@
                             <tr>
                                 <td height="25" width="30%" align="right">账号：</td>
                                 <td height="25" width="*" align="left">
-                                    <asp:TextBox ID="txtUserID" runat="server" Width="200px"></asp:TextBox>
+                                    <asp:TextBox ID="txtFUserID" runat="server" Width="200px"></asp:TextBox>
                                 </td>
                             </tr>
                             <tr>
                                 <td height="25" width="30%" align="right">用户名：</td>
                                 <td height="25" width="*" align="left">
-                                    <asp:TextBox ID="txtUserName" runat="server" Width="200px"></asp:TextBox>
+                                    <asp:TextBox ID="txtFUserName" runat="server" Width="200px"></asp:TextBox>
                                 </td>
                             </tr>
                             <tr>
                                 <td height="25" width="30%" align="right">密码：</td>
                                 <td height="25" width="*" align="left">
-                                    <asp:TextBox ID="txtUserPwd" runat="server" Width="200px"></asp:TextBox>
+                                    <asp:TextBox ID="txtUserPwd" runat="server" Width="200px" TextMode="Password"></asp:TextBox>
                                 </td>
                             </tr>
                         </table>
