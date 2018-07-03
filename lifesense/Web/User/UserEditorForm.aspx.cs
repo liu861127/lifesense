@@ -40,6 +40,24 @@ namespace lifesense.Web.User
             model.UserID = txtFUserID.Text.Trim();
             model.UserName = txtFUserName.Text.Trim();
             model.UserPwd =DESEncrypt.Encrypt(txtUserPwd.Text.Trim());
+            if(string.IsNullOrEmpty(model.UserID))
+            {
+                Maticsoft.Common.MessageBox.Show(this, "用户账号不能为空，请重新输入!");
+                txtFUserID.Focus();
+                return;
+            }
+            if (string.IsNullOrEmpty(model.UserName))
+            {
+                Maticsoft.Common.MessageBox.Show(this, "用户名称不能为空，请重新输入!");
+                txtFUserID.Focus();
+                return;
+            }
+            if (string.IsNullOrEmpty(model.UserPwd))
+            {
+                Maticsoft.Common.MessageBox.Show(this, "用户密码不能为空，请重新输入!");
+                txtFUserID.Focus();
+                return;
+            }
             if (!string.IsNullOrEmpty(lblID.Text))
             {
                 model.ID =Convert.ToInt32 (lblID.Text);
