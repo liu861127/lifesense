@@ -31,8 +31,6 @@ C:\E\workspace\beida\lifesense\BLL\bin\Debug\OpenSmtp.dll
 C:\E\workspace\beida\lifesense\BLL\bin\Debug\Excel.dll
 C:\E\workspace\beida\lifesense\BLL\bin\Debug\COM.Excel.dll
 C:\E\workspace\beida\lifesense\BLL\bin\Debug\lifesense.DBUtility.dll
-C:\E\workspace\beida\lifesense\BLL\bin\Debug\office.dll
-C:\E\workspace\beida\lifesense\BLL\bin\Debug\Microsoft.Vbe.Interop.dll
 C:\E\workspace\beida\lifesense\BLL\bin\Debug\IBatisNet.DataMapper.dll
 C:\E\workspace\beida\lifesense\BLL\bin\Debug\IBatisNet.Common.dll
 C:\E\workspace\beida\lifesense\BLL\bin\Debug\System.Data.SQLite.dll
