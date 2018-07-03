@@ -13,11 +13,34 @@ namespace ConsoleLifesense
     public  class SyncDataManager
     {
         public  String token;
-        private string mSyncDay = DateTime.Now.AddDays(-15).ToString("yyyy-MM-dd");
+        private string mSyncDay;
+        //数据同步的时间点，每天中午12点同步数据
+        private const int SYC_HOUR = 12;
         public void start()
         {
-            syncData(mSyncDay);
+            Thread thread = new Thread(syncData);
+            thread.Start();
         }
+
+        private void syncData()
+        {
+            int currentHour;
+            string lastSyncDay = "";
+            while(true)
+            {
+                currentHour = DateTime.Now.Hour;
+                mSyncDay = DateTime.Now.AddDays(-1).ToString("yyyy-MM-dd");
+             
+                if (currentHour == SYC_HOUR && !mSyncDay.Equals(lastSyncDay))
+                 {
+                     lastSyncDay = mSyncDay;
+                     syncData(mSyncDay);
+                 }
+
+                Thread.Sleep(600000);
+            }
+        }
+
 
         //从失败列表中同步数据
         public void syncDataFromFailList()
