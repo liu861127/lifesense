@@ -61,7 +61,7 @@ namespace Maticsoft.Common.DEncrypt
         /// <returns></returns>
 		public static string Decrypt(string Text) 
 		{
-			return Decrypt(Text,"MATICSOFT");
+            return Decrypt(Text, "LIFESENCE");
 		}
 		/// <summary> 
 		/// 解密数据 
