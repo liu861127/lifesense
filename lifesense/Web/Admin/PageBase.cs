@@ -36,28 +36,30 @@ namespace lifesense.Web.Admin
         protected string error = "";
         protected override void OnLoad(EventArgs e)
         {
-            if (Request.Url.AbsoluteUri.ToLower().IndexOf("localhost") < 0)
+            //if (Request.Url.AbsoluteUri.ToLower().IndexOf("localhost") < 0)
             {
                 if (Session["adminDomain"] == null)
                 {
                     //尚未登陆
-                    Response.Redirect("/Admin/Login.aspx?url=" + Request.Url.AbsoluteUri);
+                    //Response.Redirect("../Admin/Login.aspx");
+                    //Maticsoft.Common.MessageBox.ShowAndRedirect(this, "请先登录以后再访问!", "/Admin/Login.aspx");
+                    Response.Redirect("/Admin/Login.aspx");
                     Response.End();
                 }
-                if (Session["error"] != null)
-                {
-                    //权限xml是否存在
-                    error = "false";
-                }
-                string adminDomain = "," + Session["adminDomain"].ToString() + ",";
-                Session["adminDomain"] = adminDomain;
-                string FilePath = Request.Url.AbsolutePath.Substring(Request.Url.AbsolutePath.LastIndexOf('/') + 1);
-                if (adminDomain == "" || error == "false")
-                {
-                    //没有访问权限
-                    Response.Write("<script>alert('你没有访问该页面的权限!如有问题,请与管理员联系.');</script>");
-                    Response.End();
-                }
+                //if (Session["error"] != null)
+                //{
+                //    //权限xml是否存在
+                //    error = "false";
+                //}
+                //string adminDomain = "," + Session["adminDomain"].ToString() + ",";
+                //Session["adminDomain"] = adminDomain;
+                //string FilePath = Request.Url.AbsolutePath.Substring(Request.Url.AbsolutePath.LastIndexOf('/') + 1);
+                //if (adminDomain == "" || error == "false")
+                //{
+                //    //没有访问权限
+                //    Response.Write("<script>alert('你没有访问该页面的权限!如有问题,请与管理员联系.');</script>");
+                //    Response.End();
+                //}
             }
             base.OnLoad(e);
         }

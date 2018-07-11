@@ -16,8 +16,6 @@ D:\lifesense\lifesense\LifesenseServer\bin\Release\office.dll
 D:\lifesense\lifesense\LifesenseServer\bin\Release\Microsoft.Vbe.Interop.dll
 D:\lifesense\lifesense\LifesenseServer\bin\Release\IBatisNet.DataMapper.dll
 D:\lifesense\lifesense\LifesenseServer\bin\Release\IBatisNet.Common.dll
-D:\lifesense\lifesense\LifesenseServer\bin\Release\System.Data.SQLite.dll
-D:\lifesense\lifesense\LifesenseServer\bin\Release\MySql.Data.dll
 D:\lifesense\lifesense\LifesenseServer\obj\Release\LifesenseServer.csprojResolveAssemblyReference.cache
 D:\lifesense\lifesense\LifesenseServer\obj\Release\LifesenseServer.ProjectInstaller.resources
 D:\lifesense\lifesense\LifesenseServer\obj\Release\LifesenseServer.csproj.GenerateResource.Cache

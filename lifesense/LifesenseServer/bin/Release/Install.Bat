@@ -1,11 +1,13 @@
 @echo off 
-set filename=%cd%\LifesenseServer.exe 
+echo %~dp0
+set filename=%~dp0\LifesenseServer.exe 
 set servicename=LifesenseServer
 pause
+
 echo ============================操作日志==================================== >InstallService.log  
 if exist "%SystemRoot%\Microsoft.NET\Framework\v4.0.30319" goto netOld 
 :DispError 
-echo 您的机器上没有安装 .net Framework 4.0,安装即将终止 
+echo  您的机器上没有安装 .net Framework 4.0,安装即将终止 
 echo 您的机器上没有安装 .net Framework 4.0,安装即将终止 >>InstallService.log  
 goto LastEnd 
 :netOld 
@@ -27,7 +29,7 @@ echo ======================================================================= >>I
 type InstallService.log
 echo.
 echo 操作结束，可以查看日志文件InstallService.log 中具体的操作结果。
-
+echo %cd%
 :LastEnd 
 pause
 rem exit

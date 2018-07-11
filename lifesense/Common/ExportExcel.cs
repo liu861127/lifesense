@@ -17,11 +17,11 @@ namespace lifesense.Common
         {
             HttpContext.Current.Response.Clear();
             HttpContext.Current.Response.Buffer = true;
-            HttpContext.Current.Response.Charset = "GB2312";
+            HttpContext.Current.Response.Charset = "UTF-8";
             HttpContext.Current.Response.AppendHeader("Content-Disposition", "attachment;fileName=" + ExcelName);
-            HttpContext.Current.Response.ContentEncoding = System.Text.Encoding.GetEncoding("GB2312");
+            HttpContext.Current.Response.ContentEncoding = System.Text.Encoding.GetEncoding("UTF-8");
             HttpContext.Current.Response.ContentType = "application/vnd.ms-excel";
-            ClearControls(grdList);
+            //ClearControls(grdList);
             System.Globalization.CultureInfo myCItrad = new System.Globalization.CultureInfo("ZH-CN", true);
             System.IO.StringWriter oStringWriter = new System.IO.StringWriter(myCItrad);
             HtmlTextWriter html = new HtmlTextWriter(oStringWriter);

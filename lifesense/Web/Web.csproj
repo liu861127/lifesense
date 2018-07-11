@@ -83,7 +83,6 @@
     <Content Include="Admin\Main.aspx" />
     <Content Include="Admin\Site_Head.aspx" />
     <Content Include="Admin\EditPwd.aspx" />
-    <Content Include="Global.asax" />
     <Content Include="js\calendar1.js" />
     <Content Include="js\CheckBox.js" />
     <Content Include="js\My97DatePicker\calendar.js" />
@@ -174,9 +173,6 @@
     <Compile Include="Admin\EditPwd.aspx.designer.cs">
       <DependentUpon>EditPwd.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Global.asax.cs">
-      <DependentUpon>Global.asax</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Static\StaticExceptionForm.aspx.cs">
       <DependentUpon>StaticExceptionForm.aspx</DependentUpon>
@@ -220,10 +216,6 @@
   <ItemGroup>
     <EmbeddedResource Include="Admin\Logout.aspx.resx">
       <DependentUpon>Logout.aspx.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Global.asax.resx">
-      <DependentUpon>Global.asax.cs</DependentUpon>
-      <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -426,7 +418,9 @@
     <Content Include="Admin\Style.css" />
     <Content Include="ValidateCode.aspx" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Properties\PublishProfiles\lifeSenseFaBu.pubxml" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

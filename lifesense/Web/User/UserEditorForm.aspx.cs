@@ -1,4 +1,5 @@
-﻿using Maticsoft.Common.DEncrypt;
+﻿using lifesense.Web.Admin;
+using Maticsoft.Common.DEncrypt;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +9,7 @@ using System.Web.UI.WebControls;
 
 namespace lifesense.Web.User
 {
-    public partial class UserEditorForm : System.Web.UI.Page
+    public partial class UserEditorForm : PageBase
     {
         protected void Page_Load(object sender, EventArgs e)
         {

@@ -44,8 +44,6 @@ D:\lifesense\lifesense\LifesenseServer\bin\Debug\office.dll
 D:\lifesense\lifesense\LifesenseServer\bin\Debug\Microsoft.Vbe.Interop.dll
 D:\lifesense\lifesense\LifesenseServer\bin\Debug\IBatisNet.DataMapper.dll
 D:\lifesense\lifesense\LifesenseServer\bin\Debug\IBatisNet.Common.dll
-D:\lifesense\lifesense\LifesenseServer\bin\Debug\System.Data.SQLite.dll
-D:\lifesense\lifesense\LifesenseServer\bin\Debug\MySql.Data.dll
 D:\lifesense\lifesense\LifesenseServer\bin\Debug\lifesense.BLL.pdb
 D:\lifesense\lifesense\LifesenseServer\bin\Debug\lifesense.Model.pdb
 D:\lifesense\lifesense\LifesenseServer\bin\Debug\lifesense.Common.pdb

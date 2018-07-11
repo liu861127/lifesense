@@ -1,6 +1,4 @@
 D:\lifesense\lifesense\DBUtility\bin\Release\lifesense.DBUtility.dll
 D:\lifesense\lifesense\DBUtility\bin\Release\IBatisNet.Common.dll
 D:\lifesense\lifesense\DBUtility\bin\Release\IBatisNet.DataMapper.dll
-D:\lifesense\lifesense\DBUtility\bin\Release\MySql.Data.dll
-D:\lifesense\lifesense\DBUtility\bin\Release\System.Data.SQLite.DLL
 D:\lifesense\lifesense\DBUtility\obj\Release\lifesense.DBUtility.dll

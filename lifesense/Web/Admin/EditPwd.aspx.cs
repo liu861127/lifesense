@@ -9,7 +9,7 @@ using System.Web.UI.WebControls;
 
 namespace lifesense.Web.Admin
 {
-    public partial class EditPwd : System.Web.UI.Page
+    public partial class EditPwd : PageBase
     {
         protected void Page_Load(object sender, EventArgs e)
         {

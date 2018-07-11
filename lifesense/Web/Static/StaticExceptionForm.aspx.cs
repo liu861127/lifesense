@@ -1,4 +1,5 @@
 ﻿using lifesense.Common;
+using lifesense.Web.Admin;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -10,16 +11,24 @@ using System.Web.UI.WebControls;
 
 namespace lifesense.Web.Static
 {
-    public partial class StaticExceptionForm : System.Web.UI.Page
+    public partial class StaticExceptionForm : PageBase
     {
         lifesense.BLL.t_userinfo userbll = new BLL.t_userinfo();
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-                DateTime cuttentTime = DateTime.Now;
-                txtstartime.Text = cuttentTime.AddDays(1 - cuttentTime.Day).ToString("yyyy-MM-dd");
-                txtenddate.Text = cuttentTime.ToString("yyyy-MM-dd");
+                DateTime currentTime = DateTime.Now;
+                if (currentTime.Hour>12)
+                {
+                    txtenddate.Text = currentTime.AddDays(-1).ToString("yyyy-MM-dd");
+                }
+                else
+                {
+                    txtenddate.Text = currentTime.AddDays(-2).ToString("yyyy-MM-dd");
+                }
+                txtstartime.Text = currentTime.AddDays(1 - currentTime.Day).ToString("yyyy-MM-dd");
+               
                 LoadData();
             }
         }
@@ -111,7 +120,7 @@ namespace lifesense.Web.Static
             AspNetPager1.CurrentPageIndex = 1;
             AspNetPager1.PageSize = AspNetPager1.RecordCount;
             LoadData();
-            ExportExcel.GetExportExcel(Gdv_data, "异常发送数据列表");
+            ExportExcel.GetExportExcel(Gdv_data, "异常发送数据列表.xls");
             //AspNetPager1.CurrentPageIndex = 1;
             //AspNetPager1.PageSize = 10;
             //LoadData();

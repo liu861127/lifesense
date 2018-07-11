@@ -83,7 +83,6 @@ namespace Maticsoft.Web.Admin
             string Password = Maticsoft.Common.PageValidate.InputText(txtPass.Value.Trim(), 30);
             Password= FormsAuthentication.HashPasswordForStoringInConfigFile(Password, "md5");
             //验证登录信息，如果验证通过则返回当前用户对象的安全上下文信息
-            //AccountsPrincipal newUser = AccountsPrincipal.ValidateLogin(userName, Password);
             lifesense.BLL.t_Admin bll = new lifesense.BLL.t_Admin();
             string strWhere=string.Format("LoginName='{0}' and LoginPwd='{1}'",userName,Password);
             List<lifesense.Model.t_Admin> listmodel = bll.GetModelList(strWhere);
@@ -103,39 +102,10 @@ namespace Maticsoft.Web.Admin
             else
             {
                 
-                //根据用户对象的上下文得到用户对象信息，用于得到其他信息
-                //User currentUser = new LTP.Accounts.Bus.User(newUser);
-                //if (currentUser.UserType != "AA")
-                //{
-                //    this.lblMsg.Text = "你非管理员用户，你没有权限登录后台系统！";
-                //    return;
-                //}
-
-                //把当前用户对象实例赋给Context.User，这样做将会把完整的用户信息加载到ASP.NET提供的验证体系中
-                //Context.User = listmodel[0].LoginName;
-                //验证当前用户密码
-                //if (((SiteIdentity)User.Identity).TestPassword(Password) == 0)
-                //{
-                //    this.lblMsg.Text = "你的密码无效！";
-                //    if ((Session["PassErrorCountAdmin"] != null) && (Session["PassErrorCountAdmin"].ToString() != ""))
-                //    {
-                //        int PassErroeCount = Convert.ToInt32(Session["PassErrorCountAdmin"]);
-                //        Session["PassErrorCountAdmin"] = PassErroeCount + 1;
-                //    }
-                //    else
-                //    {
-                //        Session["PassErrorCountAdmin"] = 1;
-                //    }
-                //}
-                //else
-                //{
-
-                //}
                 //保存当前用户对象信息
                 FormsAuthentication.SetAuthCookie(userName, false);
                 Session["adminDomain"] = userName;
                 Session["AdminID"] = listmodel[0].ID;
-                //Session["Style"] = currentUser.Style;
                 if (Session["returnPage"] != null)
                 {
                     string returnpage = Session["returnPage"].ToString();
@@ -144,7 +114,7 @@ namespace Maticsoft.Web.Admin
                 }
                 else
                 {
-                    Response.Redirect("admins.aspx");
+                    Response.Redirect("/Admin/admins.aspx");
                 }
             }
         }

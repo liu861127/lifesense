@@ -8,7 +8,6 @@ D:\lifesense\lifesense\DAL\bin\Release\Excel.dll
 D:\lifesense\lifesense\DAL\bin\Release\COM.Excel.dll
 D:\lifesense\lifesense\DAL\bin\Release\IBatisNet.DataMapper.dll
 D:\lifesense\lifesense\DAL\bin\Release\IBatisNet.Common.dll
-D:\lifesense\lifesense\DAL\bin\Release\System.Data.SQLite.dll
 D:\lifesense\lifesense\DAL\bin\Release\office.dll
 D:\lifesense\lifesense\DAL\bin\Release\Microsoft.Vbe.Interop.dll
 D:\lifesense\lifesense\DAL\obj\Release\DAL.csprojResolveAssemblyReference.cache

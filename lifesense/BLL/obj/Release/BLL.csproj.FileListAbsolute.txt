@@ -11,7 +11,5 @@ D:\lifesense\lifesense\BLL\bin\Release\office.dll
 D:\lifesense\lifesense\BLL\bin\Release\Microsoft.Vbe.Interop.dll
 D:\lifesense\lifesense\BLL\bin\Release\IBatisNet.DataMapper.dll
 D:\lifesense\lifesense\BLL\bin\Release\IBatisNet.Common.dll
-D:\lifesense\lifesense\BLL\bin\Release\System.Data.SQLite.dll
-D:\lifesense\lifesense\BLL\bin\Release\MySql.Data.dll
 D:\lifesense\lifesense\BLL\obj\Release\BLL.csprojResolveAssemblyReference.cache
 D:\lifesense\lifesense\BLL\obj\Release\lifesense.BLL.dll

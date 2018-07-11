@@ -257,7 +257,7 @@ namespace Maticsoft.DBUtility
                         cmd.Parameters.Clear();
                     }
                     string oraConnectionString = PubConstant.GetConnectionString("ConnectionStringPPC");
-                    bool res = OracleHelper.ExecuteSqlTran(oraConnectionString, oracleCmdSqlList);
+                    bool res = false;//OracleHelper.ExecuteSqlTran(oraConnectionString, oracleCmdSqlList);
                     if (!res)
                     {
                         tx.Rollback();
