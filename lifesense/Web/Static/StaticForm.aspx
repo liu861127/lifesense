@@ -49,6 +49,7 @@
             <RowStyle CssClass="tdbg-dark" Height="22px" HorizontalAlign="Center" />
             <Columns>
                 <asp:BoundField HeaderText="用户ID" DataField="用户ID" ItemStyle-CssClass="dmessage" ItemStyle-Width="50" />
+                <asp:BoundField HeaderText="用户名称" DataField="用户名称" ItemStyle-CssClass="dmessage" ItemStyle-Width="50" />
                 <asp:BoundField HeaderText="测量时间" DataField="测量时间" DataFormatString="{0:yyyy-MM-dd}" />
                 <asp:BoundField HeaderText="步数" DataField="步数" />
                 <asp:BoundField HeaderText="卡里路" DataField="卡里路" ItemStyle-CssClass="dpassmode" />

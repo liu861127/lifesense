@@ -13,7 +13,10 @@ namespace ConsoleLifesense
     {
         static void Main(string[] args)
         {
-            new SyncDataManager().start();
+            log4net.ILog log = log4net.LogManager.GetLogger("控制台模式");
+            SyncDataManager temp = new SyncDataManager();
+            temp.log = log;
+            temp.start();
         }
     }
 }

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -43,9 +44,9 @@ namespace lifesense.Web.Static
             
             if (!string.IsNullOrEmpty(txtUserName.Text))
             {
-                sb.AppendFormat(" and UserID like '%{0}%'", txtUserName.Text.Trim());
+                sb.AppendFormat(" and b.UserName LIKE '%{0}%'", txtUserName.Text.Trim());
             }
-            string sql = string.Format("select *,UserID+'|'+ cast (cast(WriteTime as date) as varchar(10)) as ID from t_failrequestInfo where 1=1   {0} ", sb.ToString());
+            string sql = string.Format("select a.*,b.UserName,a.UserID+'|'+ cast (cast(WriteTime as date) as varchar(10)) as ID from t_failrequestInfo as a inner join t_userinfo as b on a.UserID=b.UserID where 1=1   {0} ", sb.ToString());
 
             DataSet ds2 = userbll.GetSqlList(sql);
             DataSet ds = userbll.ExecuteSqlPager(sql, "UserID", AspNetPager1.CurrentPageIndex, AspNetPager1.PageSize);
@@ -63,6 +64,7 @@ namespace lifesense.Web.Static
 
         protected void btnSysData_Click(object sender, EventArgs e)
         {
+
             ConsoleLifesense.SyncDataManager sycdataBll = new ConsoleLifesense.SyncDataManager();
             List<Model.t_failrequestInfo> listmodel=new List<Model.t_failrequestInfo>();
             string strIDlist = GetSelIDlist();
@@ -76,16 +78,21 @@ namespace lifesense.Web.Static
             string msg=string.Empty;
             if (listmodel.Count > 0)
             {
-                sycdataBll.syncExceptionData(listmodel, out msg);
-                if (!string.IsNullOrEmpty(msg))
-                {
-                    Maticsoft.Common.MessageBox.Show(this, msg);
-                }
-                else
-                {
-                    Maticsoft.Common.MessageBox.Show(this, "同步所选成功!");
-                    LoadData();
-                }
+                Maticsoft.Common.MessageBox.Show(this, "开始同步失败列表数据!请稍后查看情况。");
+                sycdataBll.listFailModel = listmodel;
+                Thread t = new Thread(new ThreadStart(sycdataBll.syncExceptionData));
+                t.IsBackground = true;
+                t.Start();   
+                //sycdataBll.syncExceptionData(listmodel, out msg);
+                //if (!string.IsNullOrEmpty(msg))
+                //{
+                //    Maticsoft.Common.MessageBox.Show(this, msg);
+                //}
+                //else
+                //{
+                //    Maticsoft.Common.MessageBox.Show(this, "同步所选成功!");
+                //    LoadData();
+                //}
             }
             else
             {

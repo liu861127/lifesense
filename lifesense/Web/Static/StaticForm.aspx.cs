@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -53,6 +54,7 @@ namespace lifesense.Web.Static
                  sb.AppendFormat("and u.UserID like '%{0}%' ", txtUserID.Text.Trim());
              }
              string sql = string.Format(@"SELECT u.UserID AS 用户ID,
+                                           u.UserName as 用户名称,
                                            w.MeasureTime AS 测量时间,
                                            w.StepNum AS 步数,
                                            w.Calorie AS 卡里路,
@@ -216,8 +218,14 @@ namespace lifesense.Web.Static
                 return ;
             }
             ConsoleLifesense.SyncDataManager sycdataBll = new ConsoleLifesense.SyncDataManager();
-            sycdataBll.syncDateSegmentData(beginTime, endTime);
-            Maticsoft.Common.MessageBox.Show(this, "同步完成!");
+            sycdataBll.beginTime = beginTime;
+            sycdataBll.endTime = endTime;
+            Maticsoft.Common.MessageBox.Show(this, "开始同步数据!请稍后查看情况。");
+            Thread t = new Thread(new ThreadStart(sycdataBll.syncDateSegmentData));
+            t.IsBackground = true;
+            t.Start(); 
+            //sycdataBll.syncDateSegmentData();
+        
             LoadData();
         }
         /// <summary>

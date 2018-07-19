@@ -29,6 +29,7 @@ D:\lifesense\lifesense\ConsoleLifesense\bin\Debug\ConsoleLifesense.exe
 D:\lifesense\lifesense\ConsoleLifesense\bin\Debug\ConsoleLifesense.pdb
 D:\lifesense\lifesense\ConsoleLifesense\bin\Debug\lifesense.BLL.dll
 D:\lifesense\lifesense\ConsoleLifesense\bin\Debug\lifesense.DBUtility.dll
+D:\lifesense\lifesense\ConsoleLifesense\bin\Debug\log4net.dll
 D:\lifesense\lifesense\ConsoleLifesense\bin\Debug\lifesense.Model.dll
 D:\lifesense\lifesense\ConsoleLifesense\bin\Debug\lifesense.Common.dll
 D:\lifesense\lifesense\ConsoleLifesense\bin\Debug\lifesense.DAL.dll
@@ -42,6 +43,7 @@ D:\lifesense\lifesense\ConsoleLifesense\bin\Debug\office.dll
 D:\lifesense\lifesense\ConsoleLifesense\bin\Debug\Microsoft.Vbe.Interop.dll
 D:\lifesense\lifesense\ConsoleLifesense\bin\Debug\lifesense.BLL.pdb
 D:\lifesense\lifesense\ConsoleLifesense\bin\Debug\lifesense.DBUtility.pdb
+D:\lifesense\lifesense\ConsoleLifesense\bin\Debug\log4net.pdb
 D:\lifesense\lifesense\ConsoleLifesense\bin\Debug\lifesense.Model.pdb
 D:\lifesense\lifesense\ConsoleLifesense\bin\Debug\lifesense.Common.pdb
 D:\lifesense\lifesense\ConsoleLifesense\bin\Debug\lifesense.DAL.pdb

@@ -37,6 +37,7 @@ D:\lifesense\lifesense\Web\bin\lifesense.BLL.dll
 D:\lifesense\lifesense\Web\bin\lifesense.Common.dll
 D:\lifesense\lifesense\Web\bin\lifesense.Model.dll
 D:\lifesense\lifesense\Web\bin\Microsoft.Web.UI.WebControls.dll
+D:\lifesense\lifesense\Web\bin\log4net.dll
 D:\lifesense\lifesense\Web\bin\lifesense.DAL.dll
 D:\lifesense\lifesense\Web\bin\Newtonsoft.Json.dll
 D:\lifesense\lifesense\Web\bin\OpenSmtp.dll
@@ -50,6 +51,7 @@ D:\lifesense\lifesense\Web\bin\IBatisNet.Common.dll
 D:\lifesense\lifesense\Web\bin\lifesense.BLL.pdb
 D:\lifesense\lifesense\Web\bin\lifesense.Common.pdb
 D:\lifesense\lifesense\Web\bin\lifesense.Model.pdb
+D:\lifesense\lifesense\Web\bin\log4net.pdb
 D:\lifesense\lifesense\Web\bin\lifesense.DAL.pdb
 D:\lifesense\lifesense\Web\bin\lifesense.DBUtility.pdb
 D:\lifesense\lifesense\Web\obj\Debug\Web.csprojResolveAssemblyReference.cache

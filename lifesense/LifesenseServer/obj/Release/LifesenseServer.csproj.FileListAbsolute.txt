@@ -23,3 +23,5 @@ D:\lifesense\lifesense\LifesenseServer\obj\Release\LifesenseServer.exe.manifest
 D:\lifesense\lifesense\LifesenseServer\obj\Release\LifesenseServer.application
 D:\lifesense\lifesense\LifesenseServer\obj\Release\LifesenseServer.exe
 D:\lifesense\lifesense\LifesenseServer\obj\Release\LifesenseServer.pdb
+D:\lifesense\lifesense\LifesenseServer\bin\Release\log4net.dll
+D:\lifesense\lifesense\LifesenseServer\bin\Release\log4net.pdb

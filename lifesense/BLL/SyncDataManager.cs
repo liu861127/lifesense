@@ -18,6 +18,14 @@ namespace ConsoleLifesense
         private  int SYC_HOUR = 12;
         private int SYC_SleepTime = 600000;
         private int Exption_SleepTime = 300000;
+        public log4net.ILog log = null;
+        public SyncDataManager()
+        {
+           if(log==null)
+           {
+               log = log4net.LogManager.GetLogger("服务模式");
+           }
+         }
         public void start()
         {
             getSysConfigue();
@@ -56,16 +64,18 @@ namespace ConsoleLifesense
                         });
                 }
             }
-            catch
+            catch(Exception ex)
             {
-
+                log.Info("异常信息:"+ex.Message.ToString());
             }
         }
+        public bool IsSyncData = true;
+        public bool IsSyncDataFail = true;
         private void syncData()
         {
             int currentHour;
             string lastSyncDay = "";
-            while(true)
+            while (IsSyncData)
             {
                 try
                 {
@@ -73,10 +83,10 @@ namespace ConsoleLifesense
                     mSyncDay = DateTime.Now.AddDays(-1).ToString("yyyy-MM-dd");
                     if (currentHour == SYC_HOUR && !mSyncDay.Equals(lastSyncDay))
                     {
-                        Console.WriteLine("开始同步");
+                        log.Info("开始同步");
                         lastSyncDay = mSyncDay;
                         syncData(mSyncDay);
-                        Console.WriteLine("结束同步");
+                        log.Info("结束同步");
                     }
 
                 }
@@ -90,24 +100,24 @@ namespace ConsoleLifesense
             }
         }
 
-
+       public List<lifesense.Model.t_failrequestInfo> listFailModel = null;
+       public string msg = string.Empty;
         //从失败列表中同步数据
         public void syncDataFromFailList()
         {
-            while (true)
+            while (IsSyncDataFail)
             {
                 try
                 {
                     lifesense.BLL.t_failrequestInfo failBll = new lifesense.BLL.t_failrequestInfo();
-                    List<lifesense.Model.t_failrequestInfo> listUser = failBll.GetModelList("");
-                    if (listUser == null)
+                    this.listFailModel = failBll.GetModelList("");
+                    if (listFailModel == null)
                     {
                         return;
                     }
-                    string msg = string.Empty;
-                    Console.WriteLine("失败列表开始同步");
-                    syncExceptionData(listUser, out  msg);
-                    Console.WriteLine("失败列表结束同步");
+                    log.Info("失败列表开始同步");
+                    syncExceptionData();
+                    log.Info("失败列表结束同步,详细信息如下："+msg);
                 }
                 catch
                 {
@@ -135,22 +145,22 @@ namespace ConsoleLifesense
                         {
                             SleepData sleepData = new HttpSleepData(model, userModel, syncDay).getSleepData(syncDay);
                             bool saveSleepSuccess = saveSleepData(sleepData, userModel);
-                            Console.WriteLine("深睡时间:"+sleepData.sleep.depthTime);
+                            log.Info("同步日期" + syncDay + "深睡时间:" + sleepData.sleep.depthTime);
                             SportData sportData = new HttpSportData(model, userModel, syncDay).getSportData(syncDay);
                             bool saveSportSuccess = saveSportData(sportData, userModel, syncDay);
-                            Console.WriteLine("卡里数:" + sportData.sport.calorie);
+                            log.Info("同步日期" + syncDay + "卡里数:" + sportData.sport.calorie);
                             HeartrateData heartrateData = new HttpHeartData(model, userModel, syncDay).getHeartrateData(syncDay);
                             bool saveHeartrateSuccess = saveHeartrateData(heartrateData, userModel, syncDay);
-                            Console.WriteLine("心率:" + heartrateData.heartrate.heartrate != null ? "" : heartrateData.heartrate.heartrate.ToString());
+                            log.Info("同步日期" + syncDay + "心率:" + heartrateData.heartrate.heartrate != null ? "" : heartrateData.heartrate.heartrate.ToString());
                             // 数据都同步成功了，再重错误列表中移除掉
                             if (saveSleepSuccess && saveSportSuccess && saveHeartrateSuccess)
                             {
                                 FailRequestManager.mInstance.deleteFromFialList(userModel.UserID, Convert.ToDateTime(syncDay));
-                                Console.WriteLine("同步结束:" + heartrateData.heartrate.heartrate != null ? "" : heartrateData.heartrate.heartrate.ToString());
+
                             }
                             else
                             {
-                                Console.WriteLine("存在同步失败的:睡眠{0},步行{1},心率{2}", saveSleepSuccess, saveSportSuccess, saveHeartrateSuccess);
+                                log.Info(string.Format("存在同步失败的:睡眠{0},步行{1},心率{2}", saveSleepSuccess, saveSportSuccess, saveHeartrateSuccess));
                             }
               
                         }
@@ -260,9 +270,9 @@ namespace ConsoleLifesense
         /// <param name="syncDay"></param>
         /// <param name="msg"></param>
         /// <returns></returns>
-        public void syncExceptionData(List<lifesense.Model.t_failrequestInfo> listModel,out string msg)
+        public void syncExceptionData()
         {
-            msg = string.Empty;
+            List<lifesense.Model.t_failrequestInfo> listModel = this.listFailModel;
             string temp = string.Empty;
             if(listModel.Count>0)
             {
@@ -289,15 +299,17 @@ namespace ConsoleLifesense
             }
 
         }
+       public DateTime beginTime;
+       public DateTime endTime;
         /// <summary>
         /// 手动同步日期的数据
         /// </summary>
         /// <param name="syncDay"></param>
         /// <param name="msg"></param>
         /// <returns></returns>
-        public void syncDateSegmentData(DateTime beginTime, DateTime endtime)
+        public void syncDateSegmentData()
         {
-            int dayCount = (endtime - beginTime).Days;
+            int dayCount = (endTime - beginTime).Days;
             for (int i = 0; i < dayCount+1;i++)
             {
                 syncData(beginTime.AddDays(i).ToString("yyyy-MM-dd"));

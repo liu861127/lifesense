@@ -13,3 +13,5 @@ D:\lifesense\lifesense\BLL\bin\Release\IBatisNet.DataMapper.dll
 D:\lifesense\lifesense\BLL\bin\Release\IBatisNet.Common.dll
 D:\lifesense\lifesense\BLL\obj\Release\BLL.csprojResolveAssemblyReference.cache
 D:\lifesense\lifesense\BLL\obj\Release\lifesense.BLL.dll
+D:\lifesense\lifesense\BLL\bin\Release\log4net.dll
+D:\lifesense\lifesense\BLL\bin\Release\log4net.pdb

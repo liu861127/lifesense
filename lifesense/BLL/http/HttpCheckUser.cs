@@ -67,6 +67,10 @@ namespace lifesense.BLL.http
                   int len = end - start - 1;
                   authorizeCode = value.Substring(start + 1, len);
               }
+              else
+              {
+                  FailRequestManager.mInstance.saveInFailList(mModel.UserID, Convert.ToDateTime(mSyncDay), "", userInfo);
+              }
               return authorizeCode;
           }
           return "";

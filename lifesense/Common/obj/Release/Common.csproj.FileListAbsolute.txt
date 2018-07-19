@@ -7,3 +7,4 @@ D:\lifesense\lifesense\Common\bin\Release\OWC10Chart.dll
 D:\lifesense\lifesense\Common\bin\Release\office.dll
 D:\lifesense\lifesense\Common\bin\Release\Microsoft.Vbe.Interop.dll
 D:\lifesense\lifesense\Common\obj\Release\lifesense.Common.dll
+D:\lifesense\lifesense\Common\obj\Release\Common.csprojResolveAssemblyReference.cache

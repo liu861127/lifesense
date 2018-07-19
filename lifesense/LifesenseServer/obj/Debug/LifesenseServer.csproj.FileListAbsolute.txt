@@ -32,6 +32,7 @@ D:\lifesense\lifesense\LifesenseServer\bin\Debug\LifesenseServer.application
 D:\lifesense\lifesense\LifesenseServer\bin\Debug\LifesenseServer.exe
 D:\lifesense\lifesense\LifesenseServer\bin\Debug\LifesenseServer.pdb
 D:\lifesense\lifesense\LifesenseServer\bin\Debug\lifesense.BLL.dll
+D:\lifesense\lifesense\LifesenseServer\bin\Debug\log4net.dll
 D:\lifesense\lifesense\LifesenseServer\bin\Debug\lifesense.Model.dll
 D:\lifesense\lifesense\LifesenseServer\bin\Debug\lifesense.Common.dll
 D:\lifesense\lifesense\LifesenseServer\bin\Debug\lifesense.DAL.dll
@@ -45,6 +46,7 @@ D:\lifesense\lifesense\LifesenseServer\bin\Debug\Microsoft.Vbe.Interop.dll
 D:\lifesense\lifesense\LifesenseServer\bin\Debug\IBatisNet.DataMapper.dll
 D:\lifesense\lifesense\LifesenseServer\bin\Debug\IBatisNet.Common.dll
 D:\lifesense\lifesense\LifesenseServer\bin\Debug\lifesense.BLL.pdb
+D:\lifesense\lifesense\LifesenseServer\bin\Debug\log4net.pdb
 D:\lifesense\lifesense\LifesenseServer\bin\Debug\lifesense.Model.pdb
 D:\lifesense\lifesense\LifesenseServer\bin\Debug\lifesense.Common.pdb
 D:\lifesense\lifesense\LifesenseServer\bin\Debug\lifesense.DAL.pdb

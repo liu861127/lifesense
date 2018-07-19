@@ -21,3 +21,5 @@ D:\lifesense\lifesense\Web\obj\Release\Maticsoft.Web.Admin.Logout.resources
 D:\lifesense\lifesense\Web\obj\Release\Web.csproj.GenerateResource.Cache
 D:\lifesense\lifesense\Web\obj\Release\lifesense.Web.dll
 D:\lifesense\lifesense\Web\obj\Release\lifesense.Web.pdb
+D:\lifesense\lifesense\Web\bin\log4net.dll
+D:\lifesense\lifesense\Web\bin\log4net.pdb

@@ -1,0 +1,22 @@
+============================操作日志====================================   
+Microsoft (R) .NET Framework 安装实用工具版本 4.7.3056.0
+版权所有 (C) Microsoft Corporation。保留所有权利。
+
+
+
+正在开始卸载。
+查看日志文件的内容以获得 D:\lifesense\lifesense\LifesenseServer\bin\Release\LifesenseServer.exe 程序集的进度。
+该文件位于 D:\lifesense\lifesense\LifesenseServer\bin\Release\LifesenseServer.InstallLog。
+正在卸载程序集“D:\lifesense\lifesense\LifesenseServer\bin\Release\LifesenseServer.exe”。
+受影响的参数是:
+   logtoconsole = 
+   logfile = D:\lifesense\lifesense\LifesenseServer\bin\Release\LifesenseServer.InstallLog
+   assemblypath = D:\lifesense\lifesense\LifesenseServer\bin\Release\LifesenseServer.exe
+正在移除 EventLog 源 LifeSynService。
+在卸载 System.Diagnostics.EventLogInstaller 安装程序的过程中发生异常。
+System.Security.SecurityException: 不允许所请求的注册表访问权。
+在卸载的过程中发生异常。将忽略该异常并继续卸载。但是，在卸载完成之后应用程序可能未完全卸载。
+
+卸载完成。
+在卸载的过程中发生异常。将忽略该异常并继续卸载。但是，在卸载完成之后应用程序可能未完全卸载。
+=======================================================================  
