@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ConsoleLifesense;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.ServiceProcess;
@@ -14,12 +15,21 @@ namespace LifesenseServer
         /// </summary>
         static void Main()
         {
-            ServiceBase[] ServicesToRun;
-            ServicesToRun = new ServiceBase[] 
+            Service1 cs = new Service1();
+            //new SyncDataManager().start();
+            if (Environment.UserInteractive)
+            {
+                cs.DebugStart();
+            }
+            else
+            {
+                ServiceBase[] ServicesToRun;
+                ServicesToRun = new ServiceBase[] 
             { 
-                new Service1() 
+                cs
             };
-            ServiceBase.Run(ServicesToRun);
+                ServiceBase.Run(ServicesToRun);
+            }
         }
     }
 }

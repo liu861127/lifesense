@@ -50,9 +50,10 @@
 	</head>
 	<body>
 	    <form id="form1" runat="server"> 
-	    	<asp:ScriptManager ID="ScriptManager" runat="server">
+	  <asp:ScriptManager ID="ScriptManager" runat="server">
 	</asp:ScriptManager>
-		<asp:UpdatePanel ID="UpdatePanel" runat="server">
+
+	<asp:UpdatePanel ID="UpdatePanel" runat="server">
 	<ContentTemplate>
 	<div id="Top">
 	<table width="100%" border="0" cellpadding="0" cellspacing="0">

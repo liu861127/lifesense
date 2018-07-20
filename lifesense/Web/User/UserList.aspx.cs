@@ -1,4 +1,5 @@
 ﻿using lifesense.Common;
+using lifesense.Web.Admin;
 using Maticsoft.Common;
 using System;
 using System.Collections.Generic;
@@ -10,7 +11,7 @@ using System.Web.UI.WebControls;
 
 namespace lifesense.Web.User
 {
-    public partial class UserList : System.Web.UI.Page
+    public partial class UserList : PageBase
     {
         lifesense.BLL.t_userinfo userbll = new BLL.t_userinfo();
         protected void Page_Load(object sender, EventArgs e)
@@ -97,7 +98,7 @@ namespace lifesense.Web.User
             AspNetPager1.CurrentPageIndex = 1;
             AspNetPager1.PageSize = AspNetPager1.RecordCount;
             LoadData();
-            ExportExcel.GetExportExcel(Gdv_data, "用户列表");
+            ExportExcel.GetExportExcel(Gdv_data, "用户列表.xls");
             AspNetPager1.CurrentPageIndex = 1;
             AspNetPager1.PageSize = 10;
             LoadData();

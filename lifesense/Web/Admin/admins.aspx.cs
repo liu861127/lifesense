@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace lifesense.Web.Admin
 {
-    public partial class admins : System.Web.UI.Page
+    public partial class admins : PageBase
     {
         protected void Page_Load(object sender, EventArgs e)
         {

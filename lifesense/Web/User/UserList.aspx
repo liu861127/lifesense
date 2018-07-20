@@ -50,7 +50,7 @@
                             </asp:TemplateField> 
             <asp:TemplateField HeaderText="账号">
                     <ItemTemplate>
-                     <a href='UserEditorForm.aspx?ID=<%#Eval("ID")%>' target="_blank"><%#Eval("UserID")%></a>
+                     <a href='UserEditorForm.aspx?ID=<%#Eval("ID")%>' ><%#Eval("UserID")%></a>
                     </ItemTemplate>
                 </asp:TemplateField>
                 <asp:BoundField HeaderText="用户名称" DataField="UserName" ItemStyle-CssClass="dmessage" />

@@ -1,11 +1,3 @@
-D:\lifesense\lifesense\DBUtility\bin\Debug\lifesense.DBUtility.dll
-D:\lifesense\lifesense\DBUtility\bin\Debug\lifesense.DBUtility.pdb
-D:\lifesense\lifesense\DBUtility\bin\Debug\IBatisNet.Common.dll
-D:\lifesense\lifesense\DBUtility\bin\Debug\IBatisNet.DataMapper.dll
-D:\lifesense\lifesense\DBUtility\bin\Debug\MySql.Data.dll
-D:\lifesense\lifesense\DBUtility\bin\Debug\System.Data.SQLite.DLL
-D:\lifesense\lifesense\DBUtility\obj\Debug\lifesense.DBUtility.dll
-D:\lifesense\lifesense\DBUtility\obj\Debug\lifesense.DBUtility.pdb
 C:\E\workspace\beida\lifesense\DBUtility\bin\Debug\lifesense.DBUtility.dll
 C:\E\workspace\beida\lifesense\DBUtility\bin\Debug\lifesense.DBUtility.pdb
 C:\E\workspace\beida\lifesense\DBUtility\bin\Debug\IBatisNet.Common.dll
@@ -15,4 +7,9 @@ C:\E\workspace\beida\lifesense\DBUtility\bin\Debug\System.Data.SQLite.DLL
 C:\E\workspace\beida\lifesense\DBUtility\obj\Debug\DBUtility.csprojResolveAssemblyReference.cache
 C:\E\workspace\beida\lifesense\DBUtility\obj\Debug\lifesense.DBUtility.dll
 C:\E\workspace\beida\lifesense\DBUtility\obj\Debug\lifesense.DBUtility.pdb
-D:\lifesense\lifesense\DBUtility\obj\Debug\DBUtility.csprojResolveAssemblyReference.cache
+D:\lifesense\lifesense\DBUtility\bin\Debug\lifesense.DBUtility.dll
+D:\lifesense\lifesense\DBUtility\bin\Debug\lifesense.DBUtility.pdb
+D:\lifesense\lifesense\DBUtility\bin\Debug\IBatisNet.Common.dll
+D:\lifesense\lifesense\DBUtility\bin\Debug\IBatisNet.DataMapper.dll
+D:\lifesense\lifesense\DBUtility\obj\Debug\lifesense.DBUtility.dll
+D:\lifesense\lifesense\DBUtility\obj\Debug\lifesense.DBUtility.pdb

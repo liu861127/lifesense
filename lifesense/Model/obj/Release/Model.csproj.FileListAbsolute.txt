@@ -1,0 +1,2 @@
+D:\lifesense\lifesense\Model\bin\Release\lifesense.Model.dll
+D:\lifesense\lifesense\Model\obj\Release\lifesense.Model.dll

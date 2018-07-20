@@ -73,7 +73,7 @@ namespace Maticsoft.Common
 
     public class WebClient
     {
-        Encoding encoding = Encoding.Default;
+        Encoding encoding = Encoding.UTF8;
         string respHtml = "";
         WebProxy proxy;
         static CookieContainer cc;

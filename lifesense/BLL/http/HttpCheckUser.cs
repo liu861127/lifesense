@@ -56,13 +56,21 @@ namespace lifesense.BLL.http
       {
           JObject jo = (JObject)JsonConvert.DeserializeObject(userInfo);
           //JavaScriptObject jsonObj = JavaScriptConvert.DeserializeObject<JavaScriptObject>(userInfo);
+          string authorizeCode = string.Empty;
           if (jo["redirect"] != null)
           {
-              String value = jo["redirect"].ToString();
-              int start = value.IndexOf("authorize_code=") + "authorize_code".Length;
-              int end = value.IndexOf("&state=");
-              int len = end - start-1;
-              String authorizeCode = value.Substring(start+1,len);
+              string value = jo["redirect"].ToString();
+              if (!string.IsNullOrEmpty(value))
+              {
+                  int start = value.IndexOf("authorize_code=") + "authorize_code".Length;
+                  int end = value.IndexOf("&state=");
+                  int len = end - start - 1;
+                  authorizeCode = value.Substring(start + 1, len);
+              }
+              else
+              {
+                  FailRequestManager.mInstance.saveInFailList(mModel.UserID, Convert.ToDateTime(mSyncDay), "", userInfo);
+              }
               return authorizeCode;
           }
           return "";

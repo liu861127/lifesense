@@ -1,24 +1,33 @@
 ﻿using lifesense.Common;
+using lifesense.Web.Admin;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
 namespace lifesense.Web.Static
 {
-    public partial class StaticForm : System.Web.UI.Page
+    public partial class StaticForm : PageBase
     {
         protected void Page_Load(object sender, EventArgs e)
         {
             if(!IsPostBack)
             {
-                DateTime cuttentTime=DateTime.Now;
-                txtstartime.Text = cuttentTime.AddDays(1 - cuttentTime.Day).ToString("yyyy-MM-dd");
-                txtenddate.Text = cuttentTime.ToString("yyyy-MM-dd");
+                DateTime currentTime = DateTime.Now;
+                txtstartime.Text = currentTime.AddDays(1 - currentTime.Day).ToString("yyyy-MM-dd");
+                if (currentTime.Hour > 12)
+                {
+                    txtenddate.Text = currentTime.AddDays(-1).ToString("yyyy-MM-dd");
+                }
+                else
+                {
+                    txtenddate.Text = currentTime.AddDays(-2).ToString("yyyy-MM-dd");
+                }
                 LoadData();
             }
         }
@@ -45,6 +54,7 @@ namespace lifesense.Web.Static
                  sb.AppendFormat("and u.UserID like '%{0}%' ", txtUserID.Text.Trim());
              }
              string sql = string.Format(@"SELECT u.UserID AS 用户ID,
+                                           u.UserName as 用户名称,
                                            w.MeasureTime AS 测量时间,
                                            w.StepNum AS 步数,
                                            w.Calorie AS 卡里路,
@@ -60,15 +70,47 @@ namespace lifesense.Web.Static
                                     FROM t_userinfo AS u
                                          LEFT JOIN t_walkinfo AS w ON u.UserID = w.UserID 
                                          LEFT JOIN t_sleepinfo AS s ON u.UserID = s.UserID and cast(w.MeasureTime as date)=cast(s.SleepingTime as date)
-                                         LEFT JOIN t_heartrateinfo AS h ON u.UserID = h.UserID and cast(s.SleepingTime as date)=  cast(h.StartTime as date)  where 1=1 {0} ", sb.ToString());
+                                         LEFT JOIN t_heartrateinfo AS h ON u.UserID = h.UserID and (CAST(s.SleepingTime AS DATE) = CAST(h.StartTime AS DATE)
+                                            or CAST(w.MeasureTime  AS DATE) = CAST(h.StartTime AS DATE))  where 1=1 {0} ", sb.ToString());
             DataSet ds2 = userbll.GetSqlList(sql);
             DataSet ds = userbll.ExecuteSqlPager(sql, "测量时间,用户ID", AspNetPager1.CurrentPageIndex, AspNetPager1.PageSize);
             DataColumn dc;
+            string tempCaption = string.Empty;
+            int baseInt = 0;
+            int num = 0;
+            int m = 0;
             for (int i = 1; i <= 288; i++)
             {
-                dc = new DataColumn("心率"+i.ToString(),typeof(Int32));
-                ds.Tables[0].Columns.Add(dc);
+                num = i / 12;
+                m = i % 12;
+                //tempCaption = "心率" + (i * 0.05).ToString();
+                if (m== 0)
+                {
+                    tempCaption = "心率" + num.ToString();
+                }
+                else
+                {
+                    tempCaption = "心率" + (num + (m* 0.05)).ToString();
+                }
+                if (tempCaption.Length < 6)
+                {
+                    if (tempCaption.Contains('.'))
+                    {
+                        tempCaption = tempCaption.PadRight(6, '0');
+                    }
+                    else
+                    {
+                        tempCaption = tempCaption + ".";
+                        tempCaption = tempCaption.PadRight(6, '0');
+                    }
+                }
+                dc = new DataColumn(tempCaption, typeof(Int32));
+                if (!ds.Tables[0].Columns.Contains(tempCaption))
+                {
+                    ds.Tables[0].Columns.Add(dc);
+                }
             }
+            tempCaption = string.Empty;
             for (int j = 0; j < ds.Tables[0].Rows.Count;j++)
             {
                 if (ds.Tables[0].Rows[j]["心率"] != null && ds.Tables[0].Rows[j]["心率"].ToString() != "")
@@ -76,22 +118,76 @@ namespace lifesense.Web.Static
                    
                     for (int i = 1; i <= 288; i++)
                     {
-                        ds.Tables[0].Rows[j]["心率" + i.ToString()] = Convert.ToInt32(ds.Tables[0].Rows[j]["心率"].ToString().Substring((i - 1) * 2, 2), 16);
+                        num = i / 12;
+                        m = i % 12;
+                        //tempCaption = "心率" + (i * 0.05).ToString();
+                        if (m == 0)
+                        {
+                            tempCaption = "心率" + num.ToString();
+                        }
+                        else
+                        {
+                            tempCaption = "心率" + (num + (m * 0.05)).ToString();
+                        }
+                        if(tempCaption.Length<6)
+                        {
+                            if (tempCaption.Contains('.'))
+                            {
+                                tempCaption = tempCaption.PadRight(6, '0');
+                            }else
+                            {
+                                tempCaption=tempCaption+".";
+                                tempCaption = tempCaption.PadRight(6, '0');
+                            }
+                         }
+                        ds.Tables[0].Rows[j][tempCaption] = Convert.ToInt32(ds.Tables[0].Rows[j]["心率"].ToString().Substring((i-1) * 2, 2), 16);
+                       
+                        //ds.Tables[0].Rows[j]["心率" + i.ToString()] = Convert.ToInt32(ds.Tables[0].Rows[j]["心率"].ToString().Substring((i - 1) * 2, 2), 16);
                     }
                 }
             }
             ds.Tables[0].AcceptChanges();
+            tempCaption = string.Empty;
             for (int i = 1; i <= 288; i++)
             {
-                BoundField column = new BoundField();
-                column.HeaderText = "心率" + i.ToString();
-                column.DataField = "心率" + i.ToString();//数据字段名称（类的属性） 
-                column.ItemStyle.Width = 50;
-                gvStatic.Columns.Add(column);
+                num = i / 12;
+                m = i % 12;
+                if (m == 0)
+                {
+                    tempCaption = "心率" + num.ToString();
+                }
+                else
+                {
+                    tempCaption = "心率" + (num + (m * 0.05)).ToString();
+                }
+                if (tempCaption.Length < 6)
+                {
+                    if (tempCaption.Contains('.'))
+                    {
+                        tempCaption = tempCaption.PadRight(6, '0');
+                    }
+                    else
+                    {
+                        tempCaption = tempCaption + ".";
+                        tempCaption = tempCaption.PadRight(6, '0');
+                    }
+                }
+                if (gvStatic.Columns.Count<300)
+                {
+                    BoundField column = new BoundField();
+                    column.HeaderText = tempCaption;
+                    column.DataField = tempCaption;//数据字段名称（类的属性） 
+                    column.ItemStyle.Width = 50;
+                    gvStatic.Columns.Add(column);
+                }
+                else
+                {
+                    break;
+                }
             }
             gvStatic.DataSource = ds.Tables[0];
-          
-                gvStatic.DataBind();
+            gvStatic.DataBind();
+
             int RecordCount = ds2.Tables[0].Rows.Count;
             AspNetPager1.RecordCount = RecordCount;
         }
@@ -115,15 +211,21 @@ namespace lifesense.Web.Static
                 txtenddate.Focus();
                 return ;
             }
-            if(endTime<=beginTime)
+            if(endTime<beginTime)
             {
                 Maticsoft.Common.MessageBox.Show(this, string.Format("截止时间{0}不能小于开始时间{1}", endTime.ToString("yyyy-MM-dd"), beginTime.ToString("yyyy-MM-dd")));
                 txtenddate.Focus();
                 return ;
             }
             ConsoleLifesense.SyncDataManager sycdataBll = new ConsoleLifesense.SyncDataManager();
-            sycdataBll.syncDateSegmentData(beginTime, endTime);
-            Maticsoft.Common.MessageBox.Show(this, "同步完成!");
+            sycdataBll.beginTime = beginTime;
+            sycdataBll.endTime = endTime;
+            Maticsoft.Common.MessageBox.Show(this, "开始同步数据!请稍后查看情况。");
+            Thread t = new Thread(new ThreadStart(sycdataBll.syncDateSegmentData));
+            t.IsBackground = true;
+            t.Start(); 
+            //sycdataBll.syncDateSegmentData();
+        
             LoadData();
         }
         /// <summary>
@@ -141,7 +243,7 @@ namespace lifesense.Web.Static
                 return;
             }
             LoadData();
-            ExportExcel.GetExportExcel(gvStatic, "用户测量数据列表");
+            ExportExcel.GetExportExcel(gvStatic, "用户测量数据列表.xls");
             AspNetPager1.CurrentPageIndex = 1;
             AspNetPager1.PageSize = 50;
             LoadData();

@@ -1,0 +1,14 @@
+D:\lifesense\lifesense\DAL\bin\Release\lifesense.DAL.dll
+D:\lifesense\lifesense\DAL\bin\Release\lifesense.Common.dll
+D:\lifesense\lifesense\DAL\bin\Release\lifesense.DBUtility.dll
+D:\lifesense\lifesense\DAL\bin\Release\lifesense.Model.dll
+D:\lifesense\lifesense\DAL\bin\Release\MySql.Data.dll
+D:\lifesense\lifesense\DAL\bin\Release\OpenSmtp.dll
+D:\lifesense\lifesense\DAL\bin\Release\Excel.dll
+D:\lifesense\lifesense\DAL\bin\Release\COM.Excel.dll
+D:\lifesense\lifesense\DAL\bin\Release\IBatisNet.DataMapper.dll
+D:\lifesense\lifesense\DAL\bin\Release\IBatisNet.Common.dll
+D:\lifesense\lifesense\DAL\bin\Release\office.dll
+D:\lifesense\lifesense\DAL\bin\Release\Microsoft.Vbe.Interop.dll
+D:\lifesense\lifesense\DAL\obj\Release\DAL.csprojResolveAssemblyReference.cache
+D:\lifesense\lifesense\DAL\obj\Release\lifesense.DAL.dll

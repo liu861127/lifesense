@@ -1,4 +1,5 @@
-﻿using Maticsoft.Common.DEncrypt;
+﻿using lifesense.Web.Admin;
+using Maticsoft.Common.DEncrypt;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +9,7 @@ using System.Web.UI.WebControls;
 
 namespace lifesense.Web.User
 {
-    public partial class UserEditorForm : System.Web.UI.Page
+    public partial class UserEditorForm : PageBase
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -40,6 +41,24 @@ namespace lifesense.Web.User
             model.UserID = txtFUserID.Text.Trim();
             model.UserName = txtFUserName.Text.Trim();
             model.UserPwd =DESEncrypt.Encrypt(txtUserPwd.Text.Trim());
+            if(string.IsNullOrEmpty(model.UserID))
+            {
+                Maticsoft.Common.MessageBox.Show(this, "用户账号不能为空，请重新输入!");
+                txtFUserID.Focus();
+                return;
+            }
+            if (string.IsNullOrEmpty(model.UserName))
+            {
+                Maticsoft.Common.MessageBox.Show(this, "用户名称不能为空，请重新输入!");
+                txtFUserID.Focus();
+                return;
+            }
+            if (string.IsNullOrEmpty(model.UserPwd))
+            {
+                Maticsoft.Common.MessageBox.Show(this, "用户密码不能为空，请重新输入!");
+                txtFUserID.Focus();
+                return;
+            }
             if (!string.IsNullOrEmpty(lblID.Text))
             {
                 model.ID =Convert.ToInt32 (lblID.Text);

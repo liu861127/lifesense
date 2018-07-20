@@ -85,8 +85,6 @@
 
 
     </script>
-
-    </script>
 </head>
 <body  leftmargin="0" topmargin="0" marginheight="0" marginwidth="0">
     <form id="Form1" method="post" runat="server">   
